@@ -1,5 +1,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="{{ site.url }}/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script>
+  window.jQuery || document.write('<script src="{{ site.url }}/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')
+</script>
 <script src="{{ site.url }}/assets/js/scripts.min.js"></script>
 
 {% if site.google_analytics %}
@@ -10,10 +12,45 @@
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', '{{ site.google_analytics }}', 'auto');  
+  ga('create', '{{ site.google_analytics }}', 'auto');
   ga('require', 'linkid', 'linkid.js');
   ga('send', 'pageview');
 </script>
 {% endif %}
 
-{% if page.comments != false %}{% include disqus_comments.html %}{% endif %}
+<!--滚动时toolbar的样式变更-->
+<script>
+//改变navbar样式的函数
+function toggleNavCollapse() {
+    50 < $(".navbar").offset().top ? $(".navbar-fixed-top").addClass("top-nav-collapse") : $(".navbar-fixed-top").removeClass("top-nav-collapse");
+}
+
+/** 当dom载入时，操作绑定的函数 */
+$(document).ready(toggleNavCollapse);
+//滚动时navbar的样式变更
+$(window).scroll(toggleNavCollapse);
+$(function() {
+    $("a.page-scroll").bind("click",
+    function(b) {
+        var a = $(this);
+        $("html, body").stop().animate({
+            scrollTop: $(a.attr("href")).offset().top - 50
+        },
+        1500, "easeInOutExpo",
+        function() {
+            a.blur()
+        });
+        b.preventDefault()
+    })
+});
+
+$(".navbar-collapse ul li a").click(function() {
+    $(".navbar-toggle:visible").click()
+});
+
+</script>
+
+
+{% if page.comments != false %}
+{% include disqus_comments.html %}
+{% endif %}

@@ -9,18 +9,22 @@ image:
   credit: dargadgetz
   creditlink: http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/
 ---
-
+<!--循环首页文章-->
 {% for post in paginator.posts %}
 <article class="hentry">
   <header>
+    <!--判断文章头信心是否有图片，如果有图片则添加图片-->
+    <!--
     {% if post.image.feature %}
       <div class="entry-image-index">
         <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">
           <img src="{{ site.url }}/images/{{ post.image.feature }}" alt="{{ post.title }}">
         </a>
-      </div><!-- /.entry-image -->
+      </div>
     {% endif %}
+    -->
     <div class="entry-meta">
+      <!--添加文章日期、作者等信息-->
       <span class="entry-date date published updated">
         <time datetime="{{ post.date | date_to_xmlschema }}">
           <a href="{{ site.url }}{{ post.url }}">{{ post.date | date: "%B %d, %Y" }}</a>
@@ -31,6 +35,7 @@ image:
           <a href="{{ site.url }}/about/" title="About {{ site.owner.name }}">{{ site.owner.name }}</a>
         </span>
       </span>
+      <!--添加阅读时间-->
       {% if site.reading_time %}
       <span class="entry-reading-time">
         <i class="fa fa-clock-o"></i>
@@ -38,8 +43,10 @@ image:
       </span><!-- /.entry-reading-time -->
       {% endif %}
     </div><!-- /.entry-meta -->
+    <!--判断是否有链接-->
     {% if post.link %}
       <h1 class="entry-title">
+        <!--为带链接的标题添加一个图标，图标也可以跳转-->
         <a href="{{ site.url }}{{ post.url }}" class="permalink" rel="bookmark" title="{{ post.title }}">
           <i class="fa fa-bookmark"></i>
         </a>
@@ -51,10 +58,22 @@ image:
       </h1>
     {% endif %}
   </header>
+  <!-- 后期blog首页文章的展示，只展示文章的简单描述，而不是显示全部文章 -->
   <div class="entry-content">
-    {{ post.content }}
+    {{ post.description }}
+    <!--{{ post.content }}-->
   </div><!-- /.entry-content -->
+  <div>
+    {% for tag in post.tags %}
+    <div style="color: #d6d6d6;">
+      <!--添加标签图标-->
+      <span></span>
+      <a style="float:left;padding:0.3em;margin:.3em;background: #e6e6e6;color: #2ca6cb;">{{tag}}</a>
+    </div>
+    {% endfor %}
+  </div>
 </article><!-- /.hentry -->
 {% endfor %}
 
+<!--分页-->
 {% include pagination.html %}

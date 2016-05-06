@@ -1,10 +1,14 @@
+<!--分页-->
 {% if paginator.total_pages > 1 %}
 <div class="pagination">
   <ul class="inline-list">
+    
     {% comment %} Link for previous page {% endcomment %}
     {% if paginator.previous_page %}
       {% if paginator.previous_page == 1 %}
-        <li><a href="{{ site.url }}" class="btn">Previous</a></li>
+        <li>
+          <a href="{{ site.url }}" class="btn">Previous</a>
+        </li>
       {% else %}
         <li><a href="{{ site.url }}/page{{ paginator.previous_page }}/" class="btn">Previous</a></li>
       {% endif %}
@@ -12,7 +16,9 @@
 
     {% comment %} First page {% endcomment %}
     {% if paginator.page == 1 %}
-      <li><strong class="current-page">1</strong></li>
+      <li>
+        <strong class="current-page">1</strong>
+      </li>
     {% else %}
       <li><a href="{{ site.url }}">1</a></li>
     {% endif %}
