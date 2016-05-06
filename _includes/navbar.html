@@ -28,7 +28,7 @@
           <!-- Scroll to section for each page in index -->
           {% for p in site.pages_list %}
             <li>
-              <a class="page-scroll" href="#{{ p[1] }}" style="color:#fff;" > {{p[0]}} </a>
+              <a class="page-scroll" href="{{ site.url }}/{{ p[1] }}" style="color:#fff;" > {{p[0]}} </a>
             </li>
           {% endfor %}
 

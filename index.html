@@ -63,14 +63,15 @@ image:
     {{ post.description }}
     <!--{{ post.content }}-->
   </div><!-- /.entry-content -->
-  <div>
-    {% for tag in post.tags %}
-    <div style="color: #d6d6d6;">
-      <!--添加标签图标-->
-      <span></span>
-      <a style="float:left;padding:0.3em;margin:.3em;background: #e6e6e6;color: #2ca6cb;">{{tag}}</a>
-    </div>
-    {% endfor %}
+  <div class="entry-meta">
+    <span class="entry-tags">
+      <!--添加标签-->
+      {% for tag in post.tags %}
+      <a href="{{ site.url }}/tags/#{{ tag }}" title="Pages tagged {{ tag }}" class="tag">
+        <span class="term">{{ tag }}</span>
+      </a>
+      {% endfor %}
+    </span>
   </div>
 </article><!-- /.hentry -->
 {% endfor %}

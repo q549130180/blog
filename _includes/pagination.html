@@ -1,8 +1,8 @@
 <!--分页-->
 {% if paginator.total_pages > 1 %}
-<div class="pagination">
+<div class="pagination" style="">
   <ul class="inline-list">
-    
+
     {% comment %} Link for previous page {% endcomment %}
     {% if paginator.previous_page %}
       {% if paginator.previous_page == 1 %}
