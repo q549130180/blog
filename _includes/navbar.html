@@ -22,17 +22,16 @@
 
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-      <ul class="nav navbar-nav">
 
+    <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+      {% include search.html %}
+      <ul class="nav navbar-nav">
           <!-- Scroll to section for each page in index -->
           {% for p in site.pages_list %}
             <li>
               <a class="page-scroll" href="{{ site.url }}/{{ p[1] }}" style="color:#fff;" > {{p[0]}} </a>
             </li>
           {% endfor %}
-
-
       </ul>
     </div>
   </div>
