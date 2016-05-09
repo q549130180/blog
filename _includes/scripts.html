@@ -50,7 +50,7 @@ function toggleNavCollapse() {
 $(document).ready(function() {
    toggleNavCollapse();
    debugger;
-   $('#toc').toc();
+   $('.toc').toc({ showEffect: 'slideDown',listType: 'ul',title:'目录：'});
 });
 //滚动时navbar的样式变更
 $(window).scroll(toggleNavCollapse);

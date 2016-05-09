@@ -8,7 +8,7 @@
 {% include head.html %}
 </head>
 
-<body id="post" class="feature">
+<body id="post" class="feature" data-spy="scroll" data-target=".toc" data-offset="20">
 
 {% include browser-upgrade.html %}
 {% include navbar.html %}
@@ -56,7 +56,11 @@ post
       </div><!-- /.header-title-wrap -->
     </header>
     toc
-    <div id="toc"></div>
+    <div class="main-left">
+      <div class="toc">
+      </div>
+    </div>
+
     <div class="entry-content">
       {{ content }}
 

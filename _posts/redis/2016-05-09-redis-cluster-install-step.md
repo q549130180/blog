@@ -12,12 +12,10 @@ image:
 ---
 
 
-**目录：**
-
-[TOC]
-
-
 ## Redis 集群环境说明
+
+* TOC
+{:toc}
 
 ### 环境
 
@@ -28,6 +26,7 @@ image:
 
 
 要让集群正常工作至少需要6个主节点，在这里我们要创建6个redis节点，其中三个为主节点，三个为从节点，对应的redis节点的ip和端口对应关系如下
+
 - 127.0.0.1:7001
 - 127.0.0.1:7002
 - 127.0.0.1:7003
@@ -39,6 +38,7 @@ image:
 ## Redis 集群部署
 
 ### 1.下载Redis
+
 官网下载3.0.0版本，之前2.几的版本不支持集群模式;
 [下载地址](下载地址：https://github.com/antirez/redis/archive/3.0.0-rc2.tar.gz)
 
@@ -51,9 +51,10 @@ cd /usr/local/cluster
 mkdir 7001 7002 7003 7004 7005 7006
 
 cd 7001
-# 再在每个接口文件夹中创建conf和data文件夹
+#再在每个接口文件夹中创建conf和data文件夹
 mkdir conf data
 ```
+
 **注**：cluster所在目录可以自定义
 
 
@@ -70,7 +71,6 @@ make && make install
 
 
 ### 4.修改配置文件redis.conf
-
 
 - port 7000  # redis端口
 - daemonize yes # 开启守护进程
@@ -110,6 +110,7 @@ redis-server /usr/local/cluster/7006/conf/redis.conf
 ```
 
 也可以写一个shell脚本进行启动，会方便点
+
 ```shell
 #!/bin/sh
 
@@ -122,7 +123,7 @@ done
 启动之后使用命令查看redis的启动情况`ps -ef|grep redis`；
 如下图显示则说明启动成功:
 
-![Alt text](../images/posts_image/redis_redis_img_2016-04-12_160444.jpg)
+![Alt text](../../images/posts_image/redis_redis_img_2016-04-12_160444.jpg)
 
 至此，redis单节点启动成功（单机模式）
 
@@ -131,6 +132,7 @@ done
 **安装ruby**：
 
 yum安装：
+
 ```
 yum install ruby
 ```
@@ -149,6 +151,7 @@ export PATH=.:$PATH:/usr/local/ruby/bin
 source /etc/profile
 ruby -v
 ```
+
 如果正常输出ruby的版本号，说明安装成功。
 
 **安装rubygems**
@@ -167,6 +170,7 @@ $ gem sources -l
 https://ruby.taobao.org
 # 请确保只有 ruby.taobao.org
 $ gem install rails
+
 ```
 
 修改完成之后再执行`gem install redis`，如果执行成功，则直接进行[6：执行redis的创建集群命令创建集群]
@@ -196,6 +200,7 @@ vim /etc/ld.so.conf.d/zlib.conf
 ```
 
 加入如下内容（zlib安装路径）后保存退出
+
 ```
 /usr/local/zlib/lib
 ```
@@ -218,18 +223,20 @@ cd /usr/local/cluster/redis-3.0.5/src
 ./redis-trib.rb  create --replicas 1 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 127.0.0.1:7006
 ```
 
-![Alt text](../images/posts_image/redis_redis_img_2016-04-13_171128.jpg)
+![Alt text](../../images/posts_image/redis_redis_img_2016-04-13_171128.jpg)
 输入`yes`，然后配置完成。
 
-![Alt text](../images/posts_image/redis_redis_img_2016-04-13_171152.jpg)
+![Alt text](../../images/posts_image/redis_redis_img_2016-04-13_171152.jpg)
 
 至此redis集群即搭建成功！
 
 
 ### 7：执行命令查看现在的集群中节点的状态
+
 `redis-cli -c -p 7001 cluster nodes`
 
 ### 8：使用redis-cli命令进入集群环境
+
 `redis-cli -c -p 7001`
 
 检查集群，我们通过check cluster的一个节点，就知道整个集群的状况，可以看出来谁是主，谁是从

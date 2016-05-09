@@ -44,7 +44,7 @@ bing_verify:
 timezone:    America/New_York
 future:      true
 highlighter: rouge
-markdown:    redcarpet
+markdown:    kramdown
 # Markdown解析插件rdiscount,kramdown,redcarpet
 gems:
   - jekyll-sitemap
