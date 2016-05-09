@@ -107,3 +107,17 @@ sitemap: false
         }
     }
 }
+
+.search-input {
+  color: #7e7e7e;
+  font-size: 10px;
+  width: 180px;
+  height: 28px;
+  padding: 0px 35px 0px 10px;
+  //border: 0;
+  //background: url(../../images/search.png) no-repeat transparent;
+  border:2px #ccc solid;
+  border-radius:10px;
+
+  background-color:#eee;
+}

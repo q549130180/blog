@@ -43,22 +43,22 @@ image:
       </span><!-- /.entry-reading-time -->
       {% endif %}
     </div><!-- /.entry-meta -->
-    <!--判断是否有链接-->
-    {% if post.link %}
-      <h1 class="entry-title">
-        <!--为带链接的标题添加一个图标，图标也可以跳转-->
+
+      <!--对带有链接的标题特殊处理-->
+      <!--<h1 class="entry-title">
+        为带链接的标题添加一个图标，图标也可以跳转
         <a href="{{ site.url }}{{ post.url }}" class="permalink" rel="bookmark" title="{{ post.title }}">
           <i class="fa fa-bookmark"></i>
         </a>
         <a href="{{ post.link }}">{{ post.title }}</a>
-      </h1>
-    {% else %}
+      </h1>-->
+
       <h1 class="entry-title">
         <a href="{{ site.url }}{{ post.url }}" rel="bookmark" title="{{ post.title }}" itemprop="url">{{ post.title }}</a>
       </h1>
-    {% endif %}
+
   </header>
-  <!-- 后期blog首页文章的展示，只展示文章的简单描述，而不是显示全部文章 -->
+  <!-- blog首页文章的展示，只展示文章的简单描述，而不是显示全部文章 -->
   <div class="entry-content">
     {{ post.description }}
     <!--{{ post.content }}-->

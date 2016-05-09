@@ -1,22 +1,39 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script src="{{ site.url }}/assets/js/plugins/jquery/jquery-2.1.4.min.js"></script>
+
 <script>
   window.jQuery || document.write('<script src="{{ site.url }}/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')
 </script>
+<!-- Bootstrap Core JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 <script src="{{ site.url }}/assets/js/scripts.min.js"></script>
+<!-- search js -->
 <script src="{{ site.url }}/assets/js/plugins/jekyll-search.min.js"></script>
 <script src="{{ site.url }}/assets/js/search.js"></script>
+
+<!-- toc 文章目录插件 -->
+<script src="{{ site.url }}/assets/js/plugins/toc.js"></script>
 
 {% if site.google_analytics %}
 <!-- Asynchronous Google Analytics snippet -->
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] ||
+        function() { (i[r].q = i[r].q || []).push(arguments)
+        },
+        i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', '{{ site.google_analytics }}', 'auto');
-  ga('require', 'linkid', 'linkid.js');
-  ga('send', 'pageview');
+    ga('create', '{{ site.google_analytics }}', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('send', 'pageview');
 </script>
 {% endif %}
 
@@ -24,11 +41,17 @@
 <script>
 //改变navbar样式的函数
 function toggleNavCollapse() {
+    /** 判断匹配元素，top的偏移量 */
     50 < $(".navbar").offset().top ? $(".navbar-fixed-top").addClass("top-nav-collapse") : $(".navbar-fixed-top").removeClass("top-nav-collapse");
 }
 
 /** 当dom载入时，操作绑定的函数 */
-$(document).ready(toggleNavCollapse);
+//$(document).ready(toggleNavCollapse);
+$(document).ready(function() {
+   toggleNavCollapse();
+   debugger;
+   $('#toc').toc();
+});
 //滚动时navbar的样式变更
 $(window).scroll(toggleNavCollapse);
 $(function() {
@@ -49,6 +72,10 @@ $(function() {
 $(".navbar-collapse ul li a").click(function() {
     $(".navbar-toggle:visible").click()
 });
+
+</script>
+
+<script>
 
 </script>
 
