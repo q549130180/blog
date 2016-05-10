@@ -7,7 +7,7 @@
 <head>
 {% include head.html %}
 </head>
-
+<!-- 与post相比，没有tags，read_more -->
 <body id="page" {% if page.image.feature %}class="feature"{% endif %}>
 
 {% include browser-upgrade.html %}
@@ -15,6 +15,7 @@
 {% include navbar.html %}
 page
 
+<!-- 图片显示 -->
 {% if page.image.feature %}
 <div class="entry-header">
   {% if page.image.credit %}
@@ -29,6 +30,8 @@ page
 
 <div id="main" role="main">
   <article class="hentry">
+
+
     <header class="header-title">
       <div class="header-title-wrap">
         <h1 class="entry-title">{{ page.title }}</h1>
@@ -40,6 +43,8 @@ page
         {% endif %}
       </div><!-- /.header-title-wrap -->
     </header>
+
+
     <div class="entry-content">
       {{ content }}
       <footer class="entry-meta">
@@ -51,7 +56,9 @@ page
           </span>
         </span>
         {% endif %}
-        {% if page.share != false %}{% include social-share.html %}{% endif %}
+        {% if page.share != false %}
+        {% include social-share.html %}
+        {% endif %}
       </footer>
     </div><!-- /.entry-content -->
     {% if page.comments != false and site.disqus_shortname %}
