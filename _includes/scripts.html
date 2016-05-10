@@ -6,6 +6,7 @@
 </script>
 <!-- Bootstrap Core JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!--<script src="{{ site.url }}/assets/js/plugins/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>-->
 
 <script src="{{ site.url }}/assets/js/scripts.min.js"></script>
 <!-- search js -->
@@ -43,14 +44,21 @@
 function toggleNavCollapse() {
     /** 判断匹配元素，top的偏移量 */
     50 < $(".navbar").offset().top ? $(".navbar-fixed-top").addClass("top-nav-collapse") : $(".navbar-fixed-top").removeClass("top-nav-collapse");
+
+    /** 控制目录的显示与隐藏 */
+    if($(".main-left")){
+      $(".navbar").offset().top>$(".header-title").height() ? $(".main-left").css("display","") : $(".main-left").css("display","none");
+    }
+
+
 }
 
 /** 当dom载入时，操作绑定的函数 */
 //$(document).ready(toggleNavCollapse);
 $(document).ready(function() {
    toggleNavCollapse();
-   debugger;
-   $('.toc').toc({ showEffect: 'slideDown',listType: 'ul',title:'目录：'});
+
+   $('.toc').toc({ showEffect: 'slideDown',listType: 'ul',title:'<strong>目录：</strong>'});
 });
 //滚动时navbar的样式变更
 $(window).scroll(toggleNavCollapse);

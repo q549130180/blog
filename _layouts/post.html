@@ -55,11 +55,14 @@ post
         {% endif %}
       </div><!-- /.header-title-wrap -->
     </header>
-    toc
+
+    <!-- toc 目录,只有技术类文章才显示目录 -->
+    {% if page.post_type == 'developer' %}
     <div class="main-left">
       <div class="toc">
       </div>
     </div>
+    {% endif %}
 
     <div class="entry-content">
       {{ content }}

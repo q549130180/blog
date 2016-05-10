@@ -4,6 +4,7 @@ title:  Redis3.0.1集群安装步骤(包括单机)
 description: "Demo post displaying the various ways of highlighting code in Markdown."
 modified: 2016-05-09
 tags: [redis,redis cluster]
+post_type: developer
 categories: [redis ]
 image:
   feature: abstract-10.jpg
@@ -14,8 +15,6 @@ image:
 
 ## Redis 集群环境说明
 
-* TOC
-{:toc}
 
 ### 环境
 

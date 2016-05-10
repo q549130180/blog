@@ -46,6 +46,10 @@ future:      true
 highlighter: rouge
 markdown:    kramdown
 # Markdown解析插件rdiscount,kramdown,redcarpet
+
+redcarpet:
+  extensions: [with_toc_data]
+
 gems:
   - jekyll-sitemap
   - jekyll-paginate
@@ -93,3 +97,5 @@ pages_list:
 
 include: [".htaccess"]
 exclude: ["lib", "config.rb", "Capfile", "config", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]
+# 文章分类
+# category: developer,life

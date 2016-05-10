@@ -83,7 +83,10 @@
 {% unless background contains 'http://' or background contains 'https://' %}{% capture background %}{{ site.url }}/images/{{ background }}{% endcapture %}{% endunless %}
 <style type="text/css">body {background-image:url({{ background }});}</style>
 {% endif %}
-<!-- Blog CSS-->
-<link rel="stylesheet" href="{{site.url}}/assets/css/blog.css" />
+
 <!--bootstrap css-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!--<script src="{{ site.url }}/assets/js/plugins/bootstrap-3.3.6-dist/css/bootstrap.css"></script>-->
+
+<!-- Blog CSS-->
+<link rel="stylesheet" href="{{site.url}}/assets/css/blog.css" />
