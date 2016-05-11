@@ -7,6 +7,7 @@ words_per_minute: 200
 # When testing locally leave blank or use http://localhost:4000
 url:              #http://127.0.0.1:4000
 
+
 post_img:
   feature: abstract-1.jpg
   credit: snow
@@ -20,7 +21,7 @@ owner:
   email:          yellow.716@163.com
   # Social networking links used in footer. Update and remove as you like.
   weibo:          http://weibo.com/549130180
-  twitter:
+  twitter:        https://twitter.com/lingfeng_716
   facebook:
   github:         https://github.com/q549130180
   stackexchange:

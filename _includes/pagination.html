@@ -2,7 +2,6 @@
 {% if paginator.total_pages > 1 %}
 <div class="pagination" style="">
   <ul class="inline-list">
-
     {% comment %} Link for previous page {% endcomment %}
     {% if paginator.previous_page %}
       {% if paginator.previous_page == 1 %}
@@ -20,7 +19,9 @@
         <strong class="current-page">1</strong>
       </li>
     {% else %}
-      <li><a href="{{ site.url }}">1</a></li>
+      <li>
+        <a href="{{ site.url }}">1</a>
+      </li>
     {% endif %}
 
     {% assign page_start = 2 %}
@@ -38,7 +39,9 @@
 
     {% for index in (page_start..page_end) %}
       {% if index == paginator.page %}
-        <li><strong class="current-page">{{index}}</strong></li>
+        <li>
+          <strong class="current-page">{{index}}</strong>
+        </li>
       {% else %}
         {% comment %} Distance from current page and this link {% endcomment %}
         {% assign dist = paginator.page | minus: index %}
@@ -46,7 +49,9 @@
           {% comment %} Distance must be a positive value {% endcomment %}
           {% assign dist = 0 | minus: dist %}
         {% endif %}
-        <li><a href="{{ site.url }}/page{{ index }}/">{{index}}</a></li>
+        <li>
+          <a href="{{ site.url }}/page{{ index }}/">{{index}}</a>
+        </li>
       {% endif %}
     {% endfor %}
 
