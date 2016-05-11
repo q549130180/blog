@@ -13,16 +13,6 @@ image:
 {% for post in paginator.posts %}
 <article class="hentry">
   <header>
-    <!--判断文章头信心是否有图片，如果有图片则添加图片-->
-    <!--
-    {% if post.image.feature %}
-      <div class="entry-image-index">
-        <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">
-          <img src="{{ site.url }}/images/{{ post.image.feature }}" alt="{{ post.title }}">
-        </a>
-      </div>
-    {% endif %}
-    -->
     <div class="entry-meta">
       <!--添加文章日期、作者等信息-->
       <span class="entry-date date published updated">
@@ -43,19 +33,10 @@ image:
       </span><!-- /.entry-reading-time -->
       {% endif %}
     </div><!-- /.entry-meta -->
-
-      <!--对带有链接的标题特殊处理-->
-      <!--<h1 class="entry-title">
-        为带链接的标题添加一个图标，图标也可以跳转
-        <a href="{{ site.url }}{{ post.url }}" class="permalink" rel="bookmark" title="{{ post.title }}">
-          <i class="fa fa-bookmark"></i>
-        </a>
-        <a href="{{ post.link }}">{{ post.title }}</a>
-      </h1>-->
-
-      <h1 class="entry-title">
-        <a href="{{ site.url }}{{ post.url }}" rel="bookmark" title="{{ post.title }}" itemprop="url">{{ post.title }}</a>
-      </h1>
+    <!-- 文章标题 -->
+    <h1 class="entry-title">
+      <a href="{{ site.url }}{{ post.url }}" rel="bookmark" title="{{ post.title }}" itemprop="url">{{ post.title }}</a>
+    </h1>
 
   </header>
   <!-- blog首页文章的展示，只展示文章的简单描述，而不是显示全部文章 -->
