@@ -3,7 +3,7 @@ layout: post-index
 title: Latest Posts
 description: "Describe this nonsense."
 tags: [Jekyll, theme, themes, responsive, blog, modern]
-comments: false
+comments: true
 image:
   feature: abstract-1.jpg
   credit: dargadgetz
@@ -71,6 +71,13 @@ image:
         <span class="term">{{ tag }}</span>
       </a>
       {% endfor %}
+      <!-- 首页展示，添加评论计数 -->
+      <div class="comments-count">
+        {% if site.disqus_shortname %}
+      	<span></span>
+      	<a href="{{ site.url }}{{ post.url }}#disqus_thread" class="comments-count-link">Comments</a>
+      	{% endif %}
+      </div>
     </span>
   </div>
 </article><!-- /.hentry -->

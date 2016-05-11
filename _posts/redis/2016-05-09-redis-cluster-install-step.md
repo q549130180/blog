@@ -5,6 +5,7 @@ description: "Demo post displaying the various ways of highlighting code in Mark
 modified: 2016-05-09
 tags: [redis,redis cluster]
 post_type: developer
+blogid: 201605110001
 categories: [redis ]
 image:
   feature: abstract-10.jpg
