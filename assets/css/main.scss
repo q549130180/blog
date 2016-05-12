@@ -149,3 +149,52 @@ sitemap: false
     color: #fff !important;
     background: #B4B4B4
 }
+
+
+/** 返回顶部css */
+.backtop:hover {
+  background-color: #999999;
+  color: #fff;
+  text-decoration: none;
+}
+.backtop {
+  display: none;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  position: fixed;
+  _position: absolute;
+  right: 10px;
+  bottom: 100px;
+  _bottom: auto;
+  cursor: pointer;
+  font-size: 16px;
+  color: #9c9c9c;
+  background: whitesmoke;
+  border: 1px solid #d9d9d9;
+  margin-top: 10px;
+}
+/*svg*/
+.loveicon {
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+  font-size: 14px;
+  vertical-align: middle;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -ms-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s;
+}
+.loveicon:hover {
+  width: 300px;
+  height: 300px;
+}
+/** css画圆 */
+.circle {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}

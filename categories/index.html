@@ -9,6 +9,26 @@ image:
 modified: 2016-02-01
 ---
 <!-- 分类 -->
-<div>
-  <h1>开发中。。。</h1>
-</div>
+<ul class="entry-meta inline-list">
+  {% for category in site.categories %}
+  	<li>
+      <a href="#{{ category | first }}" class="tag">
+        <span class="term">{{ category | first }}</span>
+        <span class="count">{{ category | last | size }}</span>
+      </a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% for category in site.categories %}
+	<article>
+	<h2 id="{{ category | first }}" class="tag-heading anchor">{{ category | first }}</h2>
+		<ul>
+        {% for post in category.last %}
+        <li class="entry-title">
+          <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+		</ul>
+	</article><!-- /.hentry -->
+{% endfor %}
