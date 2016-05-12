@@ -165,7 +165,7 @@ sitemap: false
   text-align: center;
   position: fixed;
   _position: absolute;
-  right: 10px;
+  right: 28px;
   bottom: 100px;
   _bottom: auto;
   cursor: pointer;
@@ -192,9 +192,23 @@ sitemap: false
   width: 300px;
   height: 300px;
 }
+
+.tools-read {
+    @media(max-width:768px) {
+      right: -107px;
+    }
+}
+
+
 /** css画圆 */
 .circle {
   border-radius: 50%;
   width: 40px;
   height: 40px;
+}
+
+.max-width-hide {
+    @media(max-width:768px) {
+        display: none !important;
+    }
 }
