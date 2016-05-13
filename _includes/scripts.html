@@ -14,6 +14,9 @@
 <script src="{{ site.url }}/assets/js/plugins/jekyll-search.min.js"></script>
 <script src="{{ site.url }}/assets/js/search.js"></script>
 
+<!-- jQuery Knob -->
+<script src="{{ site.url }}/assets/js/plugins/knob/jquery.knob.js"></script>
+
 <!-- toc 文章目录插件 -->
 <script src="{{ site.url }}/assets/js/plugins/toc.js"></script>
 
@@ -60,6 +63,16 @@ $(document).ready(function() {
    toggleNavCollapse();
 
    $('.toc').toc({ showEffect: 'slideDown',listType: 'ul',title:'<strong>目录：</strong>'});
+
+   //首页搜索框的图标
+   document.getElementById('search-input').addEventListener("keyup",function(e) {
+      $(".search-input").removeClass("search-input-icon");
+   });
+   $(".search-input").blur(function (){
+      if($("#search-input").val()===""){
+        $(".search-input").addClass("search-input-icon");
+      }
+   });
 });
 //滚动时navbar的样式变更
 $(window).scroll(toggleNavCollapse);
@@ -85,6 +98,159 @@ $(".navbar-collapse ul li a").click(function() {
 </script>
 
 <script>
+/*小工具*/
+$(function () {
+  /* jQueryKnob */
+  $(".knob").knob({
+    /*change : function (value) {
+     //console.log("change : " + value);
+     },
+     release : function (value) {
+     console.log("release : " + value);
+     },
+     cancel : function () {
+     console.log("cancel : " + this.value);
+     },*/
+    readOnly:true,
+    draw: function () {
+      // "tron" case
+      if (this.$.data('skin') == 'tron') {
+
+        var a = this.angle(this.cv)  // Angle
+                , sa = this.startAngle          // Previous start angle
+                , sat = this.startAngle         // Start angle
+                , ea                            // Previous end angle
+                , eat = sat + a                 // End angle
+                , r = true;
+
+        this.g.lineWidth = this.lineWidth;
+
+        this.o.cursor
+                && (sat = eat - 0.3)
+                && (eat = eat + 0.3);
+
+        if (this.o.displayPrevious) {
+          ea = this.startAngle + this.angle(this.value);
+          this.o.cursor
+                  && (sa = ea - 0.3)
+                  && (ea = ea + 0.3);
+          this.g.beginPath();
+          this.g.strokeStyle = this.previousColor;
+          this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
+          this.g.stroke();
+        }
+
+        this.g.beginPath();
+        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
+        this.g.stroke();
+
+        this.g.lineWidth = 2;
+        this.g.beginPath();
+        this.g.strokeStyle = this.o.fgColor;
+        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+        this.g.stroke();
+
+        return false;
+      }
+    }
+  });
+  /* END JQUERY KNOB */
+});
+/** 小工具：动态获取阅读百分比*/
+(function(){
+    var Scroller={
+        getById:function(id){
+            return typeof id=='object'?id:document.getElementById(id);
+        },
+      	getByClass:function(className){
+      		return typeof className=='object'?className:$('.'+className);
+      	},
+        getViewHeight:function(){
+            return Math.min(document.documentElement.clientHeight,document.body.clientHeight);
+        },
+        getScrollTop:function(){
+            return Math.max(document.documentElement.scrollTop,document.body.scrollTop);
+        },
+        getBound:function(id){
+            var node=this.getById(id);
+            if(node.getBoundingClientRect){
+                var rect=node.getBoundingClientRect();
+                return {
+                    y:rect.top+this.getScrollTop(),
+                    height:node.offsetHeight
+                }
+            }
+        },
+        bindEvent:function(id,type,fn){
+            var me=this;
+            var node=me.getById(id);
+            if(node){
+                if(node.attachEvent){
+                    node.attachEvent('on'+type,fn);
+                }else{
+                    node.addEventListener(type,fn);
+                }
+            }
+        },
+        start:function(){
+            var me=this;
+            var rect=me.getBound('main');
+            var vh=me.getViewHeight();
+            var refHeight=rect.height-vh;
+            var debug=me.getById('debug');
+            me.bindEvent(window,'scroll',function(e){
+                var stop=me.getScrollTop();
+                var p=(stop-rect.y)/refHeight;
+                if(p>=0&&p<=1){
+                    //debug.innerHTML=(p*100).toFixed(2)+'%';
+                    $('.knob').val((p*100).toFixed(2)).trigger('change');
+                    $("#tools-id").css("display","");
+                }else if(p<0){
+                    //debug.innerHTML='0%';
+                    $('.knob').val(0).trigger('change');
+                    $("#tools-id").css("display","none");
+                }else{
+                    //debug.innerHTML='100%';
+                    $('.knob').val(100).trigger('change');
+                }
+            });
+            me.bindEvent(window,'resize',function(){
+                vh=me.getViewHeight();
+                refHeight=rect.height-vh;
+            });
+        }
+    };
+    Scroller.start();
+    var scrollTop = $(document).scrollTop();
+    $('#totop').click(function(){
+           $('html, body').animate({scrollTop:0}, 500); return false;
+    });
+})();
+
+</script>
+<!--分享按钮-->
+<script type="text/javascript">
+
+$('#weibo-id').click(function() {
+  (function(s, d, e) {
+    try {
+    } catch(e) {
+    }
+    var f = 'http://v.t.sina.com.cn/share/share.php?',
+    u = '{{ site.url }}{{ page.url }}',
+    p = ['url=', e(u), '&title=', e('{{ page.title }}'), '&appkey=2924220432'].join('');
+    function a() {
+      if (!window.open([f, p].join(''), 'mb', ['toolbar=0,status=0,resizable=1,width=620,height=450,left=', (s.width - 620) / 2, ',top=', (s.height - 450) / 2].join(''))) u.href = [f, p].join('');
+    };
+    if (/Firefox/.test(navigator.userAgent)) {
+      setTimeout(a, 0)
+    } else {
+      a()
+    }
+  })(screen, document, encodeURIComponent);
+  return false;
+});
 
 </script>
 

@@ -4,6 +4,7 @@ title: Syntax Highlighting Post
 description: "Demo post displaying the various ways of highlighting code in Markdown."
 modified: 2016-02-01
 tags: [sample post, code, highlighting]
+categories: [sample post, code, highlighting]
 image:
   feature: abstract-10.jpg
   credit: dargadgetz

@@ -12,9 +12,8 @@
 
 {% include browser-upgrade.html %}
 {% include navbar.html %}
-post
 
-<div class="entry-header">
+<header class="entry-header">
   <!--图片来源信息-->
   {% if page.image.credit %}
   <div class="image-credit">
@@ -33,7 +32,7 @@ post
   <div class="entry-image">
     <img src="{{ site.url }}/images/{% if page.image.feature %}{{ page.image.feature }}{% else %}{{site.post_img.feature}}{% endif %}" alt="{{ page.title }}">
   </div><!-- /.entry-image -->
-</div><!-- /.entry-header -->
+</header><!-- /.entry-header -->
 
 
 <div id="main" role="main">
@@ -58,7 +57,7 @@ post
 
     <!-- toc 目录,只有技术类文章才显示目录 -->
     {% if page.post_type == 'developer' %}
-    <div class="main-left">
+    <div class="main-left max-width-hide">
       <div class="toc">
       </div>
     </div>
@@ -111,7 +110,7 @@ post
     {% include footer.html %}
   </footer>
 </div><!-- /.footer-wrapper -->
-
+{% include tools.html %}
 {% include scripts.html %}
 
 </body>

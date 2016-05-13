@@ -18,7 +18,7 @@
 <!-- Open Menu Control>
 <!--{% include navigation.html %}-->
 {% include navbar.html %}
-post-index
+
 
 <header class="entry-header">
   {% if page.image.credit %}
@@ -26,7 +26,7 @@ post-index
     Image source: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a>
   </div><!-- /.image-credit -->
   {% endif %}
-  
+
   <div class="entry-image">
     <img src="{{ site.url }}/images/{% if page.image.feature %}{{ page.image.feature }}{% else %}{{site.post_img.feature}}{% endif %}" alt="{{ page.title }}">
   </div><!-- /.entry-image -->
@@ -49,7 +49,7 @@ post-index
     {% include footer.html %}
   </footer>
 </div><!-- /.footer-wrapper -->
-
+{% include tools.html %}
 {% include scripts.html %}
 
 </body>
