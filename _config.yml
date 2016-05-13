@@ -21,6 +21,9 @@ owner:
   email:          yellow.716@163.com
   # Social networking links used in footer. Update and remove as you like.
   weibo:          http://weibo.com/549130180
+  douban:
+  zhihu:
+  stackoverflow:
   twitter:        https://twitter.com/lingfeng_716
   facebook:
   github:         https://github.com/q549130180
@@ -48,8 +51,8 @@ highlighter: rouge
 markdown:    kramdown
 # Markdown解析插件rdiscount,kramdown,redcarpet
 
-redcarpet:
-  extensions: [with_toc_data]
+# redcarpet:
+#   extensions: [with_toc_data]
 
 gems:
   - jekyll-sitemap

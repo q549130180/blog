@@ -63,6 +63,16 @@ $(document).ready(function() {
    toggleNavCollapse();
 
    $('.toc').toc({ showEffect: 'slideDown',listType: 'ul',title:'<strong>目录：</strong>'});
+
+   //首页搜索框的图标
+   document.getElementById('search-input').addEventListener("keyup",function(e) {
+      $(".search-input").removeClass("search-input-icon");
+   });
+   $(".search-input").blur(function (){
+      if($("#search-input").val()===""){
+        $(".search-input").addClass("search-input-icon");
+      }
+   });
 });
 //滚动时navbar的样式变更
 $(window).scroll(toggleNavCollapse);

@@ -107,19 +107,28 @@ sitemap: false
         }
     }
 }
-
+/** 首页search */
 .search-input {
-  color: #7e7e7e;
+  color: #FFFFFF;
   font-size: 10px;
   width: 180px;
   height: 28px;
   padding: 0px 35px 0px 10px;
-  //border: 0;
-  //background: url(../../images/search.png) no-repeat transparent;
   border:2px #ccc solid;
-  border-radius:10px;
+  background-color: transparent;
+  border-radius:40px;//圆角
+  outline: none;//去掉选中后的蓝边
 
-  background-color:#eee;
+
+}
+.search-input:hover {
+  //border:2px #6dbbff solid;
+}
+.search-input-icon {
+  background-image:url(/images/YY_search_2.png);
+  background-repeat:no-repeat;
+  background-position-y: 50%;
+  background-position-x: 3%;
 }
 
 
@@ -211,4 +220,99 @@ sitemap: false
     @media(max-width:768px) {
         display: none !important;
     }
+}
+
+
+/** */
+
+.social-font {
+
+}
+
+@media only screen and (min-width: 568px) {
+    .social-font {
+
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .social-font {
+
+    }
+}
+
+.social-font a {
+    //float: left;
+    display: block;
+    width: 14%;
+    color: #000;
+    font-size: 185%;
+    padding: .5em;
+    text-decoration:none;
+}
+
+@media only screen and (min-width: 1024px) {
+    .social-font a {
+        padding: .3em
+    }
+}
+
+.social-font a:hover:before {
+    color: #2ca6cb;
+    text-decoration:none;
+}
+.social-font a:hover {
+    text-decoration:none;
+}
+
+.icon-weibo:before, .icon-github:before, .icon-twitter:before, .icon-facebook:before, .icon-stack-overflow:before, .icon-email:before, .icon-google_plus:before, .icon-linkedin:before {
+    font-family: "FontAwesome";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.icon-weibo:before {
+    content: "\f18a"
+}
+
+.icon-github:before {
+    content: "\f09b"
+}
+
+.icon-twitter:before {
+    content: "\f099"
+}
+
+.icon-facebook:before {
+    content: "\f09a"
+}
+
+.icon-stack-overflow:before {
+    content: "\f16c"
+}
+
+.icon-email:before {
+    content: "\f003"
+}
+
+.icon-google_plus:before {
+    content: "\f0d5"
+}
+
+.icon-linkedin:before {
+    content: "\f08c"
+}
+
+.icon-douban:before {
+    font-family: "fontdiao";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\f111"
+}
+
+.icon-zhihu:before {
+    font-family: "fontdiao";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\f142"
 }
