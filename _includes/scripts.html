@@ -66,13 +66,17 @@ $(document).ready(function() {
 
    //首页搜索框的图标
    document.getElementById('search-input').addEventListener("keyup",function(e) {
-      $(".search-input").removeClass("search-input-icon");
+      if($("#search-input").val()===""){
+        $(".search-input").addClass("search-input-icon");
+      }else{
+        $(".search-input").removeClass("search-input-icon");
+      }
    });
-   $(".search-input").blur(function (){
+   /*$(".search-input").blur(function (){
       if($("#search-input").val()===""){
         $(".search-input").addClass("search-input-icon");
       }
-   });
+   });*/
 });
 //滚动时navbar的样式变更
 $(window).scroll(toggleNavCollapse);
