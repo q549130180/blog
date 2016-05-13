@@ -125,7 +125,7 @@ sitemap: false
   //border:2px #6dbbff solid;
 }
 .search-input-icon {
-  background-image:url(/images/YY_search_2.png);
+  background-image:url({{ site.url }}/images/YY_search_2.png);
   background-repeat:no-repeat;
   background-position-y: 50%;
   background-position-x: 3%;
