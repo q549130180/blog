@@ -21,7 +21,7 @@
 <script src="{{ site.url }}/assets/js/plugins/toc.js"></script>
 
 {% if site.google_analytics %}
-<!-- Asynchronous Google Analytics snippet -->
+<!-- Asynchronous Google Analytics snippet(google分析) -->
 <script>
     (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
@@ -58,24 +58,31 @@ function toggleNavCollapse() {
 }
 
 /** 当dom载入时，操作绑定的函数 */
-//$(document).ready(toggleNavCollapse);
 $(document).ready(function() {
    toggleNavCollapse();
 
+   //目录
    $('.toc').toc({ showEffect: 'slideDown',listType: 'ul',title:'<strong>目录：</strong>'});
 
    //首页搜索框的图标
    document.getElementById('search-input').addEventListener("keyup",function(e) {
-      $(".search-input").removeClass("search-input-icon");
-   });
-   $(".search-input").blur(function (){
       if($("#search-input").val()===""){
         $(".search-input").addClass("search-input-icon");
+      }else{
+        $(".search-input").removeClass("search-input-icon");
       }
+   });
+   /* 控制搜索框下拉列表的显示与隐藏 */
+   $(".search-input").blur(function (){
+      $("#results-container li").addClass("elementHide");
+   });
+   $(".search-input").focus(function(){
+      $("#results-container li").removeClass("elementHide");
    });
 });
 //滚动时navbar的样式变更
 $(window).scroll(toggleNavCollapse);
+
 $(function() {
     $("a.page-scroll").bind("click",
     function(b) {
@@ -222,6 +229,8 @@ $(function () {
         }
     };
     Scroller.start();
+
+    //返回顶部
     var scrollTop = $(document).scrollTop();
     $('#totop').click(function(){
            $('html, body').animate({scrollTop:0}, 500); return false;

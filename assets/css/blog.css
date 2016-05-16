@@ -19,10 +19,6 @@
   color:#909092;
 }
 
-/* for retive margin with fixed html header nav */
-.anchor {
-	padding-top: 51px;
-}
 
 /** toc scrollspy styles */
 .toc-nav {

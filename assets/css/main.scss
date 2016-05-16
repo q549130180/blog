@@ -316,3 +316,15 @@ sitemap: false
     -moz-osx-font-smoothing: grayscale;
     content: "\f142"
 }
+
+
+
+/* for retive margin with fixed html header nav */
+.anchor {
+	padding-top: 51px;
+}
+
+/* 隐藏元素 */
+.elementHide {
+	display: none;
+}
