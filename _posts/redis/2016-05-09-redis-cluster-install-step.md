@@ -2,7 +2,7 @@
 layout: post
 title:  Redis3.0.1集群安装步骤(包括单机)
 description: "Demo post displaying the various ways of highlighting code in Markdown."
-modified: 2016-05-09
+modified: 2016-05-09 14:20:20
 tags: [redis,redis cluster]
 post_type: developer
 blogid: 201605110001

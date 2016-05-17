@@ -1,6 +1,17 @@
 <!--分页-->
+
+<!-- 计算有效文章数 -->
+{% assign posts_counts = 0 %}
+{% for post in site.posts %}
+  {% if post.hide != true %}
+    {% assign posts_counts = posts_counts | plus:1  %}
+  {% endif %}
+{% endfor %}
+
+
+
 {% if paginator.total_pages > 1 %}
-<div class="pagination" style="">
+<div class="pagination" style="margin-right: auto; margin-left: auto;display: block;">
   <ul class="inline-list">
     {% comment %} Link for previous page {% endcomment %}
     {% if paginator.previous_page %}

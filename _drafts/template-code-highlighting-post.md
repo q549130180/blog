@@ -5,6 +5,7 @@ description: "Demo post displaying the various ways of highlighting code in Mark
 modified: 2016-02-01
 tags: [sample post, code, highlighting]
 categories: [sample post, code, highlighting]
+hide: true
 image:
   feature: abstract-10.jpg
   credit: dargadgetz
