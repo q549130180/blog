@@ -1,6 +1,6 @@
 ---
 layout: post-index
-title: Latest Posts
+title:
 description: "Describe this nonsense."
 tags: [Jekyll, theme, themes, responsive, blog, modern]
 comments: true
@@ -11,6 +11,8 @@ image:
 ---
 <!--循环首页文章-->
 {% for post in paginator.posts %}
+<!-- 过滤掉隐藏的文章 -->
+{% if post.hide != true %}
 <article class="hentry">
   <header>
     <div class="entry-meta">
@@ -62,6 +64,7 @@ image:
     </span>
   </div>
 </article><!-- /.hentry -->
+{% endif %}
 {% endfor %}
 
 <!--分页-->

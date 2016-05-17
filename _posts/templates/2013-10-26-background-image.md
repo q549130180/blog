@@ -4,6 +4,7 @@ title: Post with a Background Image
 description: "Sample post with a background image CSS override."
 tags: [sample post]
 categories: [sample post]
+hide: true
 image:
   background: triangular.png
 ---
