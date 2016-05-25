@@ -4,6 +4,7 @@ title: "A Post with Images"
 description: "Examples and code for displaying images in posts."
 tags: [sample post, images, test]
 categories: [sample post, images, test]
+modified: 2016-05-17 14:20:20
 hide: true
 ---
 

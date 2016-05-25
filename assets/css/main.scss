@@ -243,7 +243,7 @@ sitemap: false
 
 .social-font a {
     //float: left;
-    display: block;
+    //display: block;
     width: 14%;
     color: #000;
     font-size: 185%;
@@ -285,6 +285,10 @@ sitemap: false
 
 .icon-facebook:before {
     content: "\f09a"
+}
+
+.icon-rss:before {
+    content: "\f143"
 }
 
 .icon-stack-overflow:before {
