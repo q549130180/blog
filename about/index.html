@@ -6,7 +6,7 @@ image:
   feature: posts_header/2016-05-25-001.jpg
   credit:
   creditlink:
-comments: false
+comments: true
 modified: 2016-02-01
 ---
 
@@ -23,17 +23,9 @@ modified: 2016-02-01
 
   <p>我狂妄，我自负，就像我曾经看到过一句话说的那样：偏执、冒险、狂妄的人终是英雄。我不是英雄，但我会努力成为英雄。</p>
 
-  
+
 </div>
 
 <h2 style="margin-top: 50px;">Follow Me</h2>
 <hr>
-<div class="social-font" style="margin-left: 50px;">
-  <a href="{{ site.owner.weibo }}" target="_blank" class="icon-weibo" title="新浪微博"></a>
-  <a href="{{ site.owner.github }}" target="_blank" class="icon-github" title="GITHUB"></a>
-  <!--<a href="{{ site.owner.douban }}" target="_blank" class="icon-douban" title="豆瓣"></a>-->
-  <a href="{{ site.url }}/rss.xml" target="_blank" class="" title="RSS">
-    <i class="fa fa-fw fa-rss"></i>
-  </a>
-  <a href="mailto:{{ site.owner.email }}" target="_blank" class="icon-email" title="Email"></a>
-</div>
+{% include followme.html %}
