@@ -74,9 +74,15 @@ $(document).ready(function() {
    });
    /* 控制搜索框下拉列表的显示与隐藏 */
    $(".search-input").blur(function (){
+      //失去焦点
+
+      //$(".search-input").val("");
+      //$(".search-input").addClass("search-input-icon");
+      //$(".search-input").css("width","");
       $("#results-container li").addClass("elementHide");
    });
    $(".search-input").focus(function(){
+      //$(".search-input").css("width","210px");
       $("#results-container li").removeClass("elementHide");
    });
 });

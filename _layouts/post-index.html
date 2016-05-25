@@ -41,6 +41,12 @@
 
 <div id="main" role="main">
   {{ content }}
+
+  <!-- 评论信息 -->
+  {% if page.comments != false and site.disqus_shortname %}
+  <div style="height:100px;"></div>
+  <section id="disqus_thread"></section><!-- /#disqus_thread -->
+  {% endif %}
 </div>
 <!-- /#main -->
 

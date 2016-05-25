@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  Redis3.0.1集群安装步骤(包括单机)
-description: "Demo post displaying the various ways of highlighting code in Markdown."
-modified: 2016-05-09 14:20:20
+description: "Redis3.0.1集群的安装部署，其中包括单机Redis的安装以及所依赖的环境的配置."
+modified: 2016-05-26 12:20:20
 tags: [redis,redis cluster]
 post_type: developer
 blogid: 201605110001
@@ -81,18 +81,18 @@ make && make install
 - appendonly yes # 是否开启持久化
 
 
-修改完redis.conf配置文件中的这些配置项之后把这个配置文件分别拷贝到7000/7001/7002/7003/7004/7005的conf目录下面
+修改完redis.conf配置文件中的这些配置项之后把这个配置文件分别拷贝到7001/7002/7003/7004/7005/7006的conf目录下面
 
 ```shell
-cp /usr/local/cluster/redis-3.0.5/redis.conf /usr/local/cluster/7000/conf
 cp /usr/local/cluster/redis-3.0.5/redis.conf /usr/local/cluster/7001/conf
 cp /usr/local/cluster/redis-3.0.5/redis.conf /usr/local/cluster/7002/conf
 cp /usr/local/cluster/redis-3.0.5/redis.conf /usr/local/cluster/7003/conf
 cp /usr/local/cluster/redis-3.0.5/redis.conf /usr/local/cluster/7004/conf
 cp /usr/local/cluster/redis-3.0.5/redis.conf /usr/local/cluster/7005/conf
+cp /usr/local/cluster/redis-3.0.5/redis.conf /usr/local/cluster/7006/conf
 ```
 
-**注意**：拷贝完成之后要修改7001/7002/7003/7004/7005目录下面redis.conf文件中的`port`参数和相应的`dir`路径和文件名，分别改为对应的文件夹的名称，`redis-server`命令在src目录下
+**注意**：拷贝完成之后要修改7002/7003/7004/7005/7006目录下面redis.conf文件中的`port`参数和相应的`dir`路径和文件名，分别改为对应的文件夹的名称，`redis-server`命令在src目录下
 
 
 ### 5.分别启动这6个redis实例
@@ -177,7 +177,7 @@ $ gem install rails
 
 如果修改完之后还是无法使用`gem install redis`进行安装，则使用本地的安装方式
 
-注：gem包可以直接在淘宝的源上进行直接下载，eg：https://ruby.taobao.org/gems/redis-3.2.1.gem
+**注：** gem包可以直接在淘宝的源上进行直接下载，eg：https://ruby.taobao.org/gems/redis-3.2.1.gem
 
 本地安装：`gem install -l ./redis-3.2.1.gem`
 
