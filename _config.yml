@@ -103,7 +103,7 @@ pages_list:
   Blog: ''
   Categories: 'categories'
   Timeline: 'posts'
-  Contact: 'contact'
+#  Contact: 'contact'
   About: 'about'
 
 include: [".htaccess"]
