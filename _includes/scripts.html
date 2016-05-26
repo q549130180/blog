@@ -85,6 +85,15 @@ $(document).ready(function() {
       //$(".search-input").css("width","210px");
       $("#results-container li").removeClass("elementHide");
    });
+
+   /*
+   $(".header-title").mouseover(function(){
+     $("#index-description").css("display","none");
+   });
+   $(".header-title").mouseout(function(){
+     $("#index-description").css("display","");
+   });
+   */
 });
 //滚动时navbar的样式变更
 $(window).scroll(toggleNavCollapse);
@@ -170,8 +179,10 @@ $(function () {
   });
   /* END JQUERY KNOB */
 });
-/** 小工具：动态获取阅读百分比*/
+/** 小工具 */
 (function(){
+
+    //动态获取阅读百分比
     var Scroller={
         getById:function(id){
             return typeof id=='object'?id:document.getElementById(id);
