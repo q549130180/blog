@@ -6,15 +6,16 @@
 	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
         <i class="fa fa-bars"></i>
       </button>
-      <!--{% if page.section-type == "index" %}-->
-        <a class="navbar-brand page-scroll" href="#page-top">
-      <!--{% else %}-->
-        <a class="navbar-brand" href="{{site.baseurl}}/">
-      <!-- {% endif %}-->
+      {% if page.section-type == "index" %}
+        <a class="navbar-brand page-scroll" href="#post-index">
+      {% else %}
+        <a class="navbar-brand" href="{{site.url}}/">
+      {% endif %}
           <div style="color:#fff;">
             {% if site.black-favicon %}
               <img src="{{site.baseurl}}{{ site.black-favicon }}" alt="">
             {% endif %}
+
             {{ site.title }}
           </div>
         </a>
