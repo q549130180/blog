@@ -67,7 +67,7 @@ make && make install
 ```
 解压编译完成之后，cluster文件夹中的目录结构如下：
 
-![Alt text](../../images/posts_image/redis_redis_img_2016-04-12_160443.jpg)
+![Alt text]({{site.url}}/images/posts_image/redis_redis_img_2016-04-12_160443.jpg)
 
 
 ### 4.修改配置文件redis.conf
@@ -123,7 +123,7 @@ done
 启动之后使用命令查看redis的启动情况`ps -ef|grep redis`；
 如下图显示则说明启动成功:
 
-![Alt text](../../images/posts_image/redis_redis_img_2016-04-12_160444.jpg)
+![Alt text]({{site.url}}/images/posts_image/redis_redis_img_2016-04-12_160444.jpg)
 
 至此，redis单节点启动成功（单机模式）
 
@@ -223,10 +223,10 @@ cd /usr/local/cluster/redis-3.0.5/src
 ./redis-trib.rb  create --replicas 1 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 127.0.0.1:7006
 ```
 
-![Alt text](../../images/posts_image/redis_redis_img_2016-04-13_171128.jpg)
+![Alt text]({{site.url}}/images/posts_image/redis_redis_img_2016-04-13_171128.jpg)
 输入`yes`，然后配置完成。
 
-![Alt text](../../images/posts_image/redis_redis_img_2016-04-13_171152.jpg)
+![Alt text]({{site.url}}/images/posts_image/redis_redis_img_2016-04-13_171152.jpg)
 
 至此redis集群即搭建成功！
 

@@ -9,8 +9,10 @@ image:
   credit:
   creditlink:
 ---
+
+{% assign sorted_post = paginator.posts | sort:"time" %}
 <!--循环首页文章-->
-{% for post in paginator.posts %}
+{% for post in sorted_post %}
 <!-- 过滤掉隐藏的文章 -->
 {% if post.hide != true %}
 <article class="hentry">
