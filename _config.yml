@@ -45,7 +45,7 @@ seo:
 background:
 
 # Analytics and webmaster tools stuff goes here
-google_analytics:
+google_analytics: UA-78482070-1
 google_verify:
 # https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
 bing_verify:
@@ -76,6 +76,7 @@ paginate: 5
 
 kramdown:
   auto_ids: true
+  input: GFM
   footnote_nr: 1
   entity_output: as_char
   toc_levels: 1..6
