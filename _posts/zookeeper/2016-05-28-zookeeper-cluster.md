@@ -2,7 +2,7 @@
 layout: post
 title:  Zookeeper伪分布式集群安装及使用
 description: "对Zookeeper布式集群安装及使用."
-modified: 2016-05-27 15:20:20
+modified: 2016-05-28 15:20:20
 tags: [zookeeper]
 post_type: developer
 categories: [zookeeper ]
@@ -31,6 +31,7 @@ ZooKeeper是作为分布式协调服务，是不需要依赖于Hadoop的环境�
 ## 3. zookeeper单节点安装Standalones模式
 
 下载ZooKeeper
+
 官网：https://zookeeper.apache.org/
 
 解压：
@@ -191,4 +192,148 @@ Error contacting service. It is probably not running.
 ```
 
 
-安装nc：yum install nc
+安装nc：`yum install nc`
+
+
+## 5. Zookeeper命令行操作
+
+我们通过客户端连接ZooKeeper的集群，我们可以任意的zookeeper是进行连接。
+
+
+```
+# zkCli.sh -server 10.0.2.15:2181
+
+Connecting to 10.0.2.15:2181
+2016-04-24 10:32:26,814 [myid:] - INFO  [main:Environment@100] - Client environment:zookeeper.version=3.4.8--1, built on 02/06/2016 03:18 GMT
+2016-04-24 10:32:26,824 [myid:] - INFO  [main:Environment@100] - Client environment:host.name=snow
+2016-04-24 10:32:26,824 [myid:] - INFO  [main:Environment@100] - Client environment:java.version=1.7.0_79
+2016-04-24 10:32:26,830 [myid:] - INFO  [main:Environment@100] - Client environment:java.vendor=Oracle Corporation
+2016-04-24 10:32:26,830 [myid:] - INFO  [main:Environment@100] - Client environment:java.home=/snow/programs/jdk1.7.0_79/jre
+2016-04-24 10:32:26,830 [myid:] - INFO  [main:Environment@100] - Client environment:java.class.path=/snow/programs/zoo/zookeeper-3.4.8/bin/../build/classes:/snow/programs/zoo/zookeeper-3.4.8/bin/../build/lib/*.jar:/snow/programs/zoo/zookeeper-3.4.8/bin/../lib/slf4j-log4j12-1.6.1.jar:/snow/programs/zoo/zookeeper-3.4.8/bin/../lib/slf4j-api-1.6.1.jar:/snow/programs/zoo/zookeeper-3.4.8/bin/../lib/netty-3.7.0.Final.jar:/snow/programs/zoo/zookeeper-3.4.8/bin/../lib/log4j-1.2.16.jar:/snow/programs/zoo/zookeeper-3.4.8/bin/../lib/jline-0.9.94.jar:/snow/programs/zoo/zookeeper-3.4.8/bin/../zookeeper-3.4.8.jar:/snow/programs/zoo/zookeeper-3.4.8/bin/../src/java/lib/*.jar:/snow/programs/zoo/zookeeper-3.4.8/bin/../conf:.:/snow/programs/jdk1.7.0_79/lib/dt.jar:/snow/programs/jdk1.7.0_79/lib/tools.jar
+2016-04-24 10:32:26,831 [myid:] - INFO  [main:Environment@100] - Client environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+2016-04-24 10:32:26,831 [myid:] - INFO  [main:Environment@100] - Client environment:java.io.tmpdir=/tmp
+2016-04-24 10:32:26,831 [myid:] - INFO  [main:Environment@100] - Client environment:java.compiler=<NA>
+2016-04-24 10:32:26,831 [myid:] - INFO  [main:Environment@100] - Client environment:os.name=Linux
+2016-04-24 10:32:26,831 [myid:] - INFO  [main:Environment@100] - Client environment:os.arch=amd64
+2016-04-24 10:32:26,832 [myid:] - INFO  [main:Environment@100] - Client environment:os.version=3.10.0-327.13.1.el7.x86_64
+2016-04-24 10:32:26,832 [myid:] - INFO  [main:Environment@100] - Client environment:user.name=root
+2016-04-24 10:32:26,832 [myid:] - INFO  [main:Environment@100] - Client environment:user.home=/root
+2016-04-24 10:32:26,832 [myid:] - INFO  [main:Environment@100] - Client environment:user.dir=/snow/programs/zoo/zookeeper-3.4.8/bin
+2016-04-24 10:32:26,836 [myid:] - INFO  [main:ZooKeeper@438] - Initiating client connection, connectString=10.0.2.15:2181 sessionTimeout=30000 watcher=org.apache.zookeeper.ZooKeeperMain$MyWatcher@3bae7fff
+Welcome to ZooKeeper!
+2016-04-24 10:32:26,916 [myid:] - INFO  [main-SendThread(10.0.2.15:2181):ClientCnxn$SendThread@1032] - Opening socket connection to server 10.0.2.15/10.0.2.15:2181. Will not attempt to authenticate using SASL (unknown error)
+2016-04-24 10:32:26,947 [myid:] - INFO  [main-SendThread(10.0.2.15:2181):ClientCnxn$SendThread@876] - Socket connection established to 10.0.2.15/10.0.2.15:2181, initiating session
+JLine support is enabled
+2016-04-24 10:32:27,063 [myid:] - INFO  [main-SendThread(10.0.2.15:2181):ClientCnxn$SendThread@1299] - Session establishment complete on server 10.0.2.15/10.0.2.15:2181, sessionid = 0x154460893a00000, negotiated timeout = 30000
+
+WATCHER::
+
+WatchedEvent state:SyncConnected type:None path:null
+[zk: 10.0.2.15:2181(CONNECTED) 0]
+
+```
+
+集群已连接，下面我们要使用一下，ZooKeeper的命令行操作。
+
+命令行操作
+
+通过help打印命令行帮助
+
+```
+[zk: 10.0.2.15:2181(CONNECTED) 0] help
+ZooKeeper -server host:port cmd args
+        connect host:port
+        get path [watch]
+        ls path [watch]
+        set path data [version]
+        rmr path
+        delquota [-n|-b] path
+        quit
+        printwatches on|off
+        create [-s] [-e] path data acl
+        stat path [watch]
+        close
+        ls2 path [watch]
+        history
+        listquota path
+        setAcl path acl
+        getAcl path
+        sync path
+        redo cmdno
+        addauth scheme auth
+        delete path [version]
+        setquota -n|-b val path
+[zk: 10.0.2.15:2181(CONNECTED) 1]
+```
+
+ZooKeeper的结构，很像是目录结构，我们看到了像ls这样熟悉的命令。
+
+```
+# ls，查看/目录内容
+[zk: 10.0.2.15:2181(CONNECTED) 1] ls
+[zk: 10.0.2.15:2181(CONNECTED) 2] ls /
+[zookeeper]
+
+# create，创建一个node节点
+[zk: 10.0.2.15:2181(CONNECTED) 3] create /node zktest
+Created /node
+
+# ls再查看/目录
+[zk: 10.0.2.15:2181(CONNECTED) 5] ls /
+[node, zookeeper]
+
+# get,查看/node节点的数据信息
+[zk: 10.0.2.15:2181(CONNECTED) 6] get /node
+zktest
+cZxid = 0x200000002
+ctime = Sun Apr 24 10:35:06 CST 2016
+mZxid = 0x200000002
+mtime = Sun Apr 24 10:35:06 CST 2016
+pZxid = 0x200000002
+cversion = 0
+dataVersion = 0
+aclVersion = 0
+ephemeralOwner = 0x0
+dataLength = 6
+numChildren = 0
+
+# set, 修改数据
+[zk: 10.0.2.15:2181(CONNECTED) 8] set /node myzk
+cZxid = 0x200000002
+ctime = Sun Apr 24 10:35:06 CST 2016
+mZxid = 0x200000004
+mtime = Sun Apr 24 10:37:33 CST 2016
+pZxid = 0x200000002
+cversion = 0
+dataVersion = 2
+aclVersion = 0
+ephemeralOwner = 0x0
+dataLength = 4
+numChildren = 0
+
+# get,再查看/node的数据信息，已改为myzk
+[zk: 10.0.2.15:2181(CONNECTED) 9] get /node
+myzk
+cZxid = 0x200000002
+ctime = Sun Apr 24 10:35:06 CST 2016
+mZxid = 0x200000004
+mtime = Sun Apr 24 10:37:33 CST 2016
+pZxid = 0x200000002
+cversion = 0
+dataVersion = 2
+aclVersion = 0
+ephemeralOwner = 0x0
+dataLength = 4
+numChildren = 0
+
+# delete，删除/node
+[zk: 10.0.2.15:2181(CONNECTED) 10] delete /node
+[zk: 10.0.2.15:2181(CONNECTED) 11] ls /
+[zookeeper]
+
+# quit，退出客户端连接
+[zk: 10.0.2.15:2181(CONNECTED) 12] quit
+Quitting...
+2016-04-24 10:39:24,008 [myid:] - INFO  [main:ZooKeeper@684] - Session: 0x154460893a00000 closed
+2016-04-24 10:39:24,013 [myid:] - INFO  [main-EventThread:ClientCnxn$EventThread@519] - EventThread shut down for session: 0x154460893a00000
+```

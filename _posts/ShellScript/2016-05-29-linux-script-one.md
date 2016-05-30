@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  Linux Shell 基础教程（一）
+title:  Linux Shell Script基础教程（一）
 description: 编写一个简单的shell脚本，以及简单的介绍shell script的基本语法."
-modified: 2016-05-26 15:20:20
+modified: 2016-05-29 15:20:20
 tags: [Linux,Shell Script]
 post_type: developer
 categories: [Shell Script ]
@@ -305,6 +305,7 @@ string1 = string2 |	如果两个字符串相同，结果就为真
 string1 != string2 |	如果两个字符串不同，结果就为真
 -n string |	如果字符串不为空，则结果为真
 -z string |	如果字符串为一个空串（null），则结果为真
+{:.mytablestyle}
 
 算术比较 |	结果
 ------------- | -------------
@@ -315,7 +316,7 @@ expression1 -ge expression2 |	如果expression1大于等于expression2,则为真
 expression1 -lt expression2 |	如果expression1小于expression2，则为真
 expression1 -le expression2 |	如果expression1小于等于expression2，则为真
 !expression |	表达式为假，则结果就为真；反之亦然
-
+{:.mytablestyle}
 
 文件条件测试 |	结果
 ------------- | -------------
@@ -325,6 +326,7 @@ expression1 -le expression2 |	如果expression1小于等于expression2，则为�
 -s file |	如果文件大小不为0，则结果为真
 -w file |	如果文件可写，则结果为真
 -x file |	如果文件可执行，则结果为真
+{:.mytablestyle}
 
 ## 七、控制结构
 

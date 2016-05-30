@@ -11,9 +11,10 @@ image:
   creditlink:
 ---
 
-{% assign sorted_post = paginator.posts | sort:"time" %}
+<!-- 按文章内部的时间进行排序 -->
+{% assign sorted_post = paginator.posts | sort:"modified" %}
 <!--循环首页文章-->
-{% for post in sorted_post %}
+{% for post in sorted_post reversed  %}
 <!-- 过滤掉隐藏的文章 -->
 {% if post.hide != true %}
 <article class="hentry">

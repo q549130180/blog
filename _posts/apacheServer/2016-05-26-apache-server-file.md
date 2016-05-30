@@ -7,7 +7,7 @@ tags: [Apache,Apache Server]
 post_type: developer
 categories: [Apache ]
 image:
-  feature: abstract-10.jpg
+  feature: posts_header/abstract-4.jpg
   credit:
   creditlink:
 ---

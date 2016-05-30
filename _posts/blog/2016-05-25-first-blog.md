@@ -2,13 +2,13 @@
 layout: post
 title:  Hello Blog
 description: " Hello Blog 第一篇博客"
-modified: 2016-05-26 14:20:20
+modified: 2016-05-25 14:20:20
 tags: [blog]
 post_type: life
 blogid: 201605260001
 categories: [blog]
 image:
-  feature: abstract-10.jpg
+  feature: posts_header/abstract-4.jpg
   credit:
   creditlink:
 ---
