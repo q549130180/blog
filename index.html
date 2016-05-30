@@ -15,6 +15,7 @@ image:
 {% assign sorted_post = paginator.posts | sort:"modified" %}
 <!--循环首页文章-->
 {% for post in sorted_post reversed  %}
+{{ post.date}}
 <!-- 过滤掉隐藏的文章 -->
 {% if post.hide != true %}
 <article class="hentry">
