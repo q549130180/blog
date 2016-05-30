@@ -332,3 +332,36 @@ sitemap: false
 .elementHide {
 	display: none;
 }
+
+/* kramdown custom table style*/
+.mytablestyle {
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  > table {
+      display: block;
+      width: 100%;
+      overflow: auto;
+      word-break: normal;
+      word-break: keep-all;
+  }
+
+  > table, th {
+      font-weight: bold
+  }
+
+  > table, th, td {
+      padding: 6px 13px;
+      border: 1px solid #ddd
+  }
+
+  > table, tr {
+      background-color: #fff;
+      border-top: 1px solid #ccc
+  }
+
+  > table, tr:nth-child(2n) {
+      background-color: #f8f8f8
+  }
+}

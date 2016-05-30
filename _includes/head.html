@@ -60,7 +60,7 @@
 <!--<script src="{{ site.url }}/assets/js/plugins/bootstrap-3.3.6-dist/css/bootstrap.css"></script>-->
 
 <!-- Font Awesome -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
 
 <!-- Blog CSS-->
 <link rel="stylesheet" href="{{site.url}}/assets/css/blog.css" />
@@ -96,3 +96,7 @@
 {% unless background contains 'http://' or background contains 'https://' %}{% capture background %}{{ site.url }}/images/{{ background }}{% endcapture %}{% endunless %}
 <style type="text/css">body {background-image:url({{ background }});}</style>
 {% endif %}
+
+
+<!-- Google Analytics and 百度统计 -->
+{% include analytics.html %}

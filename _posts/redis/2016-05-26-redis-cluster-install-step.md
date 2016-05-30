@@ -8,7 +8,7 @@ post_type: developer
 blogid: 201605110001
 categories: [redis ]
 image:
-  feature: abstract-10.jpg
+  feature: posts_header/abstract-7.jpg
   credit:
   creditlink:
 ---

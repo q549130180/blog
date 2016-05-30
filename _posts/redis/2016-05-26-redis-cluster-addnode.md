@@ -7,7 +7,7 @@ tags: [redis,redis cluster]
 post_type: developer
 categories: [redis ]
 image:
-  feature: abstract-10.jpg
+  feature: posts_header/abstract-2.jpg
   credit:
   creditlink:
 ---
