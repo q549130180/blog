@@ -30,20 +30,23 @@ image:
 </ul>
 
 <!--循环标签内的文章标题-->
-{% for item in (0..site.tags.size) %}{% unless forloop.last %}
+{% for item in (0..site.tags.size) %}
+{% unless forloop.last %}
   {% capture this_word %}{{ tags_list[item] | strip_newlines }}{% endcapture %}
   <!--用于锚点跳转-->
   <div id="{{ this_word }}" style="height:30px;"></div>
 	<article>
 	<h2 id="{{ this_word }}_id" class="tag-heading">{{ this_word }}</h2>
 		<ul>
-    {% for post in site.tags[this_word] %}
-      {% if post.title != null %}
-        <li class="entry-title">
-          <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li>
-      {% endif %}
-    {% endfor %}
+      <!-- 根据时间排序 -->
+      {% assign sorted_post = site.tags[this_word] | sort:"modified" %}
+      {% for post in sorted_post reversed %}
+        {% if post.title != null %}
+          <li class="entry-title">
+            <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
 		</ul>
 	</article><!-- /.hentry -->
 {% endunless %}
