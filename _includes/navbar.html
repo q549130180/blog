@@ -28,9 +28,17 @@
       <ul class="nav navbar-nav">
           <!-- Scroll to section for each page in index -->
           {% for p in site.pages_list %}
-            <li>
-              <a class="page-scroll" href="{{ site.url }}/{{ p[1] }}" style="color:#fff;" > {{p[0]}} </a>
-            </li>
+
+            {% if p[0] == "Home" %}
+              <li>
+                <a class="page-scroll" href="{{ site.home_url }}" target="_blank" style="color:#fff;" > {{p[0]}} </a>
+              </li>
+            {% else %}
+              <li>
+                <a class="page-scroll" href="{{ site.url }}/{{ p[1] }}" style="color:#fff;" > {{p[0]}} </a>
+              </li>
+            {% endif %}
+
           {% endfor %}
       </ul>
     </div>

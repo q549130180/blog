@@ -7,6 +7,7 @@ words_per_minute: 200
 # When testing locally leave blank or use http://localhost:4000
 url:              http://huangxubo.me/blog
 
+home_url:         http://huangxubo.me/
 
 post_img:
   feature: abstract-1.jpg
@@ -101,7 +102,7 @@ titlecase: true
 
 #导航栏
 pages_list:
-  HOME: '/'
+  Home: ''
   Categories: 'categories'
   Timeline: 'posts'
 #  Contact: 'contact'
