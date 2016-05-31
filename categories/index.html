@@ -24,7 +24,9 @@ modified: 2016-02-01
 	<article>
 	<h2 id="{{ category | first }}" class="tag-heading anchor">{{ category | first }}</h2>
 		<ul>
-        {% for post in category.last %}
+        <!-- 根据时间排序 -->
+        {% assign sorted_post = category.last | sort:"modified" %}
+        {% for post in sorted_post reversed %}
         <li class="entry-title">
           <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
         </li>
