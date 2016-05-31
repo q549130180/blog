@@ -33,6 +33,9 @@ function toggleNavCollapse() {
       $(".navbar").offset().top>$(".header-title").height() ? $(".main-left").css("display","") : $(".main-left").css("display","none");
     }
 
+    $(".navbar").offset().top>$(".header-title").height() ? $("#results-container").addClass("search-font-color") : $("#results-container").removeClass("search-font-color");
+
+
 
 }
 
