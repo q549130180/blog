@@ -7,7 +7,7 @@ tags: [zookeeper]
 post_type: developer
 categories: [zookeeper ]
 image:
-  feature: abstract-10.jpg
+  feature: posts_header/abstract-4.jpg
   credit:
   creditlink:
 ---
