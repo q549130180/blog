@@ -5,6 +5,7 @@ description: "Redis3.0.1集群的安装部署，其中包括单机Redis的安装
 modified: 2016-05-26 12:20:20
 tags: [redis,redis cluster]
 post_type: developer
+series: Redis系列文章
 blogid: 201605110001
 categories: [redis ]
 image:

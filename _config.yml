@@ -102,7 +102,7 @@ titlecase: true
 
 #导航栏
 pages_list:
-  Home: ''
+  Blog: ''
   Categories: 'categories'
   Timeline: 'posts'
 #  Contact: 'contact'

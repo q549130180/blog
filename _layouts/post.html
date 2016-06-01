@@ -72,6 +72,12 @@
 
       <!-- 转载信息 -->
       {% include reprinted_info.html %}
+
+      <!-- 系列博文 -->
+      {% if page.series %}
+        {% include series.html %}
+      {% endif %}
+
       <footer class="entry-meta">
         <span class="entry-tags">
           {% for tag in page.tags %}

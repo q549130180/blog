@@ -5,6 +5,7 @@ description: "Redis3配置文件的中文说明."
 modified: 2016-05-26 16:20:20
 tags: [redis,redis cluster]
 post_type: developer
+series: Redis系列文章
 categories: [redis ]
 image:
   feature: posts_header/abstract-6.jpg
