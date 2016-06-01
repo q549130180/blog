@@ -374,3 +374,44 @@ sitemap: false
     }
   }
 }
+
+
+
+/* series css */
+.seriesNote {
+  font-weight: bold;
+  margin-top: 50px;
+  margin-left: 10px;
+  font-family: Lato,"Microsoft YaHei",sans-serif;
+  border-top: 1px dashed #000000;
+  padding-top: 20px;
+
+  ul {
+    li {
+      line-height: 1.8em;
+      border-left: 2px solid #ffffff;
+      padding-left: 0.5rem;
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+
+      a {
+        color: #00A19E;
+        text-decoration:none;
+      }
+      
+    }
+
+    li:hover {
+      border-left-color: #22C3AA
+    }
+  }
+
+}
+
+.series-not-self {
+  list-style-type: disc;
+}
+
+.series-self {
+  list-style-type: circle;
+}

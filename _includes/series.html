@@ -1,1 +1,26 @@
 <!-- 显示系列博文 -->
+
+<div class="seriesNote">
+    <h4>系列博文：{{ page.series }}</h4>
+    <ul>
+      {% for post in site.posts reversed %}
+          {% if post.series == page.series %}
+              <!-- 如果是本篇文章，则不添加a标签 -->
+              {% if page.url != post.url %}
+                  <li class="series-not-self">
+                    <a href="{{ site.url }}{{ post.url }}" style="" >
+              {% else %}
+                  <li class="series-self">
+              {% endif %}
+
+              <!-- 文章标题 -->
+              {{ post.title }}
+
+              {% if page.url != post.url %}
+                    </a>
+              {% endif %}
+                  </li>
+          {% endif %}
+      {% endfor %}
+    </ul>
+</div>

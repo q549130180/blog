@@ -81,7 +81,7 @@
                     html += "<li><a href='#" + header.id + "'>" + header.innerHTML + "</a>";
                 } else if (this_level > level) { // lower level than before; expand the previous to contain a ol
                     for (i = this_level; i > level; i--) {
-                        html += "<" + settings.listType + " class = 'toc-nav nav-pills nav-stacked'"+" style = ''><li>"
+                        html += "<" + settings.listType + " class = 'toc-nav nav-pills nav-stacked'"+" style = 'margin-left: -20px;'><li>"
                     }
                     html += "<a href='#" + header.id + "' style = '' >" + header.innerHTML + "</a>";
                 }
