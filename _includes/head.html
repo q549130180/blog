@@ -1,8 +1,11 @@
 <meta charset="utf-8">
 <title>{{ site.title }} | {% if page.title %}{{ page.title }} &#8211; {% else %} {{ site.seo.title}} &#8211; {% endif %}</title>
-<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.seo.description }}{% endif %}">
+
 {% if page.tags %}
 <meta name="keywords" content="{{ page.tags | join: ', ' }}">
+{% else %}
+<meta name="keywords" content="{{ site.seo.title }}">
 {% endif %}
 
 {% if site.owner.twitter %}<!-- Twitter Cards -->
@@ -13,7 +16,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="{% if page.image.thumb %}{{ site.url }}/images/{{ page.image.thumb }}{% else %}{{ site.url }}/images/{{ site.logo }}{% endif %}">{% endif %}
 <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-<meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+<meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.seo.description }}{% endif %}">
 <meta name="twitter:creator" content="@{{ site.owner.twitter }}">
 {% endif %}
 

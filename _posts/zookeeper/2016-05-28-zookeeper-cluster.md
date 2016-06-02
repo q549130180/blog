@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  Zookeeper伪分布式集群安装及使用
-description: "对Zookeeper布式集群安装及使用."
+description: "ZooKeeper是一个为分布式应用所设计的分布的、开源的协调服务，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，简化分布式应用协调及其管理的难度，提供高性能的分布式服务。本篇文章主要讲解Zookeeper布式集群安装及使用."
 modified: 2016-05-28 15:20:20
-tags: [zookeeper]
+tags: [zookeeper,Linux]
 post_type: developer
 categories: [zookeeper ]
 image:
@@ -167,15 +167,15 @@ bin/zkServer.sh start ../zk3/conf/zoo.cfg
 16176 QuorumPeerMain
 
 # 查看节点状态
-[root@snow zookeeper-3.4.8]# bin/zkServer.sh status ../zk1/conf/zoo.cfg   
+[root@snow zookeeper-3.4.8]# bin/zkServer.sh status ../zk1/conf/zoo.cfg
 ZooKeeper JMX enabled by default
 Using config: ../zk1/conf/zoo.cfg
 Mode: follower
-[root@snow zookeeper-3.4.8]# bin/zkServer.sh status ../zk2/conf/zoo.cfg  
+[root@snow zookeeper-3.4.8]# bin/zkServer.sh status ../zk2/conf/zoo.cfg
 ZooKeeper JMX enabled by default
 Using config: ../zk2/conf/zoo.cfg
 Mode: leader
-[root@snow zookeeper-3.4.8]# bin/zkServer.sh status ../zk3/conf/zoo.cfg  
+[root@snow zookeeper-3.4.8]# bin/zkServer.sh status ../zk3/conf/zoo.cfg
 ZooKeeper JMX enabled by default
 Using config: ../zk3/conf/zoo.cfg
 Mode: follower
