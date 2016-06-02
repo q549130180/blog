@@ -1,5 +1,11 @@
 <meta charset="utf-8">
+
+{% if page.layout == 'post' %}
+<title>{% if page.title %}{{ page.title }} &#8211; {% else %} {{ site.seo.title}} &#8211; {% endif %}{{ site.title }}</title>
+{% else %}
 <title>{{ site.title }} | {% if page.title %}{{ page.title }} &#8211; {% else %} {{ site.seo.title}} &#8211; {% endif %}</title>
+{% endif %}
+
 
 {% if page.section-type == 'page' %}
 <meta name="description" content="{{ site.seo.description }}">
@@ -7,11 +13,15 @@
 <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.seo.description }}{% endif %}">
 {% endif %}
 
+
+
 {% if page.tags %}
   <meta name="keywords" content="{{ page.tags | join: ', ' }}">
 {% else %}
   <meta name="keywords" content="{{ site.seo.title }}">
 {% endif %}
+
+
 
 {% if site.owner.twitter %}<!-- Twitter Cards -->
 {% if page.image.feature %}
