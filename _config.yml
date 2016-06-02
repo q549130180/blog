@@ -39,8 +39,8 @@ owner:
 
 # SEO
 seo:
-  title:  IT博客,Java,JavaWeb,Redis
-  description:
+  title:  IT博客,Java,JavaWeb,Redis,Linux,JavaScript,Hadoop
+  description: Java技术博客,主要针对Java,JavaWeb,Redis,Linux,JavaScript等方向的技术文章
 
 # Background image to be tiled on all pages
 background:
@@ -109,6 +109,6 @@ pages_list:
   About: 'about'
 
 include: [".htaccess"]
-exclude: ["Timeline","lib", "config.rb", "Capfile", "config", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]
+exclude: ["note","Timeline","lib", "config.rb", "Capfile", "config", "Gemfile", "Gemfile.lock", "README.md", "LICENSE.md", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]
 # 文章分类
 # category: developer,life

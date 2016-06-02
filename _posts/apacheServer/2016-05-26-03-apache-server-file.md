@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Apache Server搭建文件(图片)服务器
-description: "使用Apache Server搭建文件服务器，指定特定的目录，直接使用http方式进行访问."
+description: "使用Apache Server搭建文件服务器(图片服务器)，指定特定的目录，直接使用http方式进行访问."
 modified: 2016-05-26 17:20:20
 tags: [Apache,Apache Server]
 post_type: developer
