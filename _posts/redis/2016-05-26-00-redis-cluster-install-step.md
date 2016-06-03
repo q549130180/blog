@@ -3,7 +3,7 @@ layout: post
 title:  Redis3.0.1集群安装步骤(包括单机)
 description: "Redis3.0.1集群的安装部署，其中包括单机Redis的安装以及所依赖的环境的配置."
 modified: 2016-05-26 12:20:20
-tags: [redis,redis cluster]
+tags: [Redis,Redis Cluster,Redis集群]
 post_type: developer
 series: Redis系列文章
 blogid: 201605110001

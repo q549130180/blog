@@ -3,7 +3,7 @@ layout: post
 title:  Redis3.0.1集群动态增加或删除节点
 description: "对Redis3.0.1集群进行动态的添加节点、删除节点等操作."
 modified: 2016-05-26 15:20:20
-tags: [redis,redis cluster]
+tags: [Redis,Redis Cluster,Redis集群]
 post_type: developer
 series: Redis系列文章
 categories: [redis ]
