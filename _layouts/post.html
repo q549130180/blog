@@ -105,13 +105,18 @@
       </footer>
 
     </div><!-- /.entry-content -->
+
+
     <!-- 评论信息 -->
     {% if page.comments != false and site.disqus_shortname %}
     <section id="disqus_thread"></section><!-- /#disqus_thread -->
     {% endif %}
+
     {% if site.related_posts.size > 0 %}
     {% include read-more.html %}
     {% endif %}
+
+
   </article>
 </div><!-- /#main -->
 
@@ -120,6 +125,7 @@
     {% include footer.html %}
   </footer>
 </div><!-- /.footer-wrapper -->
+
 {% include tools.html %}
 {% include scripts.html %}
 
