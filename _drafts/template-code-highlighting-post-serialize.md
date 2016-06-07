@@ -3,6 +3,7 @@ layout: post
 title: Syntax Highlighting Post
 description: "Demo post displaying the various ways of highlighting code in Markdown."
 modified: 2016-02-01
+serialize: aaa
 tags: [sample post, code, highlighting]
 categories: [sample post, code, highlighting]
 hide: true
