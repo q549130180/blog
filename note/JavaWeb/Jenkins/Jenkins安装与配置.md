@@ -39,18 +39,18 @@ nohup java -jar jenkins.war > jenkins.log 2>&1 &
 **注:** jenkins.log为日志文件，可自行指定目录。
 
 参数说明：
-- --httpPort = $ HTTP_PORT运行在使用标准端口$ HTTP_PORTjenkins监听HTTP协议。默认端口号为8080。要禁用（因为你使用的是HTTPS），使用端口-1。
-- --httpListenAddress = $ HTTP_HOST结合jenkins由$ HTTP_HOST代表的IP地址。默认值是0.0.0.0 -即侦听所有可用的接口。例如，只监听本地请求，你可以使用：--httpListenAddress = 127.0.0.1
-- --httpsPort = $ HTTP_PORT使用HTTPS协议的端口$ HTTP_PORT
-- --httpsListenAddress = $ HTTPS_HOST结合jenkins监听由$ HTTPS_HOST表示IP地址的HTTPS请求。
-- --prefix = $ PREFIX 运行jenkins包括$ PREFIX在URL的末尾。例如，为了使jenkins在访问的http ：// MYSERVER：8080 /jenkins，设置--prefix = /jenkins
-- --ajp13Port = $ AJP_PORT运行在使用标准端口$ AJP_PORTjenkins监听AJP13协议。默认端口号为8009。要禁用（因为你使用的是HTTPS），使用端口-1。
-- --ajp13ListenAddress = $ AJP_HOST结合jenkins由$ AJP_HOST代表的IP地址。默认值是0.0.0.0 - 即监听所有可用的接口。
-- --argumentsRealm.passwd $ ADMIN_USER设置用户的密码$ ADMIN_USER。如果jenkins的安全性已打开，你必须为了配置jenkins或jenkins项目为$ ADMIN_USER登录。
+- --httpPort = $HTTP_PORT运行在使用标准端口$ HTTP_PORTjenkins监听HTTP协议。默认端口号为8080。要禁用（因为你使用的是HTTPS），使用端口-1。
+- --httpListenAddress = $HTTP_HOST结合jenkins由$HTTP_HOST代表的IP地址。默认值是0.0.0.0 -即侦听所有可用的接口。例如，只监听本地请求，你可以使用：--httpListenAddress = 127.0.0.1
+- --httpsPort = $HTTP_PORT使用HTTPS协议的端口$HTTP_PORT
+- --httpsListenAddress = $ HTTPS_HOST结合jenkins监听由$HTTPS_HOST表示IP地址的HTTPS请求。
+- --prefix = $ PREFIX 运行jenkins包括$PREFIX在URL的末尾。例如:为了使jenkins在访问的 http://MYSERVER:8080/jenkins，设置--prefix = /jenkins
+- --ajp13Port = $AJP_PORT运行在使用标准端口$AJP_PORTjenkins监听AJP13协议。默认端口号为8009。要禁用（因为你使用的是HTTPS），使用端口-1。
+- --ajp13ListenAddress = $AJP_HOST结合jenkins由$AJP_HOST代表的IP地址。默认值是0.0.0.0 - 即监听所有可用的接口。
+- --argumentsRealm.passwd $ADMIN_USER设置用户的密码$ADMIN_USER。如果jenkins的安全性已打开，你必须为了配置jenkins或jenkins项目为$ ADMIN_USER登录。
 
 注意：您还必须指定该用户具有管理员的角色。（见下参数）。
-- --argumentsRealm.roles $ ADMIN_USER =管理设置了$ ADMIN_USER是管理员用户，可以配置jenkins如果jenkins的安全性已开启。见确保詹金斯以获取更多信息。
-- -Xdebug -Xrunjdwp：运输= dt_socket，地址= $ DEBUG_PORT，服务器= Y，暂停= N台调试中，您可以访问调试上$ DEBUG_PORT。
+- --argumentsRealm.roles $ADMIN_USER =管理设置了$ADMIN_USER是管理员用户，可以配置jenkins如果jenkins的安全性已开启。见确保詹金斯以获取更多信息。
+- -Xdebug -Xrunjdwp：运输= dt_socket，地址= $DEBUG_PORT，服务器= Y，暂停= N台调试中，您可以访问调试上$ DEBUG_PORT。
 - - 日志文件= $ LOG_PATH / winstone_`date +"%Y%M-%D_%H-%M"`.log文件登录到所需的文件
 - -XX：PermSize = 512M -XX：MaxPermSize = 2048M -Xmn128M -Xms1024m -Xmx2048M
 
