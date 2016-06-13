@@ -24,4 +24,6 @@
 
 ## coding使用
 
+## github webhooks 自动push到coding(解决百度无法爬取github问题)
+
 ## 域名绑定
