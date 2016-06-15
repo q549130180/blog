@@ -40,13 +40,17 @@
 </header><!-- /.entry-header -->
 
 <div id="main" role="main">
-  {{ content }}
+  <div id="main-cotent">
+    {{ content }}
 
-  <!-- 评论信息 -->
-  {% if page.comments != false and site.disqus_shortname %}
-  <div style="height:100px;"></div>
-  <section id="disqus_thread"></section><!-- /#disqus_thread -->
-  {% endif %}
+    <!-- 评论信息 -->
+    {% if page.comments != false and site.disqus_shortname %}
+    <div style="height:100px;"></div>
+    <section id="disqus_thread"></section><!-- /#disqus_thread -->
+    {% endif %}
+  </div>
+  <div id="main-other">
+  </div>
 </div>
 <!-- /#main -->
 

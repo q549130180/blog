@@ -104,17 +104,25 @@
 
 <!-- 设置所有页面上的背景图片,添加背景图片时，会与文章上面的图片产生不协调，后期改进 -->
 {% if page.image.background or site.background %}
-{% capture background %}
-{% if page.image.background %}
-{{ page.image.background }}
-{% else %}
-{{ site.background }}
-{% endif %}
-{% endcapture %}
-{% unless background contains 'http://' or background contains 'https://' %}{% capture background %}{{ site.url }}/images/{{ background }}{% endcapture %}{% endunless %}
+  {% capture background %}
+    {% if page.image.background %}
+      {{ page.image.background }}
+    {% else %}
+      {{ site.background }}
+    {% endif %}
+  {% endcapture %}
+{% unless background contains 'http://' or background contains 'https://' %}
+  {% capture background %}
+    {{ site.url }}/images/{{ background }}
+  {% endcapture %}
+{% endunless %}
 <style type="text/css">body {background-image:url({{ background }});}</style>
 {% endif %}
 
+<!-- 首页背景颜色 -->
+{% if site.background_color %}
+<style type="text/css">body {background-color:{{ site.background_color }};}</style>
+{% endif %}
 
 <!-- Google Analytics and 百度统计 -->
 {% include analytics.html %}

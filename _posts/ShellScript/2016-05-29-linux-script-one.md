@@ -195,8 +195,7 @@ string="alibaba is a great company"
 echo `expr index "$string" is`#输出：8，这个语句的意思是：找出单词is在这名话中的位置
 ```
 
-更多请参考[资料](http://tldp.org/LDP/abs/html/string-manipulation.html)
-
+更多请参考<a href="http://tldp.org/LDP/abs/html/string-manipulation.html" target="_blank" >资料</a>
 
 ### 5.环境变量
 
