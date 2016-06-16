@@ -73,7 +73,7 @@ done
 
 #### Ⅰ.作为可执行程序
 
-```shell
+```
 chmod +x test.sh
 ./test.sh
 ```
