@@ -476,6 +476,13 @@ sitemap: false
   }
 }
 
+.highlight {
+  > pre {
+    padding:0px;
+  }
+}
+
+/*
 pre {
   counter-reset: lines;
 }
@@ -495,9 +502,16 @@ pre .line::before {
   padding-right: 0.5em; margin-right: 0.5em;
   color: #BBB; border-right: solid 1px;
 }
+*/
+
+
+
+
+
 
 
 /*
+//显示行号
 pre {
     position: relative;
     margin-bottom: 24px;
