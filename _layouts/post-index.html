@@ -13,10 +13,15 @@
 
 <body id="post-index" class="feature">
 
+<!--[if lt IE 9]>
+<div class="alert alert-danger topframe" role="alert">
+你的浏览器实在<strong>太太太太太太旧了</strong>，放学别走，升级完浏览器再说
+<a target="_blank" class="alert-link" href="http://browsehappy.com">立即升级</a>
+</div><![endif]-->
+
 {% include browser-upgrade.html %}
 
-<!-- Open Menu Control>
-<!--{% include navigation.html %}-->
+
 {% include navbar.html %}
 
 
@@ -40,13 +45,17 @@
 </header><!-- /.entry-header -->
 
 <div id="main" role="main">
-  {{ content }}
+  <div id="main-cotent">
+    {{ content }}
 
-  <!-- 评论信息 -->
-  {% if page.comments != false and site.disqus_shortname %}
-  <div style="height:100px;"></div>
-  <section id="disqus_thread"></section><!-- /#disqus_thread -->
-  {% endif %}
+    <!-- 评论信息 -->
+    {% if page.comments != false and site.disqus_shortname %}
+    <div style="height:100px;"></div>
+    <section id="disqus_thread"></section><!-- /#disqus_thread -->
+    {% endif %}
+  </div>
+  <div id="main-other">
+  </div>
 </div>
 <!-- /#main -->
 

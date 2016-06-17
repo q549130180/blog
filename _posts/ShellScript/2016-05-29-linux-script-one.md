@@ -73,7 +73,7 @@ done
 
 #### Ⅰ.作为可执行程序
 
-```shell
+```
 chmod +x test.sh
 ./test.sh
 ```
@@ -195,8 +195,7 @@ string="alibaba is a great company"
 echo `expr index "$string" is`#输出：8，这个语句的意思是：找出单词is在这名话中的位置
 ```
 
-更多请参考[资料](http://tldp.org/LDP/abs/html/string-manipulation.html)
-
+更多请参考<a href="http://tldp.org/LDP/abs/html/string-manipulation.html" target="_blank" >资料</a>
 
 ### 5.环境变量
 
@@ -243,7 +242,7 @@ exit 0
 
 sh里没有多行注释，只能每一行加一个`#`号。就像这样：
 
-```shell
+{% highlight bash %}
 #--------------------------------------------
 # 这是一个自动打ipa的脚本，基于webfrogs的ipa-build书写：https://github.com/webfrogs/xcode_shell/blob/master/ipa-build
 
@@ -258,7 +257,7 @@ sh里没有多行注释，只能每一行加一个`#`号。就像这样：
 # 应用名，确保和Xcode里Product下的target_name.app名字一致
 #
 ##### 用户配置区 结束  #####
-```
+{% endhighlight %}
 
 如果在开发过程中，遇到大段的代码需要临时注释起来，过一会儿又取消注释，怎么办呢？每一行加个`#`符号太费力了，可以把这一段要注释的代码用一对花括号括起来，定义成一个函数，没有地方调用这个函数，这块代码就不会执行，达到了和注释一样的效果。
 

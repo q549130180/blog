@@ -19,7 +19,7 @@ sitemap: false
 @import "vendor/magnific-popup/magnific-popup";
 @import "site";
 @import "typography";
-@import "syntax";
+//@import "syntax";
 @import "coderay";
 @import "gist";
 @import "grid";
@@ -468,3 +468,84 @@ sitemap: false
       line-height: 1.4;
   }
 }
+
+
+.highlighter-rouge {
+  > pre {
+    padding:0px;
+  }
+}
+
+.highlight {
+  > pre {
+    padding:0px;
+  }
+}
+
+/*
+pre {
+  counter-reset: lines;
+}
+pre .line {
+  counter-increment: lines;
+}
+pre .line::before {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  -o-user-select: none;
+  user-select: none;
+
+  content: counter(lines); text-align: right;
+  display: inline-block; width: 2em;
+  padding-right: 0.5em; margin-right: 0.5em;
+  color: #BBB; border-right: solid 1px;
+}
+*/
+
+
+
+
+
+
+
+/*
+//显示行号
+pre {
+    position: relative;
+    margin-bottom: 24px;
+    border-radius: 3px;
+    border: 1px solid #C3CCD0;
+    background: #FFF;
+    overflow: hidden;
+}
+
+code {
+  display: block;
+  padding: 12px 24px;
+  overflow-y: auto;
+  font-weight: 300;
+  font-family: Menlo, monospace;
+  font-size: 0.8em;
+}
+
+code.has-numbering {
+    margin-left: 21px;
+}
+
+.pre-numbering {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    padding: 12px 2px 12px 0;
+    border-right: 1px solid #C3CCD0;
+    border-radius: 3px 0 0 3px;
+    background-color: #EEE;
+    text-align: right;
+    font-family: Menlo, monospace;
+    font-size: 0.8em;
+    color: #AAA;
+}
+*/

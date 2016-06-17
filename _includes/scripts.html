@@ -20,6 +20,8 @@
 <!-- toc 文章目录插件 -->
 <script src="{{ site.url }}/assets/js/plugins/toc.js"></script>
 
+<script src="{{ site.url }}/assets/js/plugins/highlight-9.4.0/highlight.pack.js"></script>
+
 
 <!--滚动时toolbar的样式变更-->
 <script>
@@ -41,6 +43,25 @@ function toggleNavCollapse() {
 
 /** 当dom载入时，操作绑定的函数 */
 $(document).ready(function() {
+
+
+   hljs.initHighlightingOnLoad();
+
+   //Highligh 行号
+   /*
+   $('pre code').each(function(){
+         var lines = $(this).text().split('\n').length - 1;
+         var $numbering = $('<ul/>').addClass('pre-numbering');
+         $(this)
+             .addClass('has-numbering')
+             .parent()
+             .append($numbering);
+         for(i=1;i<=lines;i++){
+             $numbering.append($('<li/>').text(i));
+         }
+   });
+   */
+  
    toggleNavCollapse();
 
    //目录
@@ -261,6 +282,8 @@ $('#weibo-id').click(function() {
 });
 
 </script>
+
+<script></script>
 
 <!-- 添加评论 -->
 {% if page.comments != false %}
