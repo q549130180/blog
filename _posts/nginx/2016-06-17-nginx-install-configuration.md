@@ -98,22 +98,30 @@ Nginx配置文件主要分成四部分：main（全局设置）、server（主�
 下面的nginx.conf简单的实现nginx在前端做反向代理服务器的例子，处理js、png等静态文件，jsp等动态请求转发到其它服务器tomcat：
 
 {% highlight nginx %}
+# nginx 运行用户和组
 user  www www;
+
+# 启动进程，通常设置成和cpu的数量相等
 worker_processes  2;
 
+# 全局错误日志文件存放路径
+# 可以在下方直接使用 [ debug | info | notice | warn | error | crit ]  参数
 error_log  logs/error.log;
 #error_log  logs/error.log  notice;
 #error_log  logs/error.log  info;
 
+# PID文件存放路径
 pid        logs/nginx.pid;
 
 
 events {
+    # use [ kqueue | rtsig | epoll | /dev/poll | select | poll ] ;
+    # epoll是多路复用IO(I/O Multiplexing)中的一种方式,但是仅用于linux2.6以上内核,可以大大提高nginx的性能
     use epoll;
     worker_connections  2048;
 }
 
-
+# 设定http服务器，利用它的反向代理功能提供负载均衡支持
 http {
     include       mime.types;
     default_type  application/octet-stream;
@@ -153,12 +161,14 @@ http {
   # 设定负载均衡后台服务器列表
     upstream  backend  {
               #ip_hash;
-              server   192.168.10.100:8080 max_fails=2 fail_timeout=30s ;  
-              server   192.168.10.101:8080 max_fails=2 fail_timeout=30s ;  
+              #weigth参数表示权值，权值越高被分配到的几率越大
+              server   192.168.10.100:8080 max_fails=2 fail_timeout=30s  weight=5 ;  
+              server   192.168.10.101:8080 max_fails=2 fail_timeout=30s  weight=1 ;  
     }
 
   # 很重要的虚拟主机配置
     server {
+        #侦听80端口
         listen       80;
         server_name  itoatest.example.com;
         root   /apps/oaapp;

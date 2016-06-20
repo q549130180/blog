@@ -106,7 +106,7 @@ titlecase: true
 pages_list:
   Blog: ''
   Categories: 'categories'
-  Timeline: 'posts'
+  Archives: 'posts'
 #  Contact: 'contact'
   About: 'about'
 
