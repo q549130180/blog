@@ -3,7 +3,7 @@ layout: post
 title:  Nginx安装与配置文件说明
 description: "Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个BSD-like 协议下发行。由俄罗斯的程序设计师Igor Sysoev所开发，供俄国大型的入口网站及搜索引擎Rambler（俄文：Рамблер）使用。其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好，中国大陆使用nginx网站用户有：京东、新浪、网易、腾讯、淘宝等。<br>本文将详细的讲解Nginx服务器的安装与配置文件的说明。"
 modified: 2016-06-17 13:20:20
-tags: [Nginx]
+tags: [Nginx,http Server]
 post_type: developer
 series: Nginx系列文章
 blogid: 201605110001
