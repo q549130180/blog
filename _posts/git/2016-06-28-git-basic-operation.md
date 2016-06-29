@@ -5,6 +5,7 @@ description: "Git是一款免费、开源的分布式版本控制系统，用于
 modified: 2016-06-28 15:20:20
 tags: [git]
 post_type: developer
+series: Git系列文章
 categories: [git]
 image:
   feature: posts_header/abstract-7.jpg

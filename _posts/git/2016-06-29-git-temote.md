@@ -1,3 +1,21 @@
+---
+layout: post
+title:  Git远程操作
+description: "Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。本文将介绍git的远程操作命令。"
+modified: 2016-06-28 15:20:20
+tags: [git]
+post_type: developer
+series: Git系列文章
+categories: [git]
+image:
+  feature: posts_header/abstract-7.jpg
+  credit:
+  creditlink:
+---
+
+
+
+
 Git有很多优势，其中之一就是远程操作非常简便。本文详细介绍5个Git命令，它们的概念和用法，理解了这些内容，你就会完全掌握Git远程操作。
 
 - git clone
@@ -243,7 +261,7 @@ $ git fetch -p
 $ git push <远程主机名> <本地分支名>:<远程分支名>
 ```
 
-注意，分支推送顺序的写法是<来源地>:<目的地>，所以`git pull`是<远程分支>:<本地分支>，而`git push`是<本地分支>:<远程分支>。
+**注意：** 分支推送顺序的写法是`<来源地>:<目的地>`，所以 `git pull` 是`<远程分支>:<本地分支>`，而`git push`是`<本地分支>:<远程分支>`。
 如果省略远程分支名，则表示将本地分支推送与之存在"追踪关系"的远程分支（通常两者同名），如果该远程分支不存在，则会被新建。
 
 ```
