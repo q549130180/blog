@@ -107,6 +107,7 @@ pages_list:
   Blog: ''
   Categories: 'categories'
   Archives: 'posts'
+#  SiteMap: 'sitemap'
 #  Contact: 'contact'
   About: 'about'
 

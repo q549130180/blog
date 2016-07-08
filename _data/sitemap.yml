@@ -1,0 +1,9 @@
+# sitemap navigation links
+
+- title: 百度
+  icon: ddd.jpg
+  url: www.baidu.com
+  url2: https://www.baidu.com/s?word=%E7%99%BE%E5%BA%A6%E8%B4%B4%E5%90%A7&amp;
+
+- title: External Link
+  url: http://mademistakes.com
