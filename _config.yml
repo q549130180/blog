@@ -106,7 +106,8 @@ titlecase: true
 pages_list:
   Blog: ''
   Categories: 'categories'
-  Timeline: 'posts'
+  Archives: 'posts'
+#  SiteMap: 'sitemap'
 #  Contact: 'contact'
   About: 'about'
 

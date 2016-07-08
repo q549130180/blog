@@ -5,7 +5,7 @@ description: "使用Apache Server搭建文件服务器(图片服务器)，指定
 modified: 2016-05-26 17:20:20
 tags: [Apache,Apache Server]
 post_type: developer
-categories: [Apache ]
+categories: [Apache]
 image:
   feature: posts_header/abstract-4.jpg
   credit:
@@ -59,6 +59,8 @@ make && make install
 
 
 ### 2.httpd安装
+
+[Apache Server官网](https://httpd.apache.org/)，下载源码包。
 
 ```
 tar -zxvf httpd-2.4.20.tar.gz
