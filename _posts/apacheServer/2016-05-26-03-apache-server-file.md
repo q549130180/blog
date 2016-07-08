@@ -60,6 +60,8 @@ make && make install
 
 ### 2.httpd安装
 
+[Apache Server官网](https://httpd.apache.org/)，下载源码包。
+
 ```
 tar -zxvf httpd-2.4.20.tar.gz
 cd httpd-2.4.20
