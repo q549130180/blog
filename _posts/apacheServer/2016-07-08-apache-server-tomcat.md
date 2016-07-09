@@ -5,7 +5,6 @@ description: "Apache与Tomcat服务器集成和集群配置,通过mod_jk的方�
 modified: 2016-07-08 15:20:20
 tags: [Apache,Apache Server,Tomcat]
 post_type: developer
-series:
 categories: [Apache]
 image:
   feature: posts_header/abstract-7.jpg
