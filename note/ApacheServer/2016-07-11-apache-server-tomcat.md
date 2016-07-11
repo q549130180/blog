@@ -27,7 +27,7 @@ Tomcat的功能分为以下两个主要部分：
 
 ## 二、集成原理
 
-1、Tomcat服务器是通过Connector连接器组件与客户端程序建立连接，它负责接收客户端的请求，并把Tomcat服务器的响应结果发送给客户端。在server.xml中默认存在以下2个连接器组件：
+1、Tomcat服务器是通过Connector连接器组件与客户端程序建立连接，它负责接收客户端的请求，并把Tomcat服务器的响应结果发送给客户端。在`server.xml`中默认存在以下2个连接器组件：
 
 ```xml
 <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" />
@@ -70,7 +70,7 @@ yum install apr apr-util pcre-devel openssl-devel
 ```
 tar -zxvf apr-1.5.2.tar.gz
 cd apr-1.5.2
-./configure --prefix=/staples/apr
+./configure --prefix=/snow/apr
 make && make install
 ```
 
@@ -84,7 +84,7 @@ make && make install
 ```
 tar -zxvf apr-util-1.5.4.tar.gz
 cd apr-util-1.5.4
-./configure --prefix=/staples/apr-util --with-apr=/staples/apr/
+./configure --prefix=/snow/apr-util --with-apr=/snow/apr/
 make && make install
 ```
 
@@ -97,9 +97,9 @@ make && make install
 
 ```bash
 ./configure                           \
-       --with-apr=/staples/apr           \
-       --with-apr-util=/staples/apr-util \
-       --prefix=/staples/apachehttpd \
+       --with-apr=/snow/apr           \
+       --with-apr-util=/snow/apr-util \
+       --prefix=/snow/apachehttpd \
        --enable-so                \
        --enable-ssl               \
        --enable-cgi               \
@@ -126,19 +126,19 @@ tar -zxvf tomcat-connectors-1.2.41-src.tar.gz
 cd tomcat-connectors-1.2.41-src/
 cd native/
 
-./configure --with-apxs=/staples/apachehttpd/bin/apxs
+./configure --with-apxs=/snow/apachehttpd/bin/apxs
 #这里指定的是apache安装目录中apxs的位置，这个apxs方便我们动态加载模块
 
 make
 
 # 将mod_jk.so文件复制到apache的modules文件夹下
-cp apache-2.0/mod_jk.so /staples/apachehttpd/modules/
+cp apache-2.0/mod_jk.so /snow/apachehttpd/modules/
 
 ```
 
 ### 4.Apache Server配置文件
 
-在`/staples/apachehttpd/conf`下面建立两个配置文件`mod_jk.conf`和`workers.properties`。
+在`/snow/apachehttpd/conf`下面建立两个配置文件`mod_jk.conf`和`workers.properties`。
 
 ```bash
 # vi mod_jk.conf
@@ -146,10 +146,10 @@ cp apache-2.0/mod_jk.so /staples/apachehttpd/modules/
 # 添加以下内容：
 
 # 指出mod_jk模块工作所需要的工作文件workers.properties的位置
-JkWorkersFile /staples/apachehttpd/conf/workers.properties
+JkWorkersFile /snow/apachehttpd/conf/workers.properties
 
 # Where to put jk logs
-JkLogFile /staples/apachehttpd/logs/mod_jk.log
+JkLogFile /snow/apachehttpd/logs/mod_jk.log
 
 # Set the jk log level[debug/error/info]
 JkLogLevel info
@@ -212,7 +212,7 @@ worker.loadbalancer.sticky_session_force=true
 
 ```apache
 LoadModule jk_module modules/mod_jk.so
-Include /staples/apachehttpd/conf/mod_jk.conf
+Include /snow/apachehttpd/conf/mod_jk.conf
 ```
 
 ### 5.Tomcat配置
