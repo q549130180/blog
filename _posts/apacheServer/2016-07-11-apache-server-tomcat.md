@@ -58,22 +58,21 @@ Tomcat提供了专门的JK插件来负责与其它HTTP服务器的通信，该�
 
 ### 1.安装依赖
 
-{% highlight bash %}
-yum install apr apr-util
-yum install pcre-devel openssl-devel
-{% endhighlight %}
+```
+yum install apr apr-util pcre-devel openssl-devel
+```
 
 
 **apr安装**
 
 官网：http://apr.apache.org/
 
-{% highlight bash %}
+```
 tar -zxvf apr-1.5.2.tar.gz
 cd apr-1.5.2
 ./configure --prefix=/staples/apr
 make && make install
-{% endhighlight %}
+```
 
 
 
@@ -82,12 +81,12 @@ make && make install
 
 官网：http://apr.apache.org/
 
-{% highlight bash %}
+```
 tar -zxvf apr-util-1.5.4.tar.gz
 cd apr-util-1.5.4
 ./configure --prefix=/staples/apr-util --with-apr=/staples/apr/
 make && make install
-{% endhighlight %}
+```
 
 ### 2.httpd安装
 
@@ -96,7 +95,7 @@ make && make install
 
 编译安装：
 
-{% highlight bash %}
+```bash
 ./configure                           \
        --with-apr=/staples/apr           \
        --with-apr-util=/staples/apr-util \
@@ -112,7 +111,7 @@ make && make install
        --enable-mpms-shared=all
 
 
-{% endhighlight %}
+```
 
 ### 3.mod_jk 插件安装
 
@@ -121,7 +120,7 @@ mod_jk插件下载[地址](http://tomcat.apache.org/connectors-doc/),下载：to
 
 编译安装mod_jk模块：
 
-{% highlight bash %}
+```bash
 tar -zxvf tomcat-connectors-1.2.41-src.tar.gz
 
 cd tomcat-connectors-1.2.41-src/
@@ -135,13 +134,13 @@ make
 # 将mod_jk.so文件复制到apache的modules文件夹下
 cp apache-2.0/mod_jk.so /staples/apachehttpd/modules/
 
-{% endhighlight %}
+```
 
 ### 4.Apache Server配置文件
 
 在/staples/apachehttpd/conf下面建立两个配置文件mod_jk.conf和workers.properties。
 
-{% highlight bash %}
+```bash
 # vi mod_jk.conf
 
 # 添加以下内容：
@@ -170,10 +169,10 @@ JkRequestLogFormat "%w%V %T"
 
 # 集群模式下，将所有请求发送给负载平衡器
 JkMount /* loadbalancer
-{% endhighlight %}
+```
 
 
-{% highlight bash %}
+```bash
 # vi workers.properties
 # 添加以下内容：
 
@@ -202,8 +201,7 @@ worker.loadbalancer.sticky_session=true
 worker.loadbalancer.sticky_session_force=true  
 # 如果上面的sticky_session设为true时，建议此处也设为true，此参数表明如果集群中某台Tomcat服务器在多次请求没有响应后，是否将当前的请求，转发到其它Tomcat服务器上处理；此参数在sticky_session=true时，影响比较大，会导致转发到其它Tomcat服务器上的请求，找不到原来的session，所以如果此时请求中有读取session中某些信息的话，就会导致应用的null异常
 
-
-{% endhighlight %}
+```
 
 workers.properties配置文件[tomcat官方文档](http://tomcat.apache.org/connectors-doc/reference/workers.html)
 
