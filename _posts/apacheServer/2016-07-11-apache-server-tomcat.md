@@ -212,10 +212,10 @@ workers.properties配置文件[tomcat官方文档](http://tomcat.apache.org/conn
 
 修改http.conf,在文件末尾加入以下内容
 
-{% highlight apache %}
+```apache
 LoadModule jk_module modules/mod_jk.so
 Include /staples/apachehttpd/conf/mod_jk.conf
-{% endhighlight %}
+```
 
 ### 5.Tomcat配置
 
