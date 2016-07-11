@@ -10,3 +10,7 @@
 
 参考资料：
 https://blog.wilddog.com/?page_id=1208
+
+http://www.cnblogs.com/constantince/category/712675.html
+
+http://frontenddev.org/column/chrome-development-tools-using-guide/
