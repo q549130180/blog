@@ -224,7 +224,7 @@ Include /staples/apachehttpd/conf/mod_jk.conf
 
 Tomcat修改如下：
 
-{% highlight xml %}
+```xml
 <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" />
 
     <!-- Define an AJP 1.3 Connector on port 8009 -->
@@ -232,9 +232,9 @@ Tomcat修改如下：
 
     <Engine name="Catalina" defaultHost="localhost" jvmRoute="worker1" >
 
-{% endhighlight %}
+```
 
-{% highlight xml %}
+```xml
 <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" />
 
     <!-- Define an AJP 1.3 Connector on port 8009 -->
@@ -242,18 +242,18 @@ Tomcat修改如下：
 
     <Engine name="Catalina" defaultHost="localhost" jvmRoute="worker2" >
 
-{% endhighlight %}
+```
 
 
 测试页面
 
 最后编辑Tomcat的配置文件server.xml，在HOST段中加入：
 
-{% highlight xml %}
+```xml
 
 <Context path="" docBase="/var/wwwroot" debug="0" reloadable="true" crossContext="true"/>
 
-{% endhighlight %}
+```
 
 在/var/wwwroot下建立一个index.jsp，启动Apache和Tomcat，用浏览器访问http://localhost/，应该可以看到正确的页面了。
 
@@ -265,7 +265,7 @@ Tomcat修改如下：
 <div class="elementHide" >
 tomcat集群管理器
 
-```
+```xml
 <Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster" channelSendOptions="8">
 <Manager className="org.apache.catalina.ha.session.DeltaManager"
 	expireSessionsOnShutdown="false"
