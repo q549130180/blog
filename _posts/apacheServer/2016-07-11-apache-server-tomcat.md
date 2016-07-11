@@ -2,7 +2,7 @@
 layout: post
 title: Apache与Tomcat服务器集成和集群配置
 description: "Apache与Tomcat服务器集成和集群配置,通过mod_jk的方式进行Tomcat和Apache的集成"
-modified: 2016-07-08 15:20:20
+modified: 2016-07-11 15:20:20
 tags: [Apache,Apache Server,Tomcat]
 post_type: developer
 categories: [Apache]
@@ -29,12 +29,12 @@ Tomcat的功能分为以下两个主要部分：
 
 1、Tomcat服务器是通过Connector连接器组件与客户端程序建立连接，它负责接收客户端的请求，并把Tomcat服务器的响应结果发送给客户端。在server.xml中默认存在以下2个连接器组件：
 
-{% highlight xml %}
+```xml
 <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" />
 
 <!-- Define an AJP 1.3 Connector on port 8009 -->
 <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
-{% endhighlight %}
+```
 
 第一个连接器是HTTP连接器，监听8080端口，负责建立HTTP链接。在使用Tomcat作为HTTP服务器时就是用的该连接器。
 
@@ -179,22 +179,22 @@ JkMount /* loadbalancer
 
 worker.list=worker1,worker2,loadbalancer
 
-worker.worker1.port=8009       # tomcat1 ajp工作端口
-worker.worker1.host=10.10.5.131  # tomcat1 的工作地址
-worker.worker1.type=ajp13      # 类型
-worker.worker1.lbfactor=100    # 负载平衡因数，指工作负荷
+worker.worker1.port=8009          # tomcat1 ajp工作端口
+worker.worker1.host=10.10.5.131   # tomcat1 的工作地址
+worker.worker1.type=ajp13         # 类型
+worker.worker1.lbfactor=100       # 负载平衡因数，指工作负荷
 # worker.worker1.cachesize=10
 # worker.worker1.cache_timeout=600
 # worker.worker1.socket_keepalive=1
 # worker.worker1.socket_timeout=300
 
-worker.worker2.port=8009       # tomcat1 ajp工作端口
-worker.worker2.host=10.10.5.132  # tomcat1 的工作地址
-worker.worker2.type=ajp13      # 类型
-worker.worker2.lbfactor=100    # 负载平衡因数，指工作负荷
+worker.worker2.port=8009          # tomcat1 ajp工作端口
+worker.worker2.host=10.10.5.132   # tomcat1 的工作地址
+worker.worker2.type=ajp13         # 类型
+worker.worker2.lbfactor=100       # 负载平衡因数，指工作负荷
 
 
-worker.loadbalancer.type=lb    # 负载平衡器
+worker.loadbalancer.type=lb       # 负载平衡器
 worker.loadbalancer.balanced_workers=worker1,worker2
 worker.loadbalancer.sticky_session=true
 # 此处指定集群是否需要会话复制，如果设为true，则表明为会话粘性，不进行会话复制，当某用户的请求第一次分发到哪台Tomcat后，后继的请求会一直分发到此Tomcat服务器上处理；如果设为false，则表明需求会话复制。
@@ -204,6 +204,7 @@ worker.loadbalancer.sticky_session_force=true
 
 
 {% endhighlight %}
+
 workers.properties配置文件[tomcat官方文档](http://tomcat.apache.org/connectors-doc/reference/workers.html)
 
 

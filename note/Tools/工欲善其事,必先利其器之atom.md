@@ -6,6 +6,7 @@
 
 Atom 是 Github 专门为程序员推出的一个跨平台文本编辑器。具有简洁和直观的图形用户界面，并有很多有趣的特点：支持CSS，HTML，JavaScript等网页编程语言。它支持宏，自动完成分屏功能，集成了文件管理器。
 
+之前也用过很多的类似的工具但感觉都不是很理想，直到遇到Atom，就对Atom情有独钟了。
 
 ## 安装
 
@@ -78,16 +79,36 @@ Symbol-view |	进入变量、函数跳转面板。 |	Ctrl + R |	如中文意思
 
 ### 插件列表
 
+atom-beautify
+emmet
+color-picker 取色器（必备插件）
+
 ### 主题列表
+
+- [atom-material-ui](https://atom.io/themes/atom-material-ui)
+- [atom-material-syntax ](https://atom.io/themes/atom-material-syntax)
+- [file-icons](https://atom.io/packages/file-icons)  --  给文件加上图标
 
 持续跟新。。。
 
-### 插件A
+### 插件atom-beautify
+https://atom.io/packages/atom-beautify
 
-### 主题A
+### 插件emmet
+https://atom.io/packages/emmet
+
+添加使用方式的GIF、录制
+
+http://www.iteye.com/news/27580
 
 
+### 插件color-picker
 
+https://atom.io/packages/color-picker
+
+快捷键：`Ctrl+Alt+C`
+
+![Alt text]({{site.url}}/images/gif/atom-color-picker.gif)
 
 ***参考资料：***
 
