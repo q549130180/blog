@@ -138,7 +138,7 @@ cp apache-2.0/mod_jk.so /staples/apachehttpd/modules/
 
 ### 4.Apache Server配置文件
 
-在/staples/apachehttpd/conf下面建立两个配置文件mod_jk.conf和workers.properties。
+在`/staples/apachehttpd/conf`下面建立两个配置文件`mod_jk.conf`和`workers.properties`。
 
 ```bash
 # vi mod_jk.conf
@@ -203,7 +203,7 @@ worker.loadbalancer.sticky_session_force=true
 
 ```
 
-workers.properties配置文件[tomcat官方文档](http://tomcat.apache.org/connectors-doc/reference/workers.html)
+`workers.properties`配置文件[tomcat官方文档](http://tomcat.apache.org/connectors-doc/reference/workers.html)
 
 
 
@@ -218,7 +218,7 @@ Include /staples/apachehttpd/conf/mod_jk.conf
 ### 5.Tomcat配置
 
 
-修改Tomcat的conf/server.xml文件中的AJP连接器的端口，确保它们和workers.properties文件中的配置对应。此外，在使用了loadbalancer后，要求worker的名字和Tomcat的server.xml文件中的<Engine>元素的jvmRoute属性一致
+修改Tomcat的`conf/server.xml`文件中的AJP连接器的端口，确保它们和`workers.properties`文件中的配置对应。此外，在使用了loadbalancer后，要求`worker`的名字和Tomcat的`server.xml`文件中的`<Engine>`元素的`jvmRoute`属性一致
 
 Tomcat修改如下：
 
@@ -253,7 +253,7 @@ Tomcat修改如下：
 
 ```
 
-在/var/wwwroot下建立一个index.jsp，启动Apache和Tomcat，用浏览器访问http://localhost/，应该可以看到正确的页面了。
+在`/var/wwwroot`下建立一个`index.jsp`，启动Apache和Tomcat，用浏览器访问`http://localhost:80/`，应该可以看到正确的页面了。
 
 
 
