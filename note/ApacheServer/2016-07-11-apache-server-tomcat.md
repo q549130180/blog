@@ -110,7 +110,7 @@ make && make install
        --enable-modules=most      \
        --enable-mpms-shared=all
 
-
+make && make install
 ```
 
 ### 3.mod_jk 插件安装
@@ -141,7 +141,7 @@ cp apache-2.0/mod_jk.so /snow/apachehttpd/modules/
 在`/snow/apachehttpd/conf`下面建立两个配置文件`mod_jk.conf`和`workers.properties`。
 
 ```bash
-# vi mod_jk.conf
+# vim mod_jk.conf
 
 # 添加以下内容：
 
@@ -173,7 +173,7 @@ JkMount /* loadbalancer
 
 
 ```bash
-# vi workers.properties
+# vim workers.properties
 # 添加以下内容：
 
 worker.list=worker1,worker2,loadbalancer
