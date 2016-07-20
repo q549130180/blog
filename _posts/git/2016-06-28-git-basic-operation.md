@@ -155,6 +155,10 @@ $ git commit --amend -m [message]
 
 # 重做上一次commit，并包括指定文件的新变化
 $ git commit --amend [file1] [file2] ...
+
+# 命令的verbose参数，会列出 diff 的结果。
+$ git commit --verbose
+
 {% endhighlight %}
 
 ### 5.分支
@@ -202,6 +206,22 @@ $ git branch -d [branch-name]
 # 删除远程分支
 $ git push origin --delete [branch-name]
 $ git branch -dr [remote/branch]
+
+# 用于把一个分支的修改合并到当前分支。
+$ git rebase origin/master
+
+# 如果你想在rebase的过程中对一部分提交进行修改，你可以在'git rebase'命令中加入'-i'或'--interactive'参数去调用交互模式。
+$ git rebase -i origin/master
+
+# 在rebase的过程中，也许会出现冲突(conflict). 在这种情况，Git会停止rebase并会让你去解决 冲突；
+# 在解决完冲突后，用"git -add"命令去更新这些内容的索引(index), 然后，你无需执行 git -commit,只要执行:git rebase --continue
+# 这样git会继续应用(apply)余下的补丁
+$ git rebase --continue
+
+# 在任何时候，你可以用--abort参数来终止rebase的行动，并且分支会回到rebase开始前的状态。
+$ git rebase --abort
+
+
 {% endhighlight %}
 
 ### 6.标签

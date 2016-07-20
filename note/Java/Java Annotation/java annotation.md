@@ -34,6 +34,7 @@ public @interface Test {
 | @Inherited |	允许子类继承父类的注解 |
 
 
+
 ## 2.注解元素
 
 注解元素可用的类型如下：

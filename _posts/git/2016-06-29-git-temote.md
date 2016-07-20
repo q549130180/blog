@@ -28,6 +28,15 @@ Git有很多优势，其中之一就是远程操作非常简便。本文详细�
 
 本文针对初级用户，从最简单的讲起，但是需要读者对Git的基本用法有所了解。同时，本文覆盖了上面5个命令的几乎所有的常用用法，所以对于熟练用户也有参考价值。
 
+![Alt text]({{site.url}}/images/posts_image/git_git_2016_06-07.png)
+
+
+Git 命令清单:
+
+- Workspace：工作区
+- Index / Stage：暂存区
+- Repository：仓库区（或本地仓库）
+- Remote：远程仓库
 
 
 ## 一、git clone

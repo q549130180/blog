@@ -27,8 +27,7 @@ image:
 ### 1.安装依赖
 
 ```
-yum install apr apr-util
-yum install pcre-devel openssl-devel
+yum install apr apr-util pcre-devel openssl-devel
 ```
 
 

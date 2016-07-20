@@ -336,18 +336,22 @@ http服务上支持若干虚拟主机。每个虚拟主机一个对应的server�
 http服务中，某些特定的URL对应的一系列配置项。
 
 - `root /var/www/html`
+
 定义服务器的默认网站根目录位置。如果`locationURL`匹配的是子目录或文件，`root`没什么作用，一般放在`server`指令里面或/下。
 
 - `index index.jsp index.html index.htm`
+
 定义路径下默认访问的文件名，一般跟着`root`放
 
 - `proxy_pass http:/backend`
+
 请求转向backend定义的服务器列表，即反向代理，对应`upstream`负载均衡器。也可以`proxy_pass http://ip:port`。
 
-- `proxy_redirect off;`
-`proxy_set_header Host $host;`
-`proxy_set_header X-Real-IP $remote_addr;`
-`proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;`
+- `proxy_redirect off;` <br/>
+`proxy_set_header Host $host;`<br/>
+`proxy_set_header X-Real-IP $remote_addr;`<br/>
+`proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;`<br/>
+
 这四个暂且这样设，如果深究的话，每一个都涉及到很复杂的内容，也将通过另一篇文章来解读。
 
 ### 3.其它
