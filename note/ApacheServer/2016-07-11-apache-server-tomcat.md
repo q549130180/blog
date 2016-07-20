@@ -2,12 +2,7 @@
 
 
 
-修改`http.conf`,在文件末尾加入以下内容
 
-```apache
-LoadModule jk_module modules/mod_jk.so
-Include /snow/apachehttpd/conf/mod_jk.conf
-```
 
 ### 5.Tomcat安装与配置
 
