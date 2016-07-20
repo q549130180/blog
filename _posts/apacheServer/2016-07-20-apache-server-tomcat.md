@@ -137,3 +137,39 @@ make && make install
 cp apache-2.0/mod_jk.so /snow/apachehttpd/modules/
 
 ```
+
+
+### 4.Apache Server配置文件
+
+在`/snow/apachehttpd/conf`下面建立两个配置文件`mod_jk.conf`和`workers.properties`。
+
+```bash
+# vim mod_jk.conf
+
+# 添加以下内容：
+
+# 指出mod_jk模块工作所需要的工作文件workers.properties的位置
+JkWorkersFile /snow/apachehttpd/conf/workers.properties
+
+# Where to put jk logs
+JkLogFile /snow/apachehttpd/logs/mod_jk.log
+
+# Set the jk log level[debug/error/info]
+JkLogLevel info
+
+# Select the log format
+JkLogStampFormat "[%a%b %d %H:%M:%S %Y]"
+
+# JkOptions indicate tosend SSL KEY SIZE,
+JkOptions +ForwardKeySize +ForwardURICompat -ForwardDirectories
+
+# JkRequestLogFormat setthe request format
+JkRequestLogFormat "%w%V %T"
+
+# 将所有servlet 和jsp请求通过ajp13的协议送给Tomcat，让Tomcat来处理
+# JkMount /servlet/* worker1
+# JkMount /*.jsp worker1
+
+# 集群模式下，将所有请求发送给负载平衡器
+JkMount /* loadbalancer
+```
