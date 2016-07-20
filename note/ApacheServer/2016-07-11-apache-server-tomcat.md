@@ -1,42 +1,8 @@
 
 
-```bash
-# vim workers.properties
-# 添加以下内容：
-
-worker.list=worker1,worker2,loadbalancer
-
-worker.worker1.port=8009          # tomcat1 ajp工作端口
-worker.worker1.host=10.10.5.131   # tomcat1 的工作地址
-worker.worker1.type=ajp13         # 类型
-worker.worker1.lbfactor=100       # 负载平衡因数，指工作负荷
-# worker.worker1.cachesize=10
-# worker.worker1.cache_timeout=600
-# worker.worker1.socket_keepalive=1
-# worker.worker1.socket_timeout=300
-
-worker.worker2.port=8009          # tomcat1 ajp工作端口
-worker.worker2.host=10.10.5.132   # tomcat1 的工作地址
-worker.worker2.type=ajp13         # 类型
-worker.worker2.lbfactor=100       # 负载平衡因数，指工作负荷
 
 
-worker.loadbalancer.type=lb       # 负载平衡器
-worker.loadbalancer.balanced_workers=worker1,worker2
-worker.loadbalancer.sticky_session=true
-# 此处指定集群是否需要会话复制，如果设为true，则表明为会话粘性，不进行会话复制，当某用户的请求第一次分发到哪台Tomcat后，后继的请求会一直分发到此Tomcat服务器上处理；如果设为false，则表明需求会话复制。
-
-worker.loadbalancer.sticky_session_force=true  
-# 如果上面的sticky_session设为true时，建议此处也设为true，此参数表明如果集群中某台Tomcat服务器在多次请求没有响应后，是否将当前的请求，转发到其它Tomcat服务器上处理；此参数在sticky_session=true时，影响比较大，会导致转发到其它Tomcat服务器上的请求，找不到原来的session，所以如果此时请求中有读取session中某些信息的话，就会导致应用的null异常
-
-```
-
-`workers.properties`配置文件[tomcat官方文档](http://tomcat.apache.org/connectors-doc/reference/workers.html)
-
-
-
-
-修改http.conf,在文件末尾加入以下内容
+修改`http.conf`,在文件末尾加入以下内容
 
 ```apache
 LoadModule jk_module modules/mod_jk.so
