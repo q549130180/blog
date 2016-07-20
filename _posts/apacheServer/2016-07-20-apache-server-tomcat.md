@@ -143,7 +143,7 @@ cp apache-2.0/mod_jk.so /snow/apachehttpd/modules/
 
 在`/snow/apachehttpd/conf`下面建立两个配置文件`mod_jk.conf`和`workers.properties`。
 
-新建mod_jk文件`vim mod_jk.conf`,并添加以下内容。
+新建mod_jk文件`vim mod_jk.conf`,并添加以下内容:
 
 ```bash
 
@@ -173,7 +173,7 @@ JkRequestLogFormat "%w%V %T"
 JkMount /* loadbalancer
 ```
 
-新建workers文件`vim workers.properties`,并添加以下内容。
+新建workers文件`vim workers.properties`,并添加以下内容:
 
 ```bash
 
@@ -208,11 +208,11 @@ worker.loadbalancer.sticky_session_force=true
 `workers.properties`配置文件[tomcat官方文档](http://tomcat.apache.org/connectors-doc/reference/workers.html)
 
 
-修改`http.conf`,在文件末尾加入以下内容
+修改`http.conf`,在文件末尾加入以下内容:
 
-```apache
+{% highlight bash %}
 
 LoadModule jk_module modules/mod_jk.so
 Include /snow/apachehttpd/conf/mod_jk.conf
 
-```
+ {% endhighlight %}
