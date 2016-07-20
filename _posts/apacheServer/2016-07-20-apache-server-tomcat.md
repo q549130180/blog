@@ -2,7 +2,7 @@
 layout: post
 title: Apache与Tomcat服务器集成和集群配置
 description: "Apache与Tomcat服务器集成和集群配置,通过mod_jk的方式进行Tomcat和Apache的集成"
-modified: 2016-07-11 15:20:20
+modified: 2016-07-20 15:20:20
 tags: [Apache,Apache Server,Tomcat]
 post_type: developer
 categories: [Apache]
@@ -44,3 +44,72 @@ Tomcat的功能分为以下两个主要部分：
 2、JK插件
 
 Tomcat提供了专门的JK插件来负责与其它HTTP服务器的通信，该插件需要安置在对应的HTTP服务器上，它根据预先配置好的URL映射信息，决定是否把客户请求转发给Tomcat服务器。
+
+
+
+## 三、环境
+
+- OS: Cent OS 7
+- JDK: 1.7
+- Tomcat： apache-tomcat-7.0.65
+- Apache Server: httpd-2.4.20
+
+
+## 四、安装
+
+### 1.安装依赖
+
+```
+yum install apr apr-util pcre-devel openssl-devel
+```
+
+
+**apr安装**
+
+官网：http://apr.apache.org/
+
+```
+tar -zxvf apr-1.5.2.tar.gz
+cd apr-1.5.2
+./configure --prefix=/snow/apr
+make && make install
+```
+
+
+
+
+**apr-util安装**
+
+官网：http://apr.apache.org/
+
+```
+tar -zxvf apr-util-1.5.4.tar.gz
+cd apr-util-1.5.4
+./configure --prefix=/snow/apr-util --with-apr=/snow/apr/
+make && make install
+```
+
+### 2.httpd安装
+
+
+[Apache Server官网](https://httpd.apache.org/)，下载源码包。
+
+编译安装：
+
+```bash
+./configure                           \
+       --with-apr=/snow/apr           \
+       --with-apr-util=/snow/apr-util \
+       --prefix=/snow/apachehttpd \
+       --enable-so                \
+       --enable-ssl               \
+       --enable-cgi               \
+       --enable-rewrite           \
+       --with-zlib                \
+       --with-pcre                \
+       --with-mpm=prefork         \
+       --enable-modules=most      \
+       --enable-mpms-shared=all
+
+make && make install
+```
