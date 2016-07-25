@@ -210,18 +210,14 @@ worker.loadbalancer.sticky_session_force=true
 
 修改`http.conf`,在文件末尾加入以下内容:
 
-{% highlight bash %}
 
-LoadModule jk_module modules/mod_jk.so
-Include /snow/apachehttpd/conf/mod_jk.conf
-
-{% endhighlight %}
 
 
 
  ### 5.Tomcat安装与配置
 
  ```bash
+
  tar -zxvf apache-tomcat-7.0.65.tar.gz
  cd apache-tomcat-7.0.65/
 
@@ -236,11 +232,13 @@ Include /snow/apachehttpd/conf/mod_jk.conf
        --with-java-home=/snwo/jdk1.7.0_79
 
  make && make install
+
  ```
 
  tomcat默认参数是为开发环境制定，而非适合生产环境，尤其是内存和线程的配置，默认都很低，容易成为性能瓶颈。下面是一些配置示例，需要根据实际需要更改。
 
  ```
+
  vim bin/setenv.sh
 
 
