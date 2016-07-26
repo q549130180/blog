@@ -210,7 +210,10 @@ worker.loadbalancer.sticky_session_force=true
 
 修改`http.conf`,在文件末尾加入以下内容:
 
-
+```bash
+LoadModule jk_module modules/mod_jk.so
+Include /snow/apachehttpd/conf/mod_jk.conf
+```
 
 
 
