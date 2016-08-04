@@ -1,16 +1,4 @@
----
-layout: post
-title:  log4j配置详解与实例
-description: ""
-modified: 2016-07-13 15:20:20
-tags: [log4j,java,javaWeb]
-post_type: developer
-categories: [java]
-image:
-  feature: posts_header/abstract-7.jpg
-  credit:
-  creditlink:
----
+
 
 
 

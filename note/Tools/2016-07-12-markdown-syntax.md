@@ -1,17 +1,6 @@
----
-layout: post
-title:  Markdown语法备忘
-description: "Markdown语法备忘"
-modified: 2016-07-12 14:20:20
-tags: [Blog]
-post_type: life
-blogid: 201605260001
-categories: [Blog]
-image:
-  feature: posts_header/abstract-4.jpg
-  credit:
-  creditlink:
----
+
+# Markdown语法备忘
+
 
 
 ## 一、区块元素
@@ -29,7 +18,7 @@ image:
 
 显示效果：
 
-# 这是h1
+# `# 这是h1`
 
 ## 这是h2
 
