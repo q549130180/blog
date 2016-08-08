@@ -47,8 +47,8 @@
   </div><!-- /.header-title -->
 </header><!-- /.entry-header -->
 
-<div id="main" role="main">
-  <div id="main-cotent">
+<div id="main" role="main" >
+  <div id="main-cotent" >
     {{ content }}
 
     <!-- 评论信息 -->
@@ -57,6 +57,7 @@
     <section id="disqus_thread"></section><!-- /#disqus_thread -->
     {% endif %}
   </div>
+  {% include aside.html %}
   <div id="main-other">
   </div>
 </div>

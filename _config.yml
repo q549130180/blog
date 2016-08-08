@@ -101,6 +101,8 @@ post_layout: post
 page_layout: page
 # Format titles with titlecase?
 titlecase: true
+# aside
+aside : false
 
 #导航栏
 pages_list:
