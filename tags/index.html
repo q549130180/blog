@@ -18,7 +18,8 @@ image:
 
 <ul class="entry-meta inline-list">
   <!--循环标签-->
-  {% for item in (0..site.tags.size) %}{% unless forloop.last %}
+  {% for item in (0..site.tags.size) %}
+    {% unless forloop.last %}
     {% capture this_word %}{{ tags_list[item] | strip_newlines }}{% endcapture %}
   	<li>
       <a href="#{{ this_word }}" class="tag">

@@ -89,9 +89,11 @@
           {% endfor %}
         </span>
         {% if page.modified %}
-        <span>Updated on <span class="entry-date date updated">
-          <time datetime="{{ page.modified }}">{{ page.modified | date: "%B %d, %Y" }}</time>
-        </span></span>
+        <span>Updated on 
+          <span class="entry-date date updated">
+            <time datetime="{{ page.modified }}">{{ page.modified | date: "%B %d, %Y" }}</time>
+          </span>
+        </span>
         <span class="author vcard">
           <span class="fn">
             {{ site.owner.name }}

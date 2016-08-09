@@ -363,22 +363,51 @@ header .entry-meta {
 #post-index {
 	#main {
 		margin: 40px 2px 20px 2px;
-		text-align: center;
 		@media #{$medium} {
 			margin-left: 20px;
 			margin-right: 20px;
 		}
 		@media #{$large} {
-			//max-width: 800px;
+			//max-width: 1064px;
+			max-width: 800px;
 			margin-top: 50px;
 			margin-left: auto;
 			margin-right: auto;
 		}
 	}
 	#main-cotent {
+		@media #{$large} {
 			display: inline-block;
 			width: 800px;
 			margin-right: 10px;
+		}
+	}
+	#main-aside {
+		@media #{$medium} {
+	    display: none;
+	  }
+		@media #{$large} {
+			margin-left: 10px;
+	    vertical-align: top;
+	    display: inline-block;
+		}
+	}
+	.main-aside-block {
+	  background-color: $white;
+	  box-shadow: 0 0 0 0, 0 6px 12px rgba($base-color,0.1);
+	  width: 240px;
+	  margin-bottom: 30px;
+		#black-header {
+			border-bottom: solid 2px whitesmoke;
+			height: 40px;
+			margin-left: 10px;
+			margin-right: 10px;
+			span {
+				margin-left: 10px;
+				margin-top: 10px;
+				position: absolute;
+			}
+		}
 	}
 	article {
 		background-color: $white;

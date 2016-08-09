@@ -505,26 +505,6 @@ pre .line::before {
 */
 
 
-//aside
-.main-aside {
-  //height: 200px;
-  margin-left: 10px;
-  vertical-align: top;
-  @media #{$medium} {
-    display: none;
-  }
-  @media #{$large} {
-    display: inline-block;
-  }
-}
-.aside-block-border {
-  background-color: $white;
-  box-shadow: 0 0 0 0, 0 6px 12px rgba($base-color,0.1);
-  width: 240px;
-  margin-bottom: 30px;
-}
-
-
 
 
 /*
