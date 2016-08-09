@@ -1,3 +1,16 @@
+---
+layout: post
+title:  Markdown备忘录
+description: ""
+modified: 2016-07-26 17:20:20
+tags: [Markdown]
+post_type: developer
+categories: [Markdown]
+image:
+  feature: posts_header/abstract-4.jpg
+  credit:
+  creditlink:
+---
 
 # Markdown语法备忘
 
@@ -15,20 +28,14 @@
 ##### 这是h5
 ###### 这是h6
 ```
-
 显示效果：
 
-# `# 这是h1`
-
-## 这是h2
-
-### 这是h3
-
-#### 这是h4
-
-##### 这是h5
-
-###### 这是h6
+<h1>这是h1</h1>
+<h2>这是h2</h2>
+<h3>这是h3</h3>
+<h4>这是h4</h4>
+<h5>这是h5</h5>
+<h6>这是h6</h6>
 
 ### 2.段落和换行
 

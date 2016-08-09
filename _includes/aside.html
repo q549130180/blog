@@ -1,4 +1,70 @@
-<!-- 侧边栏,开发中。。。 -->
-<aside id="" class="" style="">
+<!-- 侧边栏,开发中。。。(1.在标签显示页面会有样式问题。2.控制显示与隐藏的问题) -->
+<aside id="main-aside" style="{% if site.aside == false %}display: none;{% endif %}">
+  <!-- 最新文章-->
+  <div class="main-aside-block" style="height:300px;">
+    <div id="black-header" style="">
+      <span style="">最新文章</span>
+    </div>
+    <div style="margin-top: 10px;">
+      <ul>
+        <!-- 按文章内部的时间进行排序 -->
+        {% assign sorted_post = site.posts | sort:"modified" %}
+        <!--循环文章-->
+        {% for post in sorted_post reversed %}
+          {% if forloop.index < 9 %}
+            <li style="margin: 5px 0px;">
+              <a href="{{ site.url }}{{ post.url }}" rel="bookmark" title="{{ post.title }}" itemprop="url">{{ post.title }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 
+  <!-- 标签信息 -->
+  <div class="main-aside-block" style="height:300px;">
+    <div id="black-header" >
+      <span>标签云</span>
+    </div>
+    <div style="margin-top: 10px;margin-left: 10px;margin-right: 10px;">
+      {% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+      {% assign tags_list = site_tags | split:',' | sort %}
+
+      {% for item in (0..site.tags.size) %}
+        {% unless forloop.last %}
+        {% capture this_word %}{{ tags_list[item] | strip_newlines }}{% endcapture %}
+        <!-- 使用区间判断，赋给变量，来实现字体大小 -->
+        {% assign word_size = site.tags[this_word].size %}
+        {% if  word_size < 10 %}
+          {% assign font_size = '10' %}
+        {% else if word_size > 10 and word_size < 15 %}
+          {% assign font_size = '15' %}
+        {% else if word_size > 15 and word_size < 20 %}
+          {% assign font_size = '20' %}
+        {% else if word_size > 20 and word_size < 25 %}
+          {% assign font_size = '25' %}
+        {% else if word_size > 25 and word_size < 30 %}
+          {% assign font_size = '30' %}
+        {% endif %}
+
+        <a href="{{ site.url }}/tags/#{{ this_word }}" title="{{ word_size }}" style="font-size: {{font_size}}px;margin: 5px 5px;">
+          {{ this_word }}
+        </a>
+
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="main-aside-block" style="height:300px;display:none;">
+    <div id="black-header" >
+      <span>最新阅读</span>
+    </div>
+    <div style="margin-top: 10px;">
+
+    </div>
+  </div>
+  <div class="main-aside-block" style="height:300px;display:none;">
+广告
+  </div>
 </aside>
