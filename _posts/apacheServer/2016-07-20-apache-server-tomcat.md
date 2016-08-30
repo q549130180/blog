@@ -165,9 +165,15 @@ JkOptions +ForwardKeySize +ForwardURICompat -ForwardDirectories
 # JkRequestLogFormat setthe request format
 JkRequestLogFormat "%w%V %T"
 
-# 将所有servlet 和jsp请求通过ajp13的协议送给Tomcat，让Tomcat来处理
+# 将所有servlet 和jsp请求通过ajp13的协议送给Tomcat，让Tomcat来处理(JkMount把匹配的转发到指定服务器 )
 # JkMount /servlet/* worker1
 # JkMount /*.jsp worker1
+
+
+# JkUnMount把匹配的不转发到指定服务器.
+# JkUnMount选项的级别高于JkMount.
+# 单独有JkMount规则有效,但单独有JkUnMount无效,JkUnMount与JkMount要成对出现.
+# JkUnMount /*.html worker1 #通过JkUnMount/*.html,表示所有*.html不交给worker1服务器处理
 
 # 集群模式下，将所有请求发送给负载平衡器
 JkMount /* loadbalancer
