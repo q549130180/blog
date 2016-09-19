@@ -59,7 +59,7 @@ make && make install
 
 ### 2.httpd安装
 
-[Apache Server官网](https://httpd.apache.org/)，下载源码包。
+[Apache Server官网][1]，下载源码包。
 
 ```
 tar -zxvf httpd-2.4.20.tar.gz
@@ -122,3 +122,8 @@ cd /staples/apachehttpd/bin
 8. 127.0.0.1:80/123.jpg就可以直接访问文件
 
 9. 停止：`apachectl stop`
+
+
+
+
+[1]: https://httpd.apache.org/

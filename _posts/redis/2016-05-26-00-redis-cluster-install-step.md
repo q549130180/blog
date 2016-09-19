@@ -41,7 +41,7 @@ image:
 ### 1.下载Redis
 
 官网下载3.0.0版本，之前2.几的版本不支持集群模式;
-[下载地址](下载地址：https://github.com/antirez/redis/archive/3.0.0-rc2.tar.gz)
+[下载地址][1]
 
 ### 2.创建集群需要的目录
 
@@ -244,3 +244,7 @@ cd /usr/local/cluster/redis-3.0.5/src
 `./redis-trib.rb check 127.0.0.1:7001`
 
 **注：** `replicas` 后面的1代表节点以一主一从的结构创建集群，如果不执行创建集群的命令，每个redis实例将以单机模式运行，所以redis的集群是靠命令来链接实现的。
+
+
+
+[1]: https://github.com/antirez/redis/archive/3.0.0-rc2.tar.gz

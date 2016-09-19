@@ -92,7 +92,7 @@ make && make install
 ### 2.httpd安装
 
 
-[Apache Server官网](https://httpd.apache.org/)，下载源码包。
+[Apache Server官网][1]，下载源码包。
 
 编译安装：
 
@@ -117,7 +117,7 @@ make && make install
 
 ### 3.mod_jk 插件安装
 
-mod_jk插件下载[地址](http://tomcat.apache.org/connectors-doc/),下载：tomcat-connectors-1.2.41-src.tar.gz
+mod_jk插件下载[地址][2],下载：tomcat-connectors-1.2.41-src.tar.gz
 
 
 编译安装mod_jk模块：
@@ -431,3 +431,10 @@ tomcat集群管理器
 
 ```
 </div>
+
+
+
+
+
+[1]: https://httpd.apache.org/
+[2]: http://tomcat.apache.org/connectors-doc/     
