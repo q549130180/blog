@@ -132,5 +132,122 @@ Node-03 管控台端口：
 </bean>
 ```
 
+
+
+6、集群配置：
+在 3 个 ActiveMQ 节点中配置 conf/activemq.xml 中的持久化适配器。修改其中 bind、zkAddress、hostname 和 zkPath。注意：每个 ActiveMQ 的 BrokerName 必须相同，否则不能加入集群。
+
+Node-01 中的持久化配置:
+
+```xml
+<broker xmlns="http://activemq.apache.org/schema/core" brokerName="DubboEdu" dataDirectory="${activemq.data}">
+    <persistenceAdapter>
+        <!-- kahaDB directory="${activemq.data}/kahadb"/ -->
+        <replicatedLevelDB
+            directory="${activemq.data}/leveldb"
+            replicas="3"
+            bind="tcp://0.0.0.0:62621"
+            zkAddress="192.168.1.81:2181,192.168.1.82:2182,192.168.1.83:2183"
+            hostname="edu-zk-01"
+            zkPath="/activemq/leveldb-stores"
+        />
+    </persistenceAdapter>
+</broker>
+```
+
+Node-02 中的持久化配置:
+
+```xml
+<broker xmlns="http://activemq.apache.org/schema/core" brokerName="DubboEdu" dataDirectory="${activemq.data}">
+    <persistenceAdapter>
+        <!-- kahaDB directory="${activemq.data}/kahadb"/ -->
+        <replicatedLevelDB
+            directory="${activemq.data}/leveldb"
+            replicas="3"
+            bind="tcp://0.0.0.0:62622"
+            zkAddress="192.168.1.81:2181,192.168.1.82:2182,192.168.1.83:2183"
+            hostname="edu-zk-02"
+            zkPath="/activemq/leveldb-stores"
+         />
+    </persistenceAdapter>
+</broker>
+```
+
+Node-03 中的持久化配置:
+
+```xml
+<broker xmlns="http://activemq.apache.org/schema/core" brokerName="DubboEdu" dataDirectory="${activemq.data}">
+    <persistenceAdapter>
+        <!-- kahaDB directory="${activemq.data}/kahadb"/ -->
+        <replicatedLevelDB
+            directory="${activemq.data}/leveldb"
+            replicas="3"
+            bind="tcp://0.0.0.0:62623"
+            zkAddress="192.168.1.81:2181,192.168.1.82:2182,192.168.1.83:2183"
+            hostname="edu-zk-03"
+            zkPath="/activemq/leveldb-stores"
+         />
+    </persistenceAdapter>
+</broker>
+```
+
+修改各节点的消息端口（注意，避免端口冲突）：
+
+Node-01 中的消息端口配置:
+
+```xml
+<transportConnectors>
+  <!-- DOS protection, limit concurrent connections to 1000 and frame size to 100MB -->
+  <transportConnector name="openwire" uri="tcp://0.0.0.0:51511?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+  <transportConnector name="amqp" uri="amqp://0.0.0.0:5672?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+  <transportConnector name="stomp" uri="stomp://0.0.0.0:61613?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+  <transportConnector name="mqtt" uri="mqtt://0.0.0.0:1883?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+  <transportConnector name="ws" uri="ws://0.0.0.0:61614?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+</transportConnectors>
+```
+
+Node-02 中的消息端口配置:
+
+```xml
+<transportConnectors>
+  <!-- DOS protection, limit concurrent connections to 1000 and frame size to 100MB -->
+  <transportConnector name="openwire" uri="tcp://0.0.0.0:51512?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+  <transportConnector name="amqp" uri="amqp://0.0.0.0:5672?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+  <transportConnector name="stomp" uri="stomp://0.0.0.0:61613?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+  <transportConnector name="mqtt" uri="mqtt://0.0.0.0:1883?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+  <transportConnector name="ws" uri="ws://0.0.0.0:61614?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+</transportConnectors>
+```
+Node-03 中的消息端口配置:
+
+```xml
+<transportConnectors>
+  <!-- DOS protection, limit concurrent connections to 1000 and frame size to 100MB -->
+  <transportConnector name="openwire" uri="tcp://0.0.0.0:51513?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+  <transportConnector name="amqp" uri="amqp://0.0.0.0:5672?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+  <transportConnector name="stomp" uri="stomp://0.0.0.0:61613?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+  <transportConnector name="mqtt" uri="mqtt://0.0.0.0:1883?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+  <transportConnector name="ws" uri="ws://0.0.0.0:61614?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+</transportConnectors>
+```
+
+
+
+7、按顺序启动 3 个 ActiveMQ 节点：
+
+```bash
+$ /home/wusc/activemq/node-01/bin/activemq start
+$ /home/wusc/activemq/node-02/bin/activemq start
+$ /home/wusc/activemq/node-03/bin/activemq start
+```
+
+监听日志：
+
+```bash
+$ tail -f /home/wusc/activemq/node-01/data/activemq.log
+$ tail -f /home/wusc/activemq/node-02/data/activemq.log
+$ tail -f /home/wusc/activemq/node-03/data/activemq.log
+```
+
 [1]:http://activemq.apache.org/
 [2]:http://activemq.apache.org/replicated-leveldb-store.html
