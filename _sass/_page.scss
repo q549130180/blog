@@ -363,6 +363,10 @@ header .entry-meta {
 #post-index {
 	#main {
 		margin: 40px 2px 20px 2px;
+		transition:max-width 2s ease 0s;
+    -moz-transition:max-width 2s ease 0s; /* Firefox 4 */
+    -webkit-transition:max-width 2s ease 0s; /* Safari and Chrome */
+    -o-transition:max-width 2s ease 0s; /* Opera */
 		@media #{$medium} {
 			margin-left: 20px;
 			margin-right: 20px;
@@ -385,13 +389,25 @@ header .entry-meta {
 	#main-aside {
 		@media #{$medium} {
 	    display: none;
+			//@at-root (without: all) {
+	    //  .main-aside-width {
+	    //    max-width: 800px;
+	    //  }
+    	//}
+
 	  }
 		@media #{$large} {
 			margin-left: 10px;
 	    vertical-align: top;
 	    display: inline-block;
+			//@at-root (without: all) {
+	    //  .main-aside-width {
+	    //    max-width: 1064px;
+	    //  }
+    	//}
 		}
 	}
+
 	.main-aside-block {
 	  background-color: $white;
 	  box-shadow: 0 0 0 0, 0 6px 12px rgba($base-color,0.1);
@@ -407,6 +423,11 @@ header .entry-meta {
 				margin-top: 10px;
 				position: absolute;
 			}
+		}
+		#black-content {
+			margin-top: 10px;
+			margin-left: 10px;
+			margin-right: 10px;
 		}
 	}
 	article {

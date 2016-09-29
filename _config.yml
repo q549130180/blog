@@ -101,7 +101,7 @@ post_layout: post
 page_layout: page
 # Format titles with titlecase?
 titlecase: true
-# aside
+# aside 控制aside显示隐藏时，需修改_page.scss中的#post-index中mian的max-width宽度
 aside : false
 
 #导航栏

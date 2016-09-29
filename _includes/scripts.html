@@ -22,9 +22,11 @@
 
 <script src="{{ site.url }}/assets/js/plugins/highlight-9.4.0/highlight.pack.js"></script>
 
+<!-- emojify js -->
+<script src="{{ site.url }}/assets/js/plugins/emojify/js/emojify.min.js"></script>
 
 <!--滚动时toolbar的样式变更-->
-<script>
+<script type="text/javascript">
 //改变navbar样式的函数
 function toggleNavCollapse() {
     /** 判断匹配元素，top的偏移量 */
@@ -36,8 +38,6 @@ function toggleNavCollapse() {
     }
 
     $(".navbar").offset().top>$(".header-title").height() ? $("#results-container").addClass("search-font-color") : $("#results-container").removeClass("search-font-color");
-
-
 
 }
 
@@ -97,7 +97,18 @@ $(document).ready(function() {
      $("#index-description").css("display","");
    });
    */
+
+
+   //emojify 表情,参考地址：http://hassankhan.me/emojify.js/
+   emojify.setConfig({
+        emoticons_enabled: true,
+        people_enabled: true,
+        nature_enabled: true
+    });
+    emojify.run();
+
 });
+
 //滚动时navbar的样式变更
 $(window).scroll(toggleNavCollapse);
 
@@ -122,7 +133,7 @@ $(".navbar-collapse ul li a").click(function() {
 
 </script>
 
-<script>
+<script type="text/javascript">
 /*小工具*/
 $(function () {
   /* jQueryKnob */
@@ -182,6 +193,7 @@ $(function () {
   });
   /* END JQUERY KNOB */
 });
+
 /** 小工具 */
 (function(){
 

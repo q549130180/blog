@@ -5,6 +5,7 @@
 命令#rpm –q nfs-utils rpcbind
 
 
+
 ## 二、查看NFS服务器是否启动
 
 命令：

@@ -15,7 +15,7 @@ image:
 
 ## 一、集成原因
 
-Tomcat的功能分为以下两个主要部分：
+Tomcat的功能分为以下两个主要部分 ：
 
 - 提供Servlet/JSP容器
 - 向客户端提供静态资源(HTML或图像等)的响应
@@ -92,7 +92,7 @@ make && make install
 ### 2.httpd安装
 
 
-[Apache Server官网](https://httpd.apache.org/)，下载源码包。
+[Apache Server官网][1]，下载源码包。
 
 编译安装：
 
@@ -117,7 +117,7 @@ make && make install
 
 ### 3.mod_jk 插件安装
 
-mod_jk插件下载[地址](http://tomcat.apache.org/connectors-doc/),下载：tomcat-connectors-1.2.41-src.tar.gz
+mod_jk插件下载[地址][2],下载：tomcat-connectors-1.2.41-src.tar.gz
 
 
 编译安装mod_jk模块：
@@ -165,9 +165,15 @@ JkOptions +ForwardKeySize +ForwardURICompat -ForwardDirectories
 # JkRequestLogFormat setthe request format
 JkRequestLogFormat "%w%V %T"
 
-# 将所有servlet 和jsp请求通过ajp13的协议送给Tomcat，让Tomcat来处理
+# 将所有servlet 和jsp请求通过ajp13的协议送给Tomcat，让Tomcat来处理(JkMount把匹配的转发到指定服务器 )
 # JkMount /servlet/* worker1
 # JkMount /*.jsp worker1
+
+
+# JkUnMount把匹配的不转发到指定服务器.
+# JkUnMount选项的级别高于JkMount.
+# 单独有JkMount规则有效,但单独有JkUnMount无效,JkUnMount与JkMount要成对出现.
+# JkUnMount /*.html worker1 #通过JkUnMount/*.html,表示所有*.html不交给worker1服务器处理
 
 # 集群模式下，将所有请求发送给负载平衡器
 JkMount /* loadbalancer
@@ -425,3 +431,10 @@ tomcat集群管理器
 
 ```
 </div>
+
+
+
+
+
+[1]: https://httpd.apache.org/
+[2]: http://tomcat.apache.org/connectors-doc/     
