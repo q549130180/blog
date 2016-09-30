@@ -43,12 +43,12 @@ LevelDB 是 Google 开发的一套用于持久化数据的高性能类库。Leve
 ```xml
 <persistenceAdapter>
   <replicatedLevelDB
-  directory="${activemq.data}/leveldb"
-  replicas="3"
-  bind="tcp://0.0.0.0:62621"
-  zkAddress="localhost:2181,localhost:2182,localhost:2183"
-  hostname="localhost"
-  zkPath="/activemq/leveldb-stores"
+    directory="${activemq.data}/leveldb"
+    replicas="3"
+    bind="tcp://0.0.0.0:62621"
+    zkAddress="localhost:2181,localhost:2182,localhost:2183"
+    hostname="localhost"
+    zkPath="/activemq/leveldb-stores"
   />
 </persistenceAdapter>
 ```
