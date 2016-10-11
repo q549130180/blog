@@ -140,7 +140,7 @@ Node-03 管控台端口：
 Node-01 中的持久化配置:
 
 ```xml
-<broker xmlns="http://activemq.apache.org/schema/core" brokerName="DubboEdu" dataDirectory="${activemq.data}">
+<broker xmlns="http://activemq.apache.org/schema/core" brokerName="SnowEdu" dataDirectory="${activemq.data}">
     <persistenceAdapter>
         <!-- kahaDB directory="${activemq.data}/kahadb"/ -->
         <replicatedLevelDB
@@ -158,7 +158,7 @@ Node-01 中的持久化配置:
 Node-02 中的持久化配置:
 
 ```xml
-<broker xmlns="http://activemq.apache.org/schema/core" brokerName="DubboEdu" dataDirectory="${activemq.data}">
+<broker xmlns="http://activemq.apache.org/schema/core" brokerName="SnowEdu" dataDirectory="${activemq.data}">
     <persistenceAdapter>
         <!-- kahaDB directory="${activemq.data}/kahadb"/ -->
         <replicatedLevelDB
@@ -176,7 +176,7 @@ Node-02 中的持久化配置:
 Node-03 中的持久化配置:
 
 ```xml
-<broker xmlns="http://activemq.apache.org/schema/core" brokerName="DubboEdu" dataDirectory="${activemq.data}">
+<broker xmlns="http://activemq.apache.org/schema/core" brokerName="SnowEdu" dataDirectory="${activemq.data}">
     <persistenceAdapter>
         <!-- kahaDB directory="${activemq.data}/kahadb"/ -->
         <replicatedLevelDB
@@ -248,6 +248,16 @@ $ tail -f /home/wusc/activemq/node-01/data/activemq.log
 $ tail -f /home/wusc/activemq/node-02/data/activemq.log
 $ tail -f /home/wusc/activemq/node-03/data/activemq.log
 ```
+
+11、设置开机启动：
+
+```bash
+$ vi /etc/rc.local
+su - wusc -c '/home/wusc/activemq/node-01/bin/activemq start'
+su - wusc -c '/home/wusc/activemq/node-02/bin/activemq start'
+su - wusc -c '/home/wusc/activemq/node-03/bin/activemq start'
+```
+
 
 [1]:http://activemq.apache.org/
 [2]:http://activemq.apache.org/replicated-leveldb-store.html
