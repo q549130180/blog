@@ -2,6 +2,11 @@ ActiveMQ 高可用集群安装、配置、高可用测试
 
 
 
+## ActiveMQ简介
+
+
+## ActiveMQ 安装与配置
+
 ## 一、环境
 
 - OS:Cent OS 7
@@ -257,6 +262,10 @@ su - wusc -c '/home/wusc/activemq/node-01/bin/activemq start'
 su - wusc -c '/home/wusc/activemq/node-02/bin/activemq start'
 su - wusc -c '/home/wusc/activemq/node-03/bin/activemq start'
 ```
+
+12、通过监控查看消息堆栈的记录：
+
+登陆http://localhost:8161/admin/queues.jsp，默认的用户名和密码：admin/admin
 
 
 [1]:http://activemq.apache.org/
