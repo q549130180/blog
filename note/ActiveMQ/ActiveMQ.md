@@ -268,5 +268,14 @@ su - wusc -c '/home/wusc/activemq/node-03/bin/activemq start'
 登陆http://localhost:8161/admin/queues.jsp，默认的用户名和密码：admin/admin
 
 
+
+
+
+13、java使用ActiveMQ的简单实例
+
+
+
+
+
 [1]:http://activemq.apache.org/
 [2]:http://activemq.apache.org/replicated-leveldb-store.html
