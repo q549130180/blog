@@ -4,6 +4,20 @@ ActiveMQ 高可用集群安装、配置、高可用测试
 
 ## ActiveMQ简介
 
+ActiveMQ 是Apache出品，最流行的，能力强劲的开源消息总线。ActiveMQ 是一个完全支持JMS1.1和J2EE 1.4规范的 JMS Provider实现，尽管JMS规范出台已经是很久的事情了，但是JMS在当今的J2EE应用中间仍然扮演着特殊的地位。
+
+
+- 特性列表编辑
+1. 多种语言和协议编写客户端。语言: Java,C,C++,C#,Ruby,Perl,Python,PHP。应用协议： OpenWire,Stomp REST,WS Notification,XMPP,AMQP
+2. 完全支持JMS1.1和J2EE 1.4规范 （持久化，XA消息，事务)
+3. 对Spring的支持，ActiveMQ可以很容易内嵌到使用Spring的系统里面去，而且也支持Spring2.0的特性
+4. 通过了常见J2EE服务器（如 Geronimo,JBoss 4,GlassFish,WebLogic)的测试，其中通过JCA 1.5 resource adaptors的配置，可以让ActiveMQ可以自动的部署到任何兼容J2EE 1.4 商业服务器上
+5. 支持多种传送协议：in-VM,TCP,SSL,NIO,UDP,JGroups,JXTA
+6. 支持通过JDBC和journal提供高速的消息持久化
+7. 从设计上保证了高性能的集群，客户端-服务器，点对点
+8.  支持Ajax
+9. 支持与Axis的整合
+10. 可以很容易的调用内嵌JMS provider，进行测试
 
 ## ActiveMQ 安装与配置
 
@@ -62,7 +76,7 @@ LevelDB 是 Google 开发的一套用于持久化数据的高性能类库。Leve
 
 ![Alt text]({{site.url}}/images/posts_image/activemq-activemq-2016-090270123456.png)
 
-[官方文档地址][2]
+[官方文档地址][2],[ActiveMQ特性][3]
 
 
 高可用的原理：使用 ZooKeeper（集群）注册所有的 ActiveMQ Broker。只有其中的一个 Broker 可以提供服务，被视为 Master，其他的 Broker 处于待机状态，被视为 Slave。如果 Master 因故障而不能提供服务，ZooKeeper 会从 Slave 中选举出一个 Broker 充当 Master。
@@ -71,10 +85,12 @@ Slave 连接 Master 并同步他们的存储状态，Slave 不接受客户端连
 
 所有需要同步的 disk 的消息操作都将等待存储状态被复制到其他法定节点的操作完成才能完成。所以，如果你配置了 replicas=3，那么法定大小是(3/2)+1=2。Master 将会存储并更新然后等待 (2-1)=1 个Slave 存储和更新完成，才汇报 success。至于为什么是 2-1，熟悉 Zookeeper 的应该知道，有一个 node 要作为观擦者存在。当一个新的 Master 被选中，你需要至少保障一个法定 node 在线以能够找到拥有最新状态的 node。这个 node 可以成为新的 Master。因此，推荐运行至少 3 个 replica nodes，以防止一个 node 失败了，服务中断。（原理与 ZooKeeper 集群的高可用实现方式类似）
 
+客户应该使用故障转移运输连接到代理节点的集群复制。如使用URL类似如下:
+> failover:(tcp://broker1:61616,tcp://broker2:61616,tcp://broker3:61616)
 
 1、ActiveMQ 集群部署规划：
 
-ZooKeeper 集群环境：192.168.1.81:2181,192.168.1.82:2182,192.168.1.83:2183
+ZooKeeper 集群环境：`192.168.1.81:2181,192.168.1.82:2182,192.168.1.83:2183`
 
 （ZooKeeper 集群部署请参考《Zookeeper伪分布式集群安装及使用》）
 
@@ -279,3 +295,4 @@ su - wusc -c '/home/wusc/activemq/node-03/bin/activemq start'
 
 [1]:http://activemq.apache.org/
 [2]:http://activemq.apache.org/replicated-leveldb-store.html
+[3]:http://activemq.apache.org/features.html

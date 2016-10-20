@@ -13,22 +13,23 @@ image:
 ---
 
 
-## 1. zookeeper介绍
+## 一、 Zookeeper介绍
 
 ZooKeeper是一个为分布式应用所设计的分布的、开源的协调服务，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，简化分布式应用协调及其管理的难度，提供高性能的分布式服务。ZooKeeper本身可以以Standalone模式安装运行，不过它的长处在于通过分布式ZooKeeper集群（一个Leader，多个Follower），基于一定的策略来保证ZooKeeper集群的稳定性和可用性，从而实现分布式应用的可靠性。
 
 ZooKeeper是作为分布式协调服务，是不需要依赖于Hadoop的环境，也可以为其他的分布式环境提供服务。
 
 
-## 2. Redis 集群环境说明
+## 二、 Zookeeper 集群环境说明
 
 ### 环境
 
 - OS:Cent OS 7.0
 - Java: 1.7 64-Bit Server VM
+- Zookeeper: 3.4.8
 
 
-## 3. zookeeper单节点安装Standalones模式
+## 三、 Zookeeper单节点安装Standalones模式
 
 下载ZooKeeper
 
@@ -97,14 +98,14 @@ Stopping zookeeper ... STOPPED
 
 **注：** 如果只是单节点启动也可以不用建立zk0文件夹，直接在zookeeper-3.4.8/conf下复制、修改配置文件即可。
 
-## 4. Zookeeper伪分布式集群安装
+## 四、 Zookeeper伪分布式集群安装
 
 所谓 “伪分布式集群” 就是在，在一台PC中，启动多个ZooKeeper的实例。“完全分布式集群” 是每台PC，启动一个ZooKeeper实例。
 由于我的测试环境PC数量有限，所以在一台PC中，启动3个ZooKeeper的实例。
 
 创建环境目录
 
-```
+```bash
 cd /snow/programs/zoo
 mkdir zk1
 cd zk1
@@ -154,7 +155,7 @@ server.3=10.0.2.15:2890:3890
 
 启动集群
 
-```
+```bash
 bin/zkServer.sh start ../zk1/conf/zoo.cfg
 bin/zkServer.sh start ../zk2/conf/zoo.cfg
 bin/zkServer.sh start ../zk3/conf/zoo.cfg
@@ -185,7 +186,7 @@ Mode: follower
 
 **注：** 如果在使用status命令中遇到如下错误，需安装nc
 
-```
+```bash
 JMX enabled by default
 Using config: /staples/zoo/zk3/zookeeper-3.3.3/bin/../conf/zoo.cfg
 Error contacting service. It is probably not running.
@@ -195,12 +196,12 @@ Error contacting service. It is probably not running.
 安装nc：`yum install nc`
 
 
-## 5. Zookeeper命令行操作
+## 五、 Zookeeper命令行操作
 
 我们通过客户端连接ZooKeeper的集群，我们可以任意的zookeeper是进行连接。
 
 
-```
+```bash
 # zkCli.sh -server 10.0.2.15:2181
 
 Connecting to 10.0.2.15:2181
@@ -268,7 +269,7 @@ ZooKeeper -server host:port cmd args
 
 ZooKeeper的结构，很像是目录结构，我们看到了像ls这样熟悉的命令。
 
-```
+```bash
 # ls，查看/目录内容
 [zk: 10.0.2.15:2181(CONNECTED) 1] ls
 [zk: 10.0.2.15:2181(CONNECTED) 2] ls /
@@ -337,3 +338,18 @@ Quitting...
 2016-04-24 10:39:24,008 [myid:] - INFO  [main:ZooKeeper@684] - Session: 0x154460893a00000 closed
 2016-04-24 10:39:24,013 [myid:] - INFO  [main-EventThread:ClientCnxn$EventThread@519] - EventThread shut down for session: 0x154460893a00000
 ```
+
+## 六、客户端工具ZooInspector使用
+
+ <a href="http://pan.baidu.com/s/1miyejd2" target="_Blank" >ZooInspector下载地址</a>
+
+下载后直接解压，运行`build/zookeeper-dev-ZooInspector.jar`文件即可。
+
+1.连接
+![Alt text]({{site.url}}/images/posts_image/zookeeper_zooInspector_2016-10-20_150701.jpg)
+
+2.配置
+![Alt text]({{site.url}}/images/posts_image/zookeeper_zooInspector_2016-10-20_150732.jpg)
+
+3.查看数据
+![Alt text]({{site.url}}/images/posts_image/zookeeper_zooInspector_2016-10-20_152832.jpg)
