@@ -21,7 +21,7 @@ ActiveMQ 是Apache出品，最流行的，能力强劲的开源消息总线。Ac
 
 ## ActiveMQ 安装与配置
 
-## 一、环境
+### 一、环境
 
 - OS:Cent OS 7
 - Java:JDK 1.7
@@ -30,8 +30,10 @@ ActiveMQ 是Apache出品，最流行的，能力强劲的开源消息总线。Ac
 
 从 ActiveMQ 5.9 开始，ActiveMQ 的集群实现方式取消了传统的 Master-Slave 方式，增加了基于ZooKeeper + LevelDB 的 Master-Slave 实现方式，其他两种方式目录共享和数据库共享依然存在。
 
+### 二、集群搭建方式对比
 
 三种集群方式的对比：
+
 (1)基于共享文件系统（KahaDB，默认）：
 
 ```xml
@@ -72,6 +74,8 @@ LevelDB 是 Google 开发的一套用于持久化数据的高性能类库。Leve
 </persistenceAdapter>
 ```
 
+### 三、集群原理
+
 集群原理图：
 
 ![Alt text]({{site.url}}/images/posts_image/activemq-activemq-2016-090270123456.png)
@@ -88,7 +92,9 @@ Slave 连接 Master 并同步他们的存储状态，Slave 不接受客户端连
 客户应该使用故障转移运输连接到代理节点的集群复制。如使用URL类似如下:
 > failover:(tcp://broker1:61616,tcp://broker2:61616,tcp://broker3:61616)
 
-1、ActiveMQ 集群部署规划：
+### 四、Master/Slave集群搭建-基于ZooKeeper
+
+**1、ActiveMQ 集群部署规划：**
 
 ZooKeeper 集群环境：`192.168.1.81:2181,192.168.1.82:2182,192.168.1.83:2183`
 
@@ -102,7 +108,7 @@ ZooKeeper 集群环境：`192.168.1.81:2181,192.168.1.82:2182,192.168.1.83:2183`
 {:.mytablestyle}
 
 
-2、防火墙打开对应的端口或关闭防火墙
+**2、防火墙打开对应的端口或关闭防火墙**
 
 在[ActiveMQ官网][1]下载：apache-activemq-5.14.0-bin.tar
 
@@ -121,7 +127,9 @@ $ cp -rf * /snow/activemq/node-3
 
 ```
 
-5、修改管理控制台端口（默认为 `8161`）可在 `conf/jetty.xml` 中修改，如下：
+**5、修改管理控制台端口**
+
+修改`conf/jetty.xml` 中的端口（默认为 `8161`），如下：
 
 Node-01 管控台端口：
 
@@ -155,7 +163,8 @@ Node-03 管控台端口：
 
 
 
-6、集群配置：
+**6、集群配置：**
+
 在 3 个 ActiveMQ 节点中配置 conf/activemq.xml 中的持久化适配器。修改其中 bind、zkAddress、hostname 和 zkPath。注意：每个 ActiveMQ 的 BrokerName 必须相同，否则不能加入集群。
 
 Node-01 中的持久化配置:
@@ -254,7 +263,7 @@ Node-03 中的消息端口配置:
 
 
 
-7、按顺序启动 3 个 ActiveMQ 节点：
+**7、按顺序启动 3 个 ActiveMQ 节点：**
 
 ```bash
 $ /home/wusc/activemq/node-01/bin/activemq start
@@ -270,7 +279,7 @@ $ tail -f /home/wusc/activemq/node-02/data/activemq.log
 $ tail -f /home/wusc/activemq/node-03/data/activemq.log
 ```
 
-11、设置开机启动：
+**11、设置开机启动：**
 
 ```bash
 $ vi /etc/rc.local
@@ -279,7 +288,7 @@ su - wusc -c '/home/wusc/activemq/node-02/bin/activemq start'
 su - wusc -c '/home/wusc/activemq/node-03/bin/activemq start'
 ```
 
-12、通过监控查看消息堆栈的记录：
+**12、通过监控查看消息堆栈的记录：**
 
 登陆http://localhost:8161/admin/queues.jsp，默认的用户名和密码：admin/admin
 
@@ -290,6 +299,9 @@ su - wusc -c '/home/wusc/activemq/node-03/bin/activemq start'
 13、java使用ActiveMQ的简单实例
 
 
+
+**参考资料：**
+[http://blog.csdn.net/lifetragedy/article/details/51869032#t7][http://blog.csdn.net/lifetragedy/article/details/51869032#t7]
 
 
 
