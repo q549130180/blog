@@ -39,7 +39,7 @@ owner:
 
 # SEO
 seo:
-  title:  IT博客,Java,JavaWeb,Redis,Linux,JavaScript,Hadoop
+  title:  IT博客,Java技术博客,Java,JavaWeb,Redis,Linux,JavaScript,Hadoop
   description: Java技术博客,核心IT技术包括：Java,JavaWeb,Redis,Linux,JavaScript等方向的技术文章
 
 # Background image to be tiled on all pages
