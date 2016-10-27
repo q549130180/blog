@@ -17,3 +17,7 @@
 192.168.1.82 | 62622 | 51512 | 8162 | /home/wusc/activemq/node-02
 192.168.1.83 | 62623 | 51513 | 8163 | /home/wusc/activemq/node-03
 {:.mytablestyle}
+
+
+
+ <a href="http://pan.baidu.com/s/1miyejd2" target="_Blank" >ZooInspector下载地址</a>

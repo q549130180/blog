@@ -30,7 +30,7 @@ JAVA_OPTS="-Djava.awt.headless=true -Dfile.encoding=UTF-8
 #     
 
 CATALINA_OPTS="
-      -Dcom.sun.management.jmxremote.port=7091 
+      -Dcom.sun.management.jmxremote.port=7091
       -Dcom.sun.management.jmxremote.ssl=false
       -Dcom.sun.management.jmxremote.authenticate=false
       -Djava.rmi.server.hostname=192.168.10.100
@@ -41,6 +41,65 @@ CATALINA_OPTS="
 
 chmod 755 bin/setenv.sh
 ```
+
+
+
+
+
+
+参数解释：
+
+**`-server`**
+
+我不管你什么理由，只要你的tomcat是运行在生产环境中的，这个参数必须给我加上
+<br/>因为tomcat默认是以一种叫java –client的模式来运行的，server即意味着你的tomcat是以真实的production的模式在运行的，这也就意味着你的tomcat以server模式运行时将拥有：更大、更高的并发处理能力，更快更强捷的JVM垃圾回收机制，可以获得更多的负载与吞吐量。。。更。。。还有更。。。
+Y给我记住啊，要不然这个-server都不加，那是要打屁股了。
+
+- -Xms–Xmx
+
+>即JVM内存设置了，把Xms与Xmx两个值设成一样是最优的做法，有人说Xms为最小值，Xmx为最大值不是挺好的，这样设置还比较人性化，科学化。人性？科学？你个头啊。
+
+大家想一下这样的场景：
+
+一个系统随着并发数越来越高，它的内存使用情况逐步上升，上升到最高点不能上升了，开始回落，你们不要认为这个回落就是好事情，由其是大起大落，在内存回落时它付出的代价是CPU高速开始运转进行垃圾回收，此时严重的甚至会造成你的系统出现“卡壳”就是你在好好的操作，突然网页像死在那边一样几秒甚至十几秒时间，因为JVM正在进行垃圾回收。
+
+因此一开始我们就把这两个设成一样，使得Tomcat在启动时就为最大化参数充分利用系统的效率，这个道理和jdbcconnection pool里的minpool size与maxpool size的需要设成一个数量是一样的原理。
+
+如何知道我的JVM能够使用最大值啊？拍脑袋？不行！
+在设这个最大内存即Xmx值时请先打开一个命令行，键入如下的命令：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 server.xml 配置说明
 
@@ -277,3 +336,7 @@ server.xml 配置说明
 
 
 ```
+
+
+**参考资料：**
+http://blog.csdn.net/lifetragedy/article/details/7708724
