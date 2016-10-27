@@ -20,7 +20,7 @@
 }
 
 
-/** toc scrollspy styles */
+/** toc scrollspy styles start */
 .toc-nav {
   /*padding-left: 0;*/
   margin-bottom: 0;
@@ -92,3 +92,5 @@
   margin-top: 2px;
   margin-left: 0;
 }
+
+/** toc scrollspy styles end */

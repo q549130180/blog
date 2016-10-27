@@ -243,3 +243,8 @@ public class TopicSender {
 
 ```java
 ```
+
+
+参考资料：
+http://blog.csdn.net/jiuqiyuliang/article/details/48758203
+http://blog.csdn.net/lifetragedy/article/details/51836557#t15

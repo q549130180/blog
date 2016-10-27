@@ -5,12 +5,14 @@
   window.jQuery || document.write('<script src="{{ site.url }}/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')
 </script>
 <!-- Bootstrap Core JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <!--<script src="{{ site.url }}/assets/js/plugins/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>-->
 
 <script src="{{ site.url }}/assets/js/scripts.min.js"></script>
 <!-- search js -->
-<script>var base_url = "{{ site.url }}";</script>
+<script>
+    var base_url = "{{ site.url }}";
+</script>
 <script src="{{ site.url }}/assets/js/plugins/jekyll-search.min.js"></script>
 <script src="{{ site.url }}/assets/js/search.js"></script>
 
@@ -27,6 +29,7 @@
 
 <!--滚动时toolbar的样式变更-->
 <script type="text/javascript">
+
 //改变navbar样式的函数
 function toggleNavCollapse() {
     /** 判断匹配元素，top的偏移量 */
@@ -44,7 +47,7 @@ function toggleNavCollapse() {
 /** 当dom载入时，操作绑定的函数 */
 $(document).ready(function() {
 
-
+   //初始化代码块JS库
    hljs.initHighlightingOnLoad();
 
    //Highligh 行号
@@ -62,9 +65,12 @@ $(document).ready(function() {
    });
    */
 
+
+
+   //navbar样式的函数
    toggleNavCollapse();
 
-   //目录
+   //初始化目录
    $('.toc').toc({ showEffect: 'slideDown',listType: 'ul',title:'<strong>目录：</strong>'});
 
    //首页搜索框的图标
@@ -267,9 +273,13 @@ $(function () {
     $('#totop').click(function(){
            $('html, body').animate({scrollTop:0}, 500); return false;
     });
+
+
 })();
 
 </script>
+
+
 <!--分享按钮-->
 <script type="text/javascript">
 

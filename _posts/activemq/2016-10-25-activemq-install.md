@@ -18,8 +18,9 @@ image:
 
 ActiveMQ 是Apache出品，最流行的，能力强劲的开源消息总线。ActiveMQ 是一个完全支持JMS1.1和J2EE 1.4规范的 JMS Provider实现，尽管JMS规范出台已经是很久的事情了，但是JMS在当今的J2EE应用中间仍然扮演着特殊的地位。
 
+ActiveMQ的设计目标是提供标准的，面向消息的，能够跨越多语言和多系统的应用集成消息通信中间件。ActiveMQ实现了JMS标准并提供了很多附加的特性。这些附加的特性包括，JMX管理（Java Management Extensions，即Java管理扩展），主从管理（master/salve，这是集群模式的一种，主要体现在可靠性方面，当主中介（代理）出现故障，那么从代理会替代主代理的位置，不至于使消息系统瘫痪）、消息组通信（同一组的消息，仅会提交给一个客户进行处理）、有序消息管理（确保消息能够按照发送的次序被接受者接收）。
 
-**特性列表编辑**
+### 1、特性列表
 
 1. 多种语言和协议编写客户端。语言: Java,C,C++,C#,Ruby,Perl,Python,PHP。应用协议： OpenWire,Stomp REST,WS Notification,XMPP,AMQP
 2. 完全支持JMS1.1和J2EE 1.4规范 （持久化，XA消息，事务)
@@ -31,6 +32,33 @@ ActiveMQ 是Apache出品，最流行的，能力强劲的开源消息总线。Ac
 8.  支持Ajax
 9. 支持与Axis的整合
 10. 可以很容易的调用内嵌JMS provider，进行测试
+
+### 2、ActiveMQ整体架构
+
+ActiveMQ主要涉及到5个方面：
+
+
+**1.传输协议**
+
+消息之间的传递，无疑需要协议进行沟通，启动一个ActiveMQ打开了一个监听端口， 	ActiveMQ提供了广泛的连接模式，其中主要包括SSL、STOMP、XMPP；ActiveMQ默认的使用	的协议是openWire，端口号：61616;
+
+**2.消息域**
+
+ActiveMQ主要包含Point-to-Point (点对点),Publish/Subscribe Model (发布/订阅者)，其中在	Publich/Subscribe 模式下又有Nondurable subscription和durable subscription (持久化订阅)2种消息处理方式
+
+**3.消息存储**
+
+在消息传递过程中，部分重要的消息可能需要存储到数据库或文件系统中，当中介崩溃时，信息不	回丢失
+
+**4.Cluster(集群)**
+
+最常见到 集群方式包括network of brokers和Master Slave；
+
+**5.Monitor (监控)**
+
+ActiveMQ一般由jmx来进行监控；
+
+![Alt text]({{site.url}}/images/posts_image/activemq-activemq-2016-10-26_141310.jpg)
 
 ## 二、ActiveMQ 安装与配置
 
@@ -209,7 +237,7 @@ Node-01 中的持久化配置:
             replicas="3"
             bind="tcp://0.0.0.0:62621"
             zkAddress="192.168.1.100:2181,192.168.1.100:2182,192.168.1.100:2183"
-            hostname="edu-zk-01"
+            hostname="snow"
             zkPath="/activemq/leveldb-stores"
         />
     </persistenceAdapter>
@@ -227,7 +255,7 @@ Node-02 中的持久化配置:
             replicas="3"
             bind="tcp://0.0.0.0:62622"
             zkAddress="192.168.1.100:2181,192.168.1.100:2182,192.168.1.100:2183"
-            hostname="edu-zk-02"
+            hostname="snow"
             zkPath="/activemq/leveldb-stores"
          />
     </persistenceAdapter>
@@ -245,7 +273,7 @@ Node-03 中的持久化配置:
             replicas="3"
             bind="tcp://0.0.0.0:62623"
             zkAddress="192.168.1.100:2181,192.168.1.100:2182,192.168.1.100:2183"
-            hostname="edu-zk-03"
+            hostname="snow"
             zkPath="/activemq/leveldb-stores"
          />
     </persistenceAdapter>
@@ -368,12 +396,12 @@ activemq
 
 MQ | admin | openwire | amqp | stomp | mqtt | ws | zk | group
 ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
-mq1 | 8161 | 61616 | 5672 | 61613 | 1883 | 61614 | 192.168.1.81:2181 | group1
-mq2 | 8162 | 61617 | 5673 | 62613 | 1884 | 61624 | 192.168.1.81:2181 | group1
-mq3 | 8163 | 61618 | 5674 | 63613 | 1885 | 61634 | 192.168.1.81:2181 | group1
-mq4 | 8164 | 61619 | 5675 | 64613 | 1886 | 61644 | 192.168.1.81:2181 | group2
-mq5 | 8165 | 61620 | 5676 | 65613 | 1887 | 61654 | 192.168.1.81:2181 | group2
-mq6 | 8166 | 61621 | 5677 | 66613 | 1888 | 61664 | 192.168.1.81:2181 | group2
+mq1 | 8161 | 61616 | 5672 | 61613 | 1883 | 61614 | 2181,2182,2183 | group1
+mq2 | 8162 | 61617 | 5673 | 62613 | 1884 | 61624 | 2181,2182,2183 | group1
+mq3 | 8163 | 61618 | 5674 | 63613 | 1885 | 61634 | 2181,2182,2183 | group1
+mq4 | 8164 | 61619 | 5675 | 64613 | 1886 | 61644 | 2181,2182,2183 | group2
+mq5 | 8165 | 61620 | 5676 | 65613 | 1887 | 61654 | 2181,2182,2183 | group2
+mq6 | 8166 | 61621 | 5677 | 66613 | 1888 | 61664 | 2181,2182,2183 | group2
 {:.mytablestyle}
 
 
@@ -385,22 +413,25 @@ mq6 | 8166 | 61621 | 5677 | 66613 | 1888 | 61664 | 192.168.1.81:2181 | group2
 修改node-1、node-2、node-3的配置文件，注意修改端口号避免端口冲突;group1中的`networkConnector`设置成group2中的三个节点的IP和端口;`duplex=true` 设置开启MQ节点间双向传输功能
 
 
+
 ```xml
 
 <networkConnectors>   
      <networkConnector uri="static:(tcp://192.168.1.100:61619,tcp://192.168.1.100:61620,tcp://192.168.1.100:61621)" duplex="true"/>    
 </networkConnectors>
-
 ```
+
+ZooKeeper是搭建的集群
+
 ```xml
 <persistenceAdapter>    
     <replicatedLevelDB     
           directory="${activemq.data}/leveldb"    
           replicas="3"    
           bind="tcp://0.0.0.0:0"    
-          zkAddress="0.0.0.0:2181"    
+          zkAddress="192.168.1.100:2181,192.168.1.100:2182,192.168.1.100:2183"    
           zkPassword=""    
-          hostname="ymklinux"  
+          hostname="snow"  
           sync="local_disk"  
           zkPath="/activemq/group1/leveldb-stores"   
       />    
@@ -419,15 +450,16 @@ mq6 | 8166 | 61621 | 5677 | 66613 | 1888 | 61664 | 192.168.1.81:2181 | group2
 </networkConnectors>
 
 ```
+
 ```xml
 <persistenceAdapter>    
     <replicatedLevelDB     
           directory="${activemq.data}/leveldb"    
           replicas="3"    
           bind="tcp://0.0.0.0:0"    
-          zkAddress="0.0.0.0:2184"    
+          zkAddress="192.168.1.100:2181,192.168.1.100:2182,192.168.1.100:2183"    
           zkPassword=""    
-          hostname="ymklinux"  
+          hostname="snow"  
           sync="local_disk"  
           zkPath="/activemq/group2/leveldb-stores"   
       />    
