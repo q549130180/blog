@@ -42,18 +42,25 @@ CATALINA_OPTS="
 chmod 755 bin/setenv.sh
 ```
 
+---------------------------------------------------------------------------------------------------------
+## 正式文章
 
+```bash
+# me
 
+JAVA_OPTS="-server -Djava.awt.headless=true -Dfile.encoding=UTF-8  "
+```
 
 
 
 参数解释：
 
-**`-server`**
+- -server
 
 我不管你什么理由，只要你的tomcat是运行在生产环境中的，这个参数必须给我加上
-<br/>因为tomcat默认是以一种叫java –client的模式来运行的，server即意味着你的tomcat是以真实的production的模式在运行的，这也就意味着你的tomcat以server模式运行时将拥有：更大、更高的并发处理能力，更快更强捷的JVM垃圾回收机制，可以获得更多的负载与吞吐量。。。更。。。还有更。。。
-Y给我记住啊，要不然这个-server都不加，那是要打屁股了。
+<br/>因为tomcat默认是以一种叫`java –client`的模式来运行的，server即意味着你的tomcat是以真实的production的模式在运行的，这也就意味着你的tomcat以server模式运行时将拥有：更大、更高的并发处理能力，更快更强捷的JVM垃圾回收机制，可以获得更多的负载与吞吐量。
+
+**注：**`-server`一定要加。
 
 - -Xms–Xmx
 
@@ -67,7 +74,11 @@ Y给我记住啊，要不然这个-server都不加，那是要打屁股了。
 
 如何知道我的JVM能够使用最大值啊？拍脑袋？不行！
 在设这个最大内存即Xmx值时请先打开一个命令行，键入如下的命令：
+如果能正常输出版本信息，则表示JVM能使用的最大值，如果报错则表示不能使用
 
+```bash
+java -Xmx2048m -version
+```
 
 
 
