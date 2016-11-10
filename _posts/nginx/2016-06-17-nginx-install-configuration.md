@@ -28,12 +28,47 @@ image:
 ```
 yum -y install gcc gcc-c++ make libtool zlib zlib-devel openssl openssl-devel pcre pcre-devel
 ```
+<div class="elementHide" >
+
 
 
 下载地址： http://nginx.org/en/download.html
 下载 nginx-1.9.14.tar.gz 到相应目录下。
 
 <div class="elementHide" >
+openssl安装
+https://www.openssl.org/
+
+```bash
+ tar -zxvf openssl-1.0.2g.tar.gz
+
+./config --prefix=/usr/local/openssl
+
+./config -t
+
+make && make install
+```
+
+
+官网：http://www.zlib.net/
+
+```shell
+tar -xvf zlib-1.2.8.tar.gz
+cd zlib-1.2.8
+./configure --prefix=/usr/local/zlib
+make && make install
+```
+
+http://www.pcre.org/
+```
+tar -zxvf pcre-8.38.tar.gz
+
+./configure --enable-utf8  
+
+make && make install
+```
+</div>
+
 为了后续准备我们另外下载2个插件模块：[nginx_upstream_check_module-0.3.0.tar.gz](https://github.com/yaoweibin/nginx_upstream_check_module/releases) —— 检查后端服务器的状态，[nginx-goodies-nginx-sticky-module-ng-bd312d586752.tar.gz](https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng/downloads)（建议解压后将目录重命名为nginx-goodies-nginx-sticky-module-ng） —— 后端做负载均衡解决session sticky问题。
 
  --add-module=/snow/programs/nginx-goodies-nginx-sticky-module-ng --add-module=/snow/programs/nginx_upstream_check_module-0.3.0
