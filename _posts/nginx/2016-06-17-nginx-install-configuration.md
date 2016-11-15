@@ -19,7 +19,7 @@ image:
 ## 一、环境
 
 - OS: Cent OS 7
-- nginx:nginx-1.9.14
+- Nginx:nginx-1.9.14
 
 ## 二、安装Nginx
 
