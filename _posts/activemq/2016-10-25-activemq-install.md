@@ -349,16 +349,8 @@ su - wusc -c '/snow/activemq/group1/node-03/bin/activemq start'
 
 **8、通过监控查看消息堆栈的记录：**
 
-登陆http://localhost:8161/admin/queues.jsp，默认的用户名和密码：admin/admin
-
-
-
-
-
-9、java使用ActiveMQ的简单实例
-
-
-
+登陆http://localhost:8161/admin/index.jsp，默认的用户名和密码：admin/admin
+![Alt text]({{site.url}}/images/posts_image/activemq_activemq_2016-10-20_134617.jpg)
 
 ### 5、Master Slave + Broker Cluster 模式搭建负载均衡
 

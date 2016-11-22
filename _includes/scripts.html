@@ -4,15 +4,16 @@
 <script>
   window.jQuery || document.write('<script src="{{ site.url }}/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')
 </script>
-<!-- Bootstrap Core JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-<!--<script src="{{ site.url }}/assets/js/plugins/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>-->
-
-<script src="{{ site.url }}/assets/js/scripts.min.js"></script>
-<!-- search js -->
 <script>
     var base_url = "{{ site.url }}";
 </script>
+<!-- Bootstrap Core JavaScript -->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>-->
+<!--<script src="{{ site.url }}/assets/js/plugins/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>-->
+<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="{{ site.url }}/assets/js/scripts.min.js"></script>
+<!-- search js -->
 <script src="{{ site.url }}/assets/js/plugins/jekyll-search.min.js"></script>
 <script src="{{ site.url }}/assets/js/search.js"></script>
 
@@ -71,7 +72,7 @@ $(document).ready(function() {
    toggleNavCollapse();
 
    //初始化目录
-   $('.toc').toc({ showEffect: 'slideDown',listType: 'ul',title:'<strong>目录：</strong>'});
+   $('.toc').toc({showEffect: 'slideDown',listType: 'ul',title:'<strong>目录：</strong>'});
 
    //首页搜索框的图标
    document.getElementById('search-input').addEventListener("keyup",function(e) {

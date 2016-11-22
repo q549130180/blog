@@ -8,7 +8,7 @@
 {% include head.html %}
 </head>
 
-<body id="post" class="feature" data-spy="scroll" data-target=".toc" data-offset="20">
+<body id="post" class="feature" data-spy="scroll" data-target=".toc" data-offset="0" style="">
 
 {% include browser-upgrade.html %}
 {% include navbar.html %}
@@ -89,7 +89,7 @@
           {% endfor %}
         </span>
         {% if page.modified %}
-        <span>Updated on 
+        <span>Updated on
           <span class="entry-date date updated">
             <time datetime="{{ page.modified }}">{{ page.modified | date: "%B %d, %Y" }}</time>
           </span>

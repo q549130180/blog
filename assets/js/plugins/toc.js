@@ -59,7 +59,8 @@
 
         var level = get_level(headers[0]),
             this_level,
-            html = settings.title + " <" + settings.listType + " class = 'toc-nav nav-pills nav-stacked' style='padding-left: 20px;' >";
+            //设置子外层ul
+            html = settings.title + " <" + settings.listType + " class = 'nav toc-nav nav-pills nav-stacked' style='padding-left: 20px;' >";
         headers.on('click', function() {
                 if (!settings.noBackToTopLinks) {
                     window.location.hash = this.id;

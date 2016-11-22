@@ -76,8 +76,10 @@ make && make install
 
 ```
 ./configure --prefix=/snow/programs/nginx-1.9 --with-pcre \
- --with-http_stub_status_module --with-http_ssl_module \
- --with-http_gzip_static_module --with-http_realip_module \
+ --with-http_stub_status_module \
+ --with-http_ssl_module \
+ --with-http_gzip_static_module \
+ --with-http_realip_module 
 
 
 # 编译安装
