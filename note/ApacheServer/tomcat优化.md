@@ -42,22 +42,29 @@ CATALINA_OPTS="
 chmod 755 bin/setenv.sh
 ```
 
+---------------------------------------------------------------------------------------------------------
+## 正式文章
 
+```bash
+# me
 
+JAVA_OPTS="-server -Djava.awt.headless=true -Dfile.encoding=UTF-8  "
+```
 
 
 
 参数解释：
 
-**`-server`**
+- -server
 
 我不管你什么理由，只要你的tomcat是运行在生产环境中的，这个参数必须给我加上
-<br/>因为tomcat默认是以一种叫java –client的模式来运行的，server即意味着你的tomcat是以真实的production的模式在运行的，这也就意味着你的tomcat以server模式运行时将拥有：更大、更高的并发处理能力，更快更强捷的JVM垃圾回收机制，可以获得更多的负载与吞吐量。。。更。。。还有更。。。
-Y给我记住啊，要不然这个-server都不加，那是要打屁股了。
+<br/>因为tomcat默认是以一种叫`java –client`的模式来运行的，server即意味着你的tomcat是以真实的production的模式在运行的，这也就意味着你的tomcat以server模式运行时将拥有：更大、更高的并发处理能力，更快更强捷的JVM垃圾回收机制，可以获得更多的负载与吞吐量。
 
-- -Xms–Xmx
+**注：**`-server`一定要加。
 
->即JVM内存设置了，把Xms与Xmx两个值设成一样是最优的做法，有人说Xms为最小值，Xmx为最大值不是挺好的，这样设置还比较人性化，科学化。人性？科学？你个头啊。
+- -Xms –Xmx
+
+即JVM内存设置了，把Xms与Xmx两个值设成一样是最优的做法。`-Xms`为初始堆大小,`-Xmx	为最大堆大小`
 
 大家想一下这样的场景：
 
@@ -67,37 +74,98 @@ Y给我记住啊，要不然这个-server都不加，那是要打屁股了。
 
 如何知道我的JVM能够使用最大值啊？拍脑袋？不行！
 在设这个最大内存即Xmx值时请先打开一个命令行，键入如下的命令：
+如果能正常输出版本信息，则表示JVM能使用的最大值，如果报错则表示不能使用
+
+```bash
+java -Xmx2048m -version
+```
+
+因此在设这个-Xms与-Xmx值时一定一定记得先这样测试一下，要不然直接加在tomcat启动命令行中你的tomcat就再也起不来了
+
+- –Xmn
+
+设置年轻代大小为512m。整个堆大小=年轻代大小 + 年老代大小 + 持久代大小。持久代一般固定大小为64m，所以增大年轻代后，将会减小年老代大小。此值对系统性能影响较大，Sun官方推荐配置为整个堆的3/8。
+
+
+- -Xss
+
+是指设定每个线程的堆栈大小。这个就要依据你的程序，看一个线程 大约需要占用多少内存，可能会有多少线程同时运行等。一般设置成512k~1M就可以，最大不宜超过1M，要不然容易出现out ofmemory。
+
+- -XX:+AggressiveOpts
+
+作用如其名（aggressive），启用这个参数，则每当JDK版本升级时，你的JVM都会使用最新加入的优化技术（如果有的话）
+
+- -XX:+UseBiasedLocking
+
+启用一个优化了的线程锁，我们知道在我们的appserver，每个http请求就是一个线程，有的请求短有的请求长，就会有请求排队的现象，甚至还会出现线程阻塞，这个优化了的线程锁使得你的appserver内对线程处理自动进行最优调配。
+
+- -XX:PermSize=128M -XX:MaxPermSize=256M
+
+JVM使用-XX:PermSize设置非堆内存初始值，默认是物理内存的1/64；
+在数据量的很大的文件导出时，一定要把这两个值设置上，否则会出现内存溢出的错误。
+由XX:MaxPermSize设置最大非堆内存的大小，默认是物理内存的1/4。
+那么，如果是物理内存4GB，那么64分之一就是64MB，这就是PermSize默认值，也就是永生代内存初始大小；
+四分之一是1024MB，这就是MaxPermSize默认大小。
 
 
 
+- -XX:+DisableExplicitGC
+
+在程序代码中不允许有显示的调用”System.gc()”。
+
+
+- -XX:+UseParNewGC
+
+对年轻代采用多线程并行回收，这样收得快。
+
+- -XX:+UseConcMarkSweepGC
+
+即CMS gc，这一特性只有jdk1.5即后续版本才具有的功能，它使用的是gc估算触发和heap占用触发。
+我们知道频频繁的GC会造面JVM的大起大落从而影响到系统的效率，因此使用了CMS GC后可以在GC次数增多的情况下，每次GC的响应时间却很短，比如说使用了CMS GC后经过jprofiler的观察，GC被触发次数非常多，而每次GC耗时仅为几毫秒。
+
+-XX:MaxTenuringThreshold=31
+
+设置垃圾最大年龄。如果设置为0的话，则年轻代对象不经过Survivor区，直接进入年老代。对于年老代比较多的应用，可以提高效率。如果将此值设置为一个较大值，则年轻代对象会在Survivor区进行多次复制，这样可以增加对象再年轻代的存活时间，增加在年轻代即被回收的概率。
+这个值的设置是根据本地的jprofiler监控后得到的一个理想的值，不能一概而论原搬照抄。
+
+
+- -XX:+CMSParallelRemarkEnabled
+
+在使用UseParNewGC 的情况下, 尽量减少 mark 的时间
+
+- -XX:+UseCMSCompactAtFullCollection
+
+在使用concurrent gc 的情况下, 防止 memoryfragmention, 对live object 进行整理, 使 memory 碎片减少。
 
 
 
+-XX:LargePageSizeInBytes
+
+指定 Java heap的分页页面大小
+
+-XX:+UseFastAccessorMethods
+
+get,set 方法转成本地代码
+
+-XX:+UseCMSInitiatingOccupancyOnly
+
+指示只有在 oldgeneration 在使用了初始化的比例后concurrent collector 启动收集
+
+
+-XX:CMSInitiatingOccupancyFraction=70
+
+CMSInitiatingOccupancyFraction，这个参数设置有很大技巧，基本上满足`(Xmx-Xmn)*(100- CMSInitiatingOccupancyFraction)/100>=Xmn`就不会出现promotion failed。在我的应用中Xmx是6000，Xmn是512，那么Xmx-Xmn是5488M，也就是年老代有5488M，CMSInitiatingOccupancyFraction=90说明年老代到90%满的时候开始执行对年老代的并发垃圾回收（CMS），这时还 剩10%的空间是5488*10%=548M，所以即使Xmn（也就是年轻代共512M）里所有对象都搬到年老代里，548M的空间也足够了，所以只要满足上面的公式，就不会出现垃圾回收时的promotion failed；因此这个参数的设置必须与Xmn关联在一起。
 
 
 
+-Djava.awt.headless=true
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+这个参数一般我们都是放在最后使用的，这全参数的作用是这样的，有时我们会在我们的J2EE工程中使用一些图表工具如：jfreechart，用于在web网页输出GIF/JPG等流，在winodws环境下，一般我们的app server在输出图形时不会碰到什么问题，但是在linux/unix环境下经常会碰到一个exception导致你在winodws开发环境下图片显示的好好可是在linux/unix下却显示不出来，因此加上这个参数以免避这样的情况出现。
+上述这样的配置，基本上可以达到：
+ü   系统响应时间增快
+ü   JVM回收速度增快同时又不影响系统的响应率
+ü   JVM内存最大化利用
+ü   线程阻塞情况最小化
 
 
 
