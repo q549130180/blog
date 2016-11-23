@@ -31,7 +31,7 @@ ActiveMQ的安装配置请参考上一篇文章[《ActiveMQ 高可用集群安�
 
 在pom.xml文件中添加如下依赖
 
-```xml
+{% highlight xml %}
 <!-- activemq start -->
 <dependency>  
     <groupId>org.apache.activemq</groupId>  
@@ -45,14 +45,14 @@ ActiveMQ的安装配置请参考上一篇文章[《ActiveMQ 高可用集群安�
     <version>5.14.1</version>  
 </dependency>
 <!-- activemq end -->
-```
+{% endhighlight %}
 
 
 ### 2.配置文件
 
-建立配置文件：`applicationContext-activemq-simple.xml`
+建立配置文件: `applicationContext-activemq-simple.xml`
 
-```xml
+{% highlight xml %}
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:context="http://www.springframework.org/schema/context"
@@ -95,7 +95,7 @@ ActiveMQ的安装配置请参考上一篇文章[《ActiveMQ 高可用集群安�
 	<amq:redeliveryPolicy id="activeMQRedeliveryPolicy" destination="#destinationQueue" redeliveryDelay="100" maximumRedeliveries="1" />
 
 </beans>  
-```
+{% endhighlight %}
 
 ### 3.点对点
 
