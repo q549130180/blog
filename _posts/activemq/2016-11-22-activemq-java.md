@@ -101,7 +101,7 @@ ActiveMQ的安装配置请参考上一篇文章[《ActiveMQ 高可用集群安�
 
 **(1) Queue发送端代码**
 
-```java
+{% highlight java %}
 package me.lingfeng.activemq.test;
 
 import javax.jms.Connection;
@@ -175,15 +175,14 @@ public class QueueSenderTest {
 		sendWithAuto();
 	}
 }
-
-```
+{% endhighlight %}
 
 通过监控界面查看队列里的消息
 ![Alt text]({{site.url}}/images/posts_image/activemq_activemq_2016-10-18_145421.jpg)
 
 **(2) Queue接收端代码**
 
-```java
+{% highlight java %}
 package me.lingfeng.activemq.test;
 
 import javax.jms.Connection;
@@ -256,8 +255,7 @@ public class QueueConsumerListenerTest extends Thread implements MessageListener
 		tranConsumer.start();
 	}
 }
-
-```
+{% endhighlight %}
 
 通过监控界面查看接收者信息
 ![Alt text]({{site.url}}/images/posts_image/activemq_activemq_2016-10-18_150058.jpg)
@@ -267,7 +265,7 @@ public class QueueConsumerListenerTest extends Thread implements MessageListener
 
 **(1) Topic发送端代码**
 
-```java
+{% highlight java %}
 package me.lingfeng.activemq.test;
 
 import javax.jms.Connection;
@@ -341,12 +339,11 @@ public class TopicSenderTest {
 		sendWithAuto();
 	}
 }
-
-```
+{% endhighlight %}
 
 **(2) Topic接收端代码**
 
-```java
+{% highlight java %}
 package me.lingfeng.activemq.test;
 
 import javax.jms.Connection;
@@ -419,5 +416,4 @@ public class TopicConsumerListenerTest extends Thread implements MessageListener
 		tranConsumer.start();
 	}
 }
-
-```
+{% endhighlight %}
