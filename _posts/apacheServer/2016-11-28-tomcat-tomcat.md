@@ -1,51 +1,30 @@
 ---
 layout: post
-title: Tomcat优化
-description: "Apache与Tomcat服务器集成和集群配置,通过mod_jk的方式进行Tomcat和Apache的集成"
-modified: 2016-11-28 15:20:20
+title: Tomcat性能调优
+description: "Tomcat性能调优，主要针对Java虚拟机(JVM)的优化以及Tomcat容器自身的优化。"
+modified: 2016-11-30 15:20:20
 tags: [Apache,Apache Server,Tomcat]
 post_type: developer
-categories: [Apache]
+categories: [Tomcat]
 image:
   feature: posts_header/abstract-7.jpg
   credit:
   creditlink:
 ---
 
+## 一、概述
 
-http://ajita.iteye.com/blog/1994974
+Tomcat 的缺省配置是不能稳定长期运行的，也就是不适合生产环境，它会死机，让你不断重新启动，甚至在午夜时分唤醒你。
 
+Tomcat 的优化不像其它软件那样，简简单单的修改几个参数就可以了，它的优化主要有三方面，分为系统优化，Tomcat 自身容器的优化，Java 虚拟机（JVM）调优。系统优化就不在介绍了，接下来就详细的介绍一下 Tomcat 本身与 JVM 优化，以 Tomcat 8 为例。
 
-JAVA_OPTS=%JAVA_OPTS%  
--server –Xms8192m –Xmx8192m–Xmn1890m -verbose:gc
-
--XX:+UseConcMarkSweepGC  -XX:MaxTenuringThreshold=5
--XX:+ExplicitGCInvokesConcurrent -XX:GCTimeRatio=19
--XX:CMSInitiatingOccupancyFraction=70-XX:CMSFullGCsBeforeCompaction=0
-–Xnoclassgc -XX:SoftRefLRUPolicyMSPerMB=0
-
-
-
-```shell
-JAVA_HOME="/snow/jdk1.7.0_79"
-CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=/snwo/apr/lib"
-
-
-
-
-
-```
-
-----------------------------------------------------华丽丽的分割线-----------------------------------------------------
-
-## 一、环境
+## 二、环境
 
 - OS: Cent OS 7
 - JDK: 1.8
 - Tomcat：apache-tomcat-8.5.8
 
-
-## 二、Tomcat优化
+## 三、Tomcat性能调优
 
 ### 1.启动参数优化
 
@@ -56,39 +35,23 @@ touch setenv.sh
 chmod 755 bin/setenv.sh
 ```
 
-bin目录下新建的可执行文件setenv.sh会由tomcat自动调用。
+bin目录下新建的可执行文件setenv.sh会由tomcat自动调用，或添加到startup.sh中也可以。
 
 ```bash
-# me
 
 JAVA_OPTS="
--server
-
- -XX:PermSize=256M -XX:MaxPermSize=512M
- -Xms2048M -Xmx2048M -Xmn768m -Xss512k -verbose:gc
- -XX:+AggressiveOpts -XX:+UseBiasedLocking
-
- -XX:+DisableExplicitGC -XX:MaxTenuringThreshold=31
- -XX:+UseConcMarkSweepGC -XX:+UseParNewGC  
- -XX:+CMSParallelRemarkEnabled -XX:+UseCMSCompactAtFullCollection
- -XX:LargePageSizeInBytes=128m -XX:+UseFastAccessorMethods -XX:+UseCMSInitiatingOccupancyOnly
-
-
+-server -XX:PermSize=256M -XX:MaxPermSize=512M
+-Xms2048M -Xmx2048M -Xmn768m -Xss512k -verbose:gc
+-XX:+AggressiveOpts -XX:+UseBiasedLocking
+-XX:+DisableExplicitGC -XX:MaxTenuringThreshold=31
+-XX:+UseConcMarkSweepGC -XX:+UseParNewGC  
+-XX:+CMSParallelRemarkEnabled -XX:+UseCMSCompactAtFullCollection
+-XX:LargePageSizeInBytes=128m -XX:+UseFastAccessorMethods
+-XX:+UseCMSInitiatingOccupancyOnly
 -Djava.awt.headless=true
 -Dfile.encoding=UTF-8"
 
-
-# 添加监控端口
-
-CATALINA_OPTS="
--Dcom.sun.management.jmxremote.port=7091
--Dcom.sun.management.jmxremote.ssl=false
--Dcom.sun.management.jmxremote.authenticate=false
--Djava.rmi.server.hostname=192.168.10.100"
-
 ```
-
-上面的jmxremote.authenticate在正式环境中请务必设为true并设置用户名/密码，减少安全隐患，或者注释掉CATALINA_OPTS。（有时候出于性能调优的目的，才需要设置JMX）
 
 
 #### 参数详解
@@ -116,7 +79,9 @@ CATALINA_OPTS="
 
 `-Xms –Xmx`
 
-即JVM内存设置了，把Xms与Xmx两个值设成一样是最优的做法。`-Xms`为初始堆大小,`-Xmx`	为最大堆大小
+即JVM内存设置了，把Xms与Xmx两个值设成一样是最优的做法。
+
+`-Xms`为初始堆大小,`-Xmx`	为最大堆大小
 
 大家想一下这样的场景：
 
@@ -242,7 +207,10 @@ CMSInitiatingOccupancyFraction，这个参数设置有很大技巧，基本上�
 
 ### 2.容器内的优化
 
-server.xml 配置说明
+前面主要对JVM的启动参数进行优化，接下来我们主要对Tomcat的容器进行优化，Tomcat容器的优化主要针对`<Connector>`进行优化，包括`<Connector port="8080" protocol="HTTP/1.1"`(HTTP请求)和`<Connector port="8009" protocol="AJP/1.3"`
+
+
+`server.xml` 配置说明
 
 ```xml
 <?xml version='1.0' encoding='utf-8'?>
@@ -488,10 +456,73 @@ server.xml 配置说明
     </Engine>
   </Service>
 </Server>
-
-
 ```
 
 
+
+
+## 四、添加JMX监控
+
+在setenv.sh中添加如下代码：
+
+```bash
+# 添加JMX监控
+CATALINA_OPTS="
+-Dcom.sun.management.jmxremote.port=7091
+-Dcom.sun.management.jmxremote.ssl=false
+-Dcom.sun.management.jmxremote.authenticate=false
+-Djava.rmi.server.hostname=192.168.10.100"
+```
+
+添加JMX监控之后使用`$JAVA_HOME/bin`下的`jconsole.exe`或`jvisualvm.exe`查看。
+
+**jconsole使用方法：**
+
+jconsole输入如下地址：`service:jmx:rmi:///jndi/rmi://172.16.100.114:8060/jmxrmi`
+
+
+**jvisualvm使用方法：**
+
+jvisualvm操作步骤：文件->添加远程主机->输入主机名(IP)->确定->鼠标右键主机名->添加JMX连接->输入`IP:PORT`和安全凭证->确定
+
+上面的`jmxremote.authenticate`在正式环境中请务必设为true并设置用户名/密码，减少安全隐患，或者注释掉`CATALINA_OPTS`(有时候出于性能调优的目的，才需要设置JMX)。
+
+**添加用户名/密码方法：**
+
+1. 将`$JAVA_HOME/jre/lib/management`下的`jmxremote.access`和`jmxremote.password.template`复制到tomcat/conf中
+2. 将`jmxremote.password.template`重命名为`jmxremote.password`
+3. 修改`jmxremote.password`的权限`chmod +w jmxremote.password`
+4. 放开角色信息那俩行的注释(monitorRole QED,controlRole R&D),保存
+5. 再次修改`jmxremote.password`的权限`chmod 0400 jmxremote.password`
+6. 修改`CATALINA_OPTS`如下
+
+```bash
+Dcom.sun.management.jmxremote.authenticate=true   
+Dcom.sun.management.jmxremote.password.file=../conf/jmxremote.password
+Dcom.sun.management.jmxremote.access.file=../conf/jmxremote.access
+```
+
+
+
+<div class="elementHide">
+http://ajita.iteye.com/blog/1994974
+
+
+JAVA_OPTS=%JAVA_OPTS%  
+-server –Xms8192m –Xmx8192m–Xmn1890m -verbose:gc
+
+-XX:+UseConcMarkSweepGC  -XX:MaxTenuringThreshold=5
+-XX:+ExplicitGCInvokesConcurrent -XX:GCTimeRatio=19
+-XX:CMSInitiatingOccupancyFraction=70-XX:CMSFullGCsBeforeCompaction=0
+–Xnoclassgc -XX:SoftRefLRUPolicyMSPerMB=0
+
+
+
+```shell
+JAVA_HOME="/snow/jdk1.7.0_79"
+CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=/snwo/apr/lib"
+```
+
 **参考资料：**
 http://blog.csdn.net/lifetragedy/article/details/7708724
+</div>

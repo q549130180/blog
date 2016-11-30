@@ -142,7 +142,7 @@ failover:(tcp://broker1:61616,tcp://broker2:61616,tcp://broker3:61616)
 
 ZooKeeper 集群环境：`192.168.1.100:2181,192.168.1.100:2182,192.168.1.100:2183`
 
-（[ZooKeeper 集群部署请参考《Zookeeper伪分布式集群安装及使用》]({{ site.url }}/zookeeper/zookeeper-cluster/)）
+（ZooKeeper 集群部署请参考[《Zookeeper伪分布式集群安装及使用》]({{ site.url }}/zookeeper/zookeeper-cluster/)）
 
 主机 | 集群端口 | 消息端口 | 管控台端口 | 节点安装目录
 ------------- | ------------- | ------------- | ------------- | -------------
