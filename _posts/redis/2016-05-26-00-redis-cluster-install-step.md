@@ -174,7 +174,7 @@ $ gem install rails
 
 ```
 
-修改完成之后再执行`gem install redis`，如果执行成功，则直接进行[6：执行redis的创建集群命令创建集群]
+修改完成之后再执行`gem install redis`，如果执行成功，则直接进行[7：执行redis的创建集群命令创建集群]
 
 如果修改完之后还是无法使用`gem install redis`进行安装，则使用本地的安装方式
 
@@ -217,7 +217,7 @@ make install
 安装完这些之后，再次执行：`gem install -l ./redis-3.2.1.gem`
 
 
-### 6：执行redis的创建集群命令创建集群
+### 7：执行redis的创建集群命令创建集群
 
 ```shell
 cd /usr/local/cluster/redis-3.0.5/src
@@ -232,11 +232,11 @@ cd /usr/local/cluster/redis-3.0.5/src
 至此redis集群即搭建成功！
 
 
-### 7：执行命令查看现在的集群中节点的状态
+### 8：执行命令查看现在的集群中节点的状态
 
 `redis-cli -c -p 7001 cluster nodes`
 
-### 8：使用redis-cli命令进入集群环境
+### 9：使用redis-cli命令进入集群环境
 
 `redis-cli -c -p 7001`
 
