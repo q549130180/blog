@@ -23,70 +23,81 @@ image:
 
 ## 二、安装Nginx
 
-安装依赖
+### 1.安装依赖
 
 ```
 yum -y install gcc gcc-c++ make libtool zlib zlib-devel openssl openssl-devel pcre pcre-devel
 ```
-<div class="elementHide" >
 
+**openssl安装**
 
-
-下载地址： http://nginx.org/en/download.html
-下载 nginx-1.9.14.tar.gz 到相应目录下。
-
-<div class="elementHide" >
-openssl安装
-https://www.openssl.org/
+官网：https://www.openssl.org/
 
 ```bash
- tar -zxvf openssl-1.0.2g.tar.gz
+tar -zxvf openssl-1.0.2g.tar.gz
 
-./config --prefix=/usr/local/openssl
-
+./config
 ./config -t
 
 make && make install
 ```
 
+**zlib安装**
 
 官网：http://www.zlib.net/
 
 ```shell
 tar -xvf zlib-1.2.8.tar.gz
 cd zlib-1.2.8
-./configure --prefix=/usr/local/zlib
+./configure
 make && make install
 ```
 
-http://www.pcre.org/
-```
+**pcre安装**
+
+官网：http://www.pcre.org/
+
+```bash
 tar -zxvf pcre-8.38.tar.gz
 
-./configure --enable-utf8  
+./configure --enable-utf8
 
 make && make install
 ```
-</div>
+
+
+
+<div class="elementHide" >
+
+
+
+
 
 为了后续准备我们另外下载2个插件模块：[nginx_upstream_check_module-0.3.0.tar.gz](https://github.com/yaoweibin/nginx_upstream_check_module/releases) —— 检查后端服务器的状态，[nginx-goodies-nginx-sticky-module-ng-bd312d586752.tar.gz](https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng/downloads)（建议解压后将目录重命名为nginx-goodies-nginx-sticky-module-ng） —— 后端做负载均衡解决session sticky问题。
 
  --add-module=/snow/programs/nginx-goodies-nginx-sticky-module-ng --add-module=/snow/programs/nginx_upstream_check_module-0.3.0
 </div>
 
+### 2.编译安装
+
+下载地址： http://nginx.org/en/download.html
+下载 nginx-1.9.14.tar.gz 到相应目录下。
+
 ```
-./configure --prefix=/snow/programs/nginx-1.9 --with-pcre \
+./configure --prefix=/snow/programs/nginx-1.9 \
  --with-http_stub_status_module \
  --with-http_ssl_module \
  --with-http_gzip_static_module \
- --with-http_realip_module 
-
+ --with-http_realip_module \
+ --with-pcre=/usr/local/pcre-8.38 \
+ --with-zlib=/usr/local/zlib \
+ --with-openssl=/usr/local/openssl
 
 # 编译安装
 make && make install
 ```
 
-### 1.常用编译选项说明
+### 3.常用编译选项说明
 
 nginx大部分常用模块，编译时./configure --help以--without开头的都默认安装。
 
@@ -102,7 +113,7 @@ nginx大部分常用模块，编译时./configure --help以--without开头的都
 
 
 
-### 2.启动关闭nginx
+### 4.启动关闭nginx
 
 
 {% highlight nginx %}
@@ -195,12 +206,12 @@ http {
     proxy_temp_file_write_size  64k;
     proxy_temp_path   /usr/local/nginx/proxy_temp 1 2;
 
-  # 设定负载均衡后台服务器列表
+  # 设定负载均衡后台服务器(tomcat)列表
     upstream  backend  {
               #ip_hash;
-              #weigth参数表示权值，权值越高被分配到的几率越大
-              server   192.168.10.100:8080 max_fails=2 fail_timeout=30s  weight=5 ;  
-              server   192.168.10.101:8080 max_fails=2 fail_timeout=30s  weight=1 ;  
+              #weight参数表示权值，权值越高被分配到的几率越大
+              server   192.168.10.100:8080 max_fails=2 fail_timeout=30s  weight=5 ;
+              server   192.168.10.101:8080 max_fails=2 fail_timeout=30s  weight=1 ;
     }
 
   # 很重要的虚拟主机配置
@@ -218,24 +229,24 @@ http {
             root   /apps/oaapp;
             index  index.jsp index.html index.htm;
 
-            proxy_pass        http://backend;  
+            proxy_pass        http://backend;
             proxy_redirect off;
             # 后端的Web服务器可以通过X-Forwarded-For获取用户真实IP
             proxy_set_header  Host  $host;
-            proxy_set_header  X-Real-IP  $remote_addr;  
+            proxy_set_header  X-Real-IP  $remote_addr;
             proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
             proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
 
         }
 
         #静态文件，nginx自己处理，不去backend请求tomcat
-        location  ~* /download/ {  
-            root /apps/oa/fs;  
+        location  ~* /download/ {
+            root /apps/oa/fs;
 
         }
-        location ~ .*\.(gif|jpg|jpeg|bmp|png|ico|txt|js|css)$   
-        {   
-            root /apps/oaapp;   
+        location ~ .*\.(gif|jpg|jpeg|bmp|png|ico|txt|js|css)$
+        {
+            root /apps/oaapp;
             expires      7d;
         }
         location /nginx_status {
@@ -245,8 +256,8 @@ http {
             deny all;
         }
 
-        location ~ ^/(WEB-INF)/ {   
-            deny all;   
+        location ~ ^/(WEB-INF)/ {
+            deny all;
         }
         #error_page  404              /404.html;
 
@@ -269,7 +280,7 @@ http {
 
 nginx在运行时与具体业务功能（比如http服务或者email服务代理）无关的一些参数，比如工作进程数，运行的身份等。
 
-- `woker_processes 2`  
+- `woker_processes 2`
 在配置文件的顶级`main`部分，worker角色的工作进程的个数，master进程是接收并分配请求给worker处理。这个数值简单一点可以设置为cpu的核数`grep ^processor /proc/cpuinfo | wc -l`，也是 auto 值，如果开启了ssl和gzip更应该设置成与逻辑CPU数量一样甚至为2倍，可以减少I/O操作。如果nginx服务器还有其它服务，可以考虑适当减少。
 
 - `worker_cpu_affinity`
