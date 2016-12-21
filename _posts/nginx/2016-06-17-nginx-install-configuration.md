@@ -236,7 +236,8 @@ http {
             proxy_set_header  X-Real-IP  $remote_addr;
             proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
             proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
-
+            # 限制文件上传大小
+            client_max_body_size 100m;
         }
 
         #静态文件，nginx自己处理，不去backend请求tomcat

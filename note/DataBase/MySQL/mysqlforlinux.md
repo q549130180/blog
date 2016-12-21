@@ -15,7 +15,7 @@ yum -y install gcc gcc-c++ cmake automake autoconf libtool make  ncurses-devel p
 
 MySql官网：http://www.mysql.com/;
 也可在此处直接[下载](http://dev.mysql.com/downloads/mysql/)
-
+选择
 
 创建MySQL的安装目录及数据库存放目录
 
@@ -46,7 +46,7 @@ tar -zxvf mysql-5.7.12.tar.gz
 cd mysql-5.7.12/
 
 # 重新运行配置，需要删除CMakeCache.txt
-rm CMakeCache.txt  
+rm CMakeCache.txt
 
 cmake . -DCMAKE_INSTALL_PREFIX=/snow/programs/mysql \
 -DMYSQL_DATADIR=/snow/programs/mysql/data \
