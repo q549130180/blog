@@ -92,6 +92,7 @@ make && make install
 cd /user/Programs/mysql
 chown -R root:mysql .
 chown -R mysql:mysql data
+chmod -R go-rwx data
 ```
 注：一定要使用mysql用户
 
