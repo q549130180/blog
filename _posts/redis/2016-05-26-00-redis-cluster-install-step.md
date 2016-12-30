@@ -236,9 +236,11 @@ cd /usr/local/cluster/redis-3.0.5/src
 
 `redis-cli -c -p 7001 cluster nodes`
 
+查看`redis-cli`帮助`redis-cli --help`
+
 ### 9：使用redis-cli命令进入集群环境
 
-`redis-cli -c -p 7001`
+`redis-cli -c -h 127.0.0.1 -p 7001`
 
 检查集群，我们通过check cluster的一个节点，就知道整个集群的状况，可以看出来谁是主，谁是从
 `./redis-trib.rb check 127.0.0.1:7001`
