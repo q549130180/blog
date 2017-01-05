@@ -258,3 +258,5 @@ mysqld_safe --user=mysql --datadir=/snow/programs/mysql/data --log-error=/snow/p
 参考资料：
 
 https://typecodes.com/web/centos7compilemysql.html
+
+https://segmentfault.com/a/1190000005033814
