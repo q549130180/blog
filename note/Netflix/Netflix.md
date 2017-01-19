@@ -24,7 +24,7 @@ Netflix的大部分服务都是以云平台为基础和技术栈，云平台由�
 Eureka：Netflix的云平台服务发现技术。
 Archaius：分布式配置工具。
 Ribbon：弹性且智能化的进程处理和服务通信。
-Hystrix：提供单一服务调用所不具备的可靠性，提供运行时的延迟隔离和容错。
+Hystrix：提供单一服务调用所不具备的可靠性，提供运行时的延迟隔离和容错。****
 Karyon和Governator：JVM容器服务。
 Prana sidecar：提供实例内代理，支持非JVM运行时。
 Zuul：提供云部署周边的动态路由、监控、安全和弹性扩展等服务。
