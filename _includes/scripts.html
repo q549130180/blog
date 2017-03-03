@@ -4,9 +4,12 @@
 <script>
   window.jQuery || document.write('<script src="{{ site.url }}/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')
 </script>
+
 <script>
     var base_url = "{{ site.url }}";
 </script>
+
+
 <!-- Bootstrap Core JavaScript -->
 <!--<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 <script src="{{ site.url }}/assets/js/plugins/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
@@ -119,6 +122,8 @@ $(document).ready(function() {
 $(window).scroll(toggleNavCollapse);
 
 $(function() {
+
+  
     $("a.page-scroll").bind("click",
     function(b) {
         var a = $(this);
@@ -131,6 +136,9 @@ $(function() {
         });
         b.preventDefault()
     })
+
+
+
 });
 
 $(".navbar-collapse ul li a").click(function() {

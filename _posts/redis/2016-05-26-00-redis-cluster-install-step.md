@@ -174,6 +174,8 @@ $ gem install rails
 
 ```
 
+由于淘宝镜像https://ruby.taobao.org/已经不再维护了，作者 [huacnlee (李华顺)][2] 转到 [Ruby China][3] 中继续维护了，详情见[RubyGems 镜像- Ruby China][4]
+
 修改完成之后再执行`gem install redis`，如果执行成功，则直接进行[7：执行redis的创建集群命令创建集群]
 
 如果修改完之后还是无法使用`gem install redis`进行安装，则使用本地的安装方式
@@ -250,3 +252,6 @@ cd /usr/local/cluster/redis-3.0.5/src
 
 
 [1]: https://github.com/antirez/redis/archive/3.0.0-rc2.tar.gz
+[2]: https://ruby-china.org/huacnlee
+[3]: https://ruby-china.org/
+[4]: https://gems.ruby-china.org/
