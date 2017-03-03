@@ -28,7 +28,7 @@
 <script src="{{ site.url }}/assets/js/plugins/highlight-9.4.0/highlight.pack.js"></script>
 
 <!-- emojify js -->
-<script src="{{ site.url }}/assets/js/plugins/emojify/js/emojify.min.js"></script>
+<!--<script src="{{ site.url }}/assets/js/plugins/emojify/js/emojify.min.js"></script>-->
 
 <!--滚动时toolbar的样式变更-->
 <script type="text/javascript">
@@ -109,12 +109,14 @@ $(document).ready(function() {
 
 
    //emojify 表情,参考地址：http://hassankhan.me/emojify.js/
+   /*
    emojify.setConfig({
         emoticons_enabled: true,
         people_enabled: true,
         nature_enabled: true
     });
     emojify.run();
+    */
 
 });
 
@@ -123,7 +125,7 @@ $(window).scroll(toggleNavCollapse);
 
 $(function() {
 
-  
+
     $("a.page-scroll").bind("click",
     function(b) {
         var a = $(this);
