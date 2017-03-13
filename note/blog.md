@@ -15,3 +15,4 @@ blog需求整理
 14.文章代码高亮超出文章宽度，实现滚动条，而不是折行
 15.toc鼠标放上去是的颜色，有待修改
 16.添加音乐播放
+17.修改滚动条样式，http://manos.malihu.gr/jquery-custom-content-scroller/

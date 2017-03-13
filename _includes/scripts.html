@@ -30,6 +30,11 @@
 <!-- emojify js -->
 <!--<script src="{{ site.url }}/assets/js/plugins/emojify/js/emojify.min.js"></script>-->
 
+
+<!-- 滚动条样式插件 -->
+<script src="{{ site.url }}/assets/js/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
+
 <!--滚动时toolbar的样式变更-->
 <script type="text/javascript">
 
@@ -118,7 +123,16 @@ $(document).ready(function() {
     emojify.run();
     */
 
+    /* 页面内滚动条样式 */
+    $(window).on("load",function(){
+        $(".hljs").mCustomScrollbar({
+          axis: "x"//设置为横向滚动条
+        });
+    });
+
 });
+
+
 
 //滚动时navbar的样式变更
 $(window).scroll(toggleNavCollapse);
@@ -296,7 +310,9 @@ $(function () {
 $('#weibo-id').click(function() {
   (function(s, d, e) {
     try {
+
     } catch(e) {
+
     }
     var f = 'http://v.t.sina.com.cn/share/share.php?',
     u = '{{ site.url }}{{ page.url }}',
