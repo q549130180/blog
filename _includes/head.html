@@ -128,12 +128,20 @@
     {{ site.url }}/images/{{ background }}
   {% endcapture %}
 {% endunless %}
-<style type="text/css">body {background-image:url({{ background }});}</style>
+<style type="text/css">
+  body {
+    background-image:url({{ background }});
+  }
+</style>
 {% endif %}
 
 <!-- 首页背景颜色 -->
 {% if site.background_color %}
-<style type="text/css">body {background-color:{{ site.background_color }};}</style>
+<style type="text/css">
+  body {
+    background-color:#{{ site.background_color }};
+  }
+</style>
 {% endif %}
 
 <!-- Google Analytics and 百度统计 -->

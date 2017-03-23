@@ -210,7 +210,59 @@ $document_root：/var/www/html
 $request_filename：/var/www/html/test1/test2/test.php
 ```
 
-### 2.3 常用正则
+### 2.3 rewrite_log指令
+
+- 语法：`rewrite_log on|off`;
+- 默认值：`rewrite_log off`;
+- 作用域：`http`,`server`,`location`,`if`;
+- 开启或关闭以`notice`级别打印`rewrite`处理日志到`error log`文件。
+
+nginx打开`rewrite log`例子
+
+```
+rewrite_log on;
+error_log logs/xxx.error.log notice;
+```
+1. 打开`rewrite on`
+2. 把`error log`的级别调整到 `notice`
+
+### 2.4 set指令
+
+- 语法：`set variable value`;
+- 默认值：`none`;
+- 作用域：`server`,`location`,`if`;
+
+定义一个变量并赋值，值可以是文本，变量或者文本变量混合体。
+
+示例：`set $varname "hello world"`;
+
+### 2.5 uninitialized_variable_warn指令
+
+- 语法：`uninitialized_variable_warn on | off`;
+- 默认值：`uninitialized_variable_warn on`;
+- 作用域：`http`,`server`,`location`,`if`;
+
+控制是否输出为初始化的变量到日志
+
+### 2.6 return 指令
+
+语法：`return code`
+默认值：`none`
+使用字段：`server`, `location`, `if`
+
+停止处理并为客户端返回状态码。非标准的444状态码将关闭连接，不发送任何响应头。可以使用的状态码有：204，400，402-406，408，410, 411, 413, 416与500-504。如果状态码附带文字段落，该文本将被放置在响应主体。相反，如果状态码后面是一个URL，该URL将成为location头补值。没有状态码的URL将被视为一个302状态码。
+
+示例：如果访问的URL以`.sh`或`.bash`结尾，则返回403状态码。
+
+```nginx
+location ~ .*.(sh|bash)?$
+{
+    return 403;
+}
+```
+
+
+### 2.7 常用正则
 - `.` ： 匹配除换行符以外的任意字符
 - `?` ： 重复0次或1次
 - `+` ： 重复1次或更多次
@@ -224,3 +276,50 @@ $request_filename：/var/www/html/test1/test2/test.php
 - `[a-z]` ： 匹配a-z小写字母的任意一个
 
 小括号`()`之间匹配的内容，可以在后面通过`$1`来引用，`$2`表示的是前面第二个`()`里的内容。正则里面容易让人困惑的是`\`转义特殊字符。
+
+
+### 2.8 rewrite实例
+
+例1：
+
+```nginx
+http {
+    # 定义image日志格式
+    log_format imagelog '[$time_local] ' $image_file ' ' $image_type ' ' $body_bytes_sent ' ' $status;
+    # 开启重写日志
+    rewrite_log on;
+    server {
+        root /home/www;
+        location / {
+                # 重写规则信息
+                error_log logs/rewrite.log notice;
+                # 注意这里要用‘’单引号引起来，避免{}
+                rewrite '^/images/([a-z]{2})/([a-z0-9]{5})/(.*)\.(png|jpg|gif)$' /data?file=$3.$4;
+                # 注意不能在上面这条规则后面加上“last”参数，否则下面的set指令不会执行
+                set $image_file $3;
+                set $image_type $4;
+        }
+        location /data {
+                # 指定针对图片的日志格式，来分析图片类型和大小
+                access_log logs/images.log mian;
+                root /data/images;
+                # 应用前面定义的变量。判断首先文件在不在，不在再判断目录在不在，如果还不在就跳转到最后一个url里
+                try_files /$arg_file /image404.html;
+        }
+        location = /image404.html {
+                # 图片不存在返回特定的信息
+                return 404 "image not found\n";
+        }
+}
+
+```
+
+对形如/images/ef/uh7b3/test.png的请求，重写到/data?file=test.png，于是匹配到location /data，先看/data/images/test.png文件存不存在，如果存在则正常响应，如果不存在则重写tryfiles到新的image404 location，直接返回404状态码。
+
+例2：
+
+```nginx
+rewrite ^/images/(.*)_(\d+)x(\d+)\.(png|jpg|gif)$ /resizer/$1.$4?width=$2&height=$3? last;
+```
+
+对形如/images/bla_500x400.jpg的文件请求，重写到/resizer/bla.jpg?width=500&height=400地址，并会继续尝试匹配location。

@@ -45,7 +45,7 @@ seo:
 # Background image to be tiled on all pages
 background:
 
-background_color: #F5F8F9
+background_color: F7F7F7
 
 # Analytics and webmaster tools stuff goes here
 google_analytics: UA-78482070-1
@@ -103,7 +103,7 @@ page_layout: page
 # Format titles with titlecase?
 titlecase: true
 # aside 控制aside显示隐藏时，需修改_page.scss中的#post-index中mian的max-width宽度
-aside : false
+aside : true
 
 #导航栏
 pages_list:

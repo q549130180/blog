@@ -47,7 +47,7 @@
   </div><!-- /.header-title -->
 </header><!-- /.entry-header -->
 
-<div id="main" role="main" style="" class="main-aside-width" >
+<div id="main" role="main" style="{% if page.section-type == 'index' %}max-width: 1064px;{% endif %}" class="main-aside-width" >
   <div id="main-cotent" >
     {{ content }}
 
@@ -58,7 +58,10 @@
     {% endif %}
   </div>
   <!-- 侧边栏 -->
-  {% include aside.html %}
+  {% if page.section-type == 'index' %}
+    <!-- 控制只在主页上显示aside-->
+    {% include aside.html %}
+  {% endif %}
   <div id="main-other">
   </div>
 </div>

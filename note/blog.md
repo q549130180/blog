@@ -1,6 +1,6 @@
 blog需求整理
 1.Bootstrap Scrollspy不生效(已解决)
-2.添加主页aside
+2.添加主页aside(已解决)
 3.添加文章页面aside
 4.强文章目录添加到文章的aside中
 5.修改目录样式，参考segmentfault.com目录样式
@@ -12,7 +12,7 @@ blog需求整理
 11.提高博客访问速度，被百度检索，建议方式：将国内访问转发到coding.net的gitpage
 12.添加打赏部分，内容：“如您觉得文章不错，对您有所帮助，可以通过“支付宝”或“微信支付”请我喝咖啡。”
 13.添加多说评论，考虑以后添加
-14.文章代码高亮超出文章宽度，实现滚动条，而不是折行
+14.文章代码高亮超出文章宽度，实现滚动条，而不是折行(已解决)
 15.toc鼠标放上去是的颜色，有待修改
 16.添加音乐播放
-17.修改滚动条样式，http://manos.malihu.gr/jquery-custom-content-scroller/
+17.修改滚动条样式，http://manos.malihu.gr/jquery-custom-content-scroller/(已解决)
