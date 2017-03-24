@@ -174,7 +174,9 @@ $ gem install rails
 
 ```
 
-修改完成之后再执行`gem install redis`，如果执行成功，则直接进行[6：执行redis的创建集群命令创建集群]
+由于淘宝镜像https://ruby.taobao.org/已经不再维护了，作者 [huacnlee (李华顺)][2] 转到 [Ruby China][3] 中继续维护了，详情见[RubyGems 镜像- Ruby China][4]
+
+修改完成之后再执行`gem install redis`，如果执行成功，则直接进行[7：执行redis的创建集群命令创建集群]
 
 如果修改完之后还是无法使用`gem install redis`进行安装，则使用本地的安装方式
 
@@ -217,7 +219,7 @@ make install
 安装完这些之后，再次执行：`gem install -l ./redis-3.2.1.gem`
 
 
-### 6：执行redis的创建集群命令创建集群
+### 7：执行redis的创建集群命令创建集群
 
 ```shell
 cd /usr/local/cluster/redis-3.0.5/src
@@ -232,13 +234,15 @@ cd /usr/local/cluster/redis-3.0.5/src
 至此redis集群即搭建成功！
 
 
-### 7：执行命令查看现在的集群中节点的状态
+### 8：执行命令查看现在的集群中节点的状态
 
 `redis-cli -c -p 7001 cluster nodes`
 
-### 8：使用redis-cli命令进入集群环境
+查看`redis-cli`帮助`redis-cli --help`
 
-`redis-cli -c -p 7001`
+### 9：使用redis-cli命令进入集群环境
+
+`redis-cli -c -h 127.0.0.1 -p 7001`
 
 检查集群，我们通过check cluster的一个节点，就知道整个集群的状况，可以看出来谁是主，谁是从
 `./redis-trib.rb check 127.0.0.1:7001`
@@ -248,3 +252,6 @@ cd /usr/local/cluster/redis-3.0.5/src
 
 
 [1]: https://github.com/antirez/redis/archive/3.0.0-rc2.tar.gz
+[2]: https://ruby-china.org/huacnlee
+[3]: https://ruby-china.org/
+[4]: https://gems.ruby-china.org/

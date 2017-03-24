@@ -1,7 +1,7 @@
 <!-- 侧边栏,开发中。。。 -->
 <aside id="main-aside" style="{% if site.aside == false %}display: none;{% endif %}">
   <!-- 最新文章-->
-  <div class="main-aside-block" style="height:300px;">
+  <div class="main-aside-block" style="height:350px;">
     <div id="black-header" style="">
       <span style="">最新文章</span>
     </div>
@@ -65,9 +65,19 @@
     </div>
   </div>
 
+   <div class="main-aside-block" style="height:300px;display:none;">
+    <div id="black-header" >
+      <span>最新评论</span>
+    </div>
+    <div id="black-content">
+
+    </div>
+  </div>
+
   <div class="main-aside-block" style="height:300px;display:none;">
     <div id="black-header" >
-      <span>最新阅读</span>
+      <!-- 阅读量最高的文章 -->
+      <span>热门文章</span>
     </div>
     <div id="black-content">
 

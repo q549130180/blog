@@ -4,20 +4,22 @@
 <script>
   window.jQuery || document.write('<script src="{{ site.url }}/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')
 </script>
+
 <script>
     var base_url = "{{ site.url }}";
 </script>
+
+
 <!-- Bootstrap Core JavaScript -->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>-->
-<!--<script src="{{ site.url }}/assets/js/plugins/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>-->
-<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<script src="{{ site.url }}/assets/js/plugins/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 
 <script src="{{ site.url }}/assets/js/scripts.min.js"></script>
 <!-- search js -->
 <script src="{{ site.url }}/assets/js/plugins/jekyll-search.min.js"></script>
 <script src="{{ site.url }}/assets/js/search.js"></script>
 
-<!-- jQuery Knob -->
+<!-- jQuery Knob 旋钮插件 -->
 <script src="{{ site.url }}/assets/js/plugins/knob/jquery.knob.js"></script>
 
 <!-- toc 文章目录插件 -->
@@ -26,7 +28,14 @@
 <script src="{{ site.url }}/assets/js/plugins/highlight-9.4.0/highlight.pack.js"></script>
 
 <!-- emojify js -->
-<script src="{{ site.url }}/assets/js/plugins/emojify/js/emojify.min.js"></script>
+<!--<script async src="{{ site.url }}/assets/js/plugins/emojify/js/emojify.min.js"></script>-->
+
+
+<!-- 滚动条样式插件 -->
+<script src="{{ site.url }}/assets/js/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<!-- 网站计数插件 官网 ： http://ibruce.info/2015/04/04/busuanzi/ -->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <!--滚动时toolbar的样式变更-->
 <script type="text/javascript">
@@ -107,19 +116,32 @@ $(document).ready(function() {
 
 
    //emojify 表情,参考地址：http://hassankhan.me/emojify.js/
+   /*
    emojify.setConfig({
         emoticons_enabled: true,
         people_enabled: true,
         nature_enabled: true
     });
     emojify.run();
+    */
+
+    /* 页面内滚动条样式 */
+    $(window).on("load",function(){
+        $(".hljs").mCustomScrollbar({
+          axis: "x"//设置为横向滚动条
+        });
+    });
 
 });
+
+
 
 //滚动时navbar的样式变更
 $(window).scroll(toggleNavCollapse);
 
 $(function() {
+
+
     $("a.page-scroll").bind("click",
     function(b) {
         var a = $(this);
@@ -132,6 +154,9 @@ $(function() {
         });
         b.preventDefault()
     })
+
+
+
 });
 
 $(".navbar-collapse ul li a").click(function() {
@@ -287,7 +312,9 @@ $(function () {
 $('#weibo-id').click(function() {
   (function(s, d, e) {
     try {
+
     } catch(e) {
+
     }
     var f = 'http://v.t.sina.com.cn/share/share.php?',
     u = '{{ site.url }}{{ page.url }}',

@@ -22,20 +22,26 @@ Git是一款免费、开源的分布式版本控制系统，用于敏捷高效�
 
 ## 二、git for linux安装与配置
 
+安装环境准备
+
+```bash
+yum -y install gcc zlib zlib-devel perl-ExtUtils-MakeMaker package
+```
+
 git下载地址：https://www.kernel.org/pub/software/scm/git/
 
 ```
-tar -xzf  git-2.1.3.tar.gz  
-cd git-2.1.3  
-./configure -prefix=/usr/local/git --with-curl  --with-expat  
-make && make install  
+tar -xzf  git-2.1.3.tar.gz
+cd git-2.1.3
+./configure -prefix=/usr/local/git --with-curl  --with-expat
+make && make install
 ```
 
 添加环境变量：
 
 ```
-export GIT_HOME=/usr/local/git  
-export PATH=$PATH:$GIT_HOME/bin:$GIT_HOME/libexec/git-core  
+export GIT_HOME=/usr/local/git
+export PATH=$PATH:$GIT_HOME/bin:$GIT_HOME/libexec/git-core
 ```
 
 检查`git --version`,如果输出Git的版本号，则安装成功。
