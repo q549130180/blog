@@ -1,3 +1,14 @@
-<span>Copyright &copy; {{ site.time | date: '%Y' }} by <a href="{{ site.url }}" rel="nofollow">{{ site.owner.name }}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All Rights Reserved.
+
+<span>
+  Copyright &copy; {{ site.time | date: '%Y' }} by <a href="{{ site.url }}" rel="nofollow">{{ site.owner.name }}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All Rights Reserved.
   Designed by Jekyll.
+  {% if page.section-type == 'index' %}
+  <span id="busuanzi_container_site_pv" style='display:none'>
+    <span title="" onMouseOver="javascript:$(this).attr('title','本站总访问量 ' + $('#busuanzi_value_site_pv').text() + ' 次');">Total <span id="busuanzi_value_site_pv"></span> Hits.</span>
+  </span>
+  {% elsif page.section-type != 'page' %}
+  <span id="busuanzi_container_site_pv" style='display:none'>
+    <span title="" onMouseOver="javascript:$(this).attr('title','本文总阅读量 ' + $('#busuanzi_value_page_pv').text() + ' 次');">Article Read <span id="busuanzi_value_page_pv"></span> Time.</span>
+  </span>
+  {% endif %}
 </span>
