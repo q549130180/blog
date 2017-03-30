@@ -37,6 +37,8 @@
 <!-- 网站计数插件 官网 ： http://ibruce.info/2015/04/04/busuanzi/ -->
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+<script src="{{ site.url }}/assets/js/blog.js"></script>
+
 <!--滚动时toolbar的样式变更-->
 <script type="text/javascript">
 
@@ -132,14 +134,6 @@ $(document).ready(function() {
         });
     });
 
-});
-
-
-
-//滚动时navbar的样式变更
-$(window).scroll(toggleNavCollapse);
-
-$(function() {
 
 
     $("a.page-scroll").bind("click",
@@ -153,9 +147,16 @@ $(function() {
             a.blur()
         });
         b.preventDefault()
-    })
+    });
+
+});
 
 
+
+//滚动时navbar的样式变更
+$(window).scroll(toggleNavCollapse);
+
+$(function() {
 
 });
 

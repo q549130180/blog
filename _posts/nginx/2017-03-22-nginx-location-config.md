@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Nginx 配置 location 总结及 rewrite 规则
-description: "Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个BSD-like 协议下发行。由俄罗斯的程序设计师Igor Sysoev所开发，供俄国大型的入口网站及搜索引擎Rambler（俄文：Рамблер）使用。其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好，中国大陆使用nginx网站用户有：京东、新浪、网易、腾讯、淘宝等。<br>本文将详细的讲解Nginx服务器的安装与配置文件的说明。"
+description: "Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个BSD-like 协议下发行。<br>本文将详细的讲解Nginx服务器的location匹配规则配置以及rewrite重写规则的配置。"
 modified: 2017-03-22 13:20:20
 tags: [Nginx,http Server,location,rewrite]
 post_type: developer
@@ -323,3 +323,107 @@ rewrite ^/images/(.*)_(\d+)x(\d+)\.(png|jpg|gif)$ /resizer/$1.$4?width=$2&height
 ```
 
 对形如/images/bla_500x400.jpg的文件请求，重写到/resizer/bla.jpg?width=500&height=400地址，并会继续尝试匹配location。
+
+
+### 2.9 Nginx常用实例
+
+1.当访问的文件和目录不存在时，重定向到某个php文件
+
+```nginx
+if( !-e $request_filename )
+{
+  rewrite ^/(.*)$ index.php last;
+}
+```
+
+2.目录对换 /123456/xxxx  ====>   /xxxx?id=123456
+
+```
+rewrite ^/(d+)/(.+)/  /$2?id=$1 last;
+```
+
+3.如果客户端使用的是IE浏览器，则重定向到/ie目录下
+
+```
+if( $http_user_agent  ~ MSIE)
+{
+  rewrite ^(.*)$ /ie/$1 break;
+}
+```
+
+4.禁止访问多个目录
+
+```
+location ~ ^/(cron|templates)/
+{
+  deny all;
+  break;
+}
+```
+
+5.禁止访问以/data开头的文件
+
+```
+location ~ ^/data
+{
+  deny all;
+}
+```
+
+6.禁止访问以.sh,.flv,.mp3为文件后缀名的文件
+
+```
+location ~ .*.(sh|flv|mp3)$
+{
+  return 403;
+}
+```
+
+7.设置某些类型文件的浏览器缓存时间
+
+```
+location ~ .*.(gif|jpg|jpeg|png|bmp|swf)$
+{
+  expires 30d;
+}
+location ~ .*.(js|css)$
+{
+  expires 1h;
+}
+```
+
+8.给favicon.ico和robots.txt设置过期时间;
+
+这里为favicon.ico为99天,robots.txt为7天并不记录404错误日志
+
+```
+location ~(favicon.ico) {
+  log_not_found off;
+  expires 99d;
+  break;
+}
+
+location ~(robots.txt) {
+  log_not_found off;
+  expires 7d;
+  break;
+}
+```
+
+9.设定某个文件的过期时间;这里为600秒，并不记录访问日志
+
+```
+location ^~ /html/scripts/loadhead_1.js {
+  access_log   off;
+  root /opt/lampp/htdocs/web;
+  expires 600;
+  break;
+}
+```
+
+**参考资料：**
+
+- [nginx rewrite 参数和例子][1]
+
+
+[1]: http://blog.c1gstudio.com/archives/434

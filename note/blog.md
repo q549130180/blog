@@ -16,3 +16,5 @@ blog需求整理
 15.toc鼠标放上去是的颜色，有待修改
 16.添加音乐播放
 17.修改滚动条样式，http://manos.malihu.gr/jquery-custom-content-scroller/(已解决)
+18.添加404公益页面。腾讯公益：http://www.qq.com/404/ (已解决)
+19.整理scripts.html中的js代码
