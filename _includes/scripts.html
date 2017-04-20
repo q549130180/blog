@@ -34,6 +34,9 @@
 <!-- 滚动条样式插件 -->
 <script src="{{ site.url }}/assets/js/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 
+<!-- 图像放大jQuery插件 https://github.com/fat/zoom.js -->
+<script src="{{ site.url }}/assets/js/plugins/zoom/js/zoom.js"></script>
+
 <!-- 网站计数插件 官网 ： http://ibruce.info/2015/04/04/busuanzi/ -->
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
@@ -148,6 +151,12 @@ $(document).ready(function() {
         });
         b.preventDefault()
     });
+
+    //循环添加图片放大标签
+    var imgArr = $(".entry-content").find("img")
+    for (var i = 0; i < imgArr.length; i++) {
+      $($(".entry-content").find("img")[i]).attr("data-action","zoom")
+    }
 
 });
 
