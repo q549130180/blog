@@ -1,6 +1,6 @@
 var blog = {};
 
-var blog.tools = {};
+blog.tools = {};
 
 //改变navbar样式的函数
 blog.toggleNavCollapse = function(){

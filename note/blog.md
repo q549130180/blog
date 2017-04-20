@@ -18,3 +18,6 @@ blog需求整理
 17.修改滚动条样式，http://manos.malihu.gr/jquery-custom-content-scroller/(已解决)
 18.添加404公益页面。腾讯公益：http://www.qq.com/404/ (已解决)
 19.整理scripts.html中的js代码
+20.修改aside在手机屏幕下的消失问题
+21.文章内的图片，点击放大显示(已解决)
+22.分类标签，鼠标放到标签上，标签放大显示(已解决)
