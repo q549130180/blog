@@ -86,4 +86,9 @@ upload *(rw,fsid=2)
     命令：`service rpcbind start`
 
 ## 七、在客户端mount远程文件夹
-    ` mount -t nfs 10.10.5.223:/staples/fileServer /staples/fileServer`
+    命令：` mount -t nfs 10.10.5.223:/staples/fileServer /staples/fileServer`
+
+
+## 八、开机自动挂载
+
+    命令：`10.32.2.201:/home/quizgo/programs/www /home/quizgo/programs/www    nfs defaults 0 0`
