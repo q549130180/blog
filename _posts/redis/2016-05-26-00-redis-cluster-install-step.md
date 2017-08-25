@@ -73,7 +73,7 @@ make && make install
 
 ### 4.修改配置文件redis.conf
 
-- port 7000  # redis端口
+- port 7001  # redis端口
 - daemonize yes # 开启守护进程
 - dir /usr/local/cluster/7001/data  #数据文件存放位置（上面在端口文件夹中创建的data文件夹）
 - cluster-enabled yes  #启用或停用集群

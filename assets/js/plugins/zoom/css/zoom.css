@@ -16,6 +16,7 @@ img.zoom-img {
   cursor: -webkit-zoom-out;
   cursor: -moz-zoom-out;
 }
+/*遮罩*/
 .zoom-overlay {
   z-index: 420;
   background: #fff;

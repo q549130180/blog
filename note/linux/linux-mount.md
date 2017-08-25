@@ -1,3 +1,18 @@
+---
+layout: post
+title:  Linux Mount
+description: "。"
+modified: 2017-07-31 15:20:20
+tags: [Linux,Mount]
+post_type: developer
+series:
+categories: [Linux]
+image:
+  feature: posts_header/abstract-4.jpg
+  credit:
+  creditlink:
+---
+
 ## 一、NFS服务器的安装
 
 检查linux系统中是否安装了nfs-utils和rpcbind（老版本的系统是安装portmap） 两个软件包
@@ -11,7 +26,7 @@
 命令：
 
 ```
-#service nfs starus
+#service nfs status
 #service rpcbind status
 ```
 
@@ -86,4 +101,16 @@ upload *(rw,fsid=2)
     命令：`service rpcbind start`
 
 ## 七、在客户端mount远程文件夹
-    ` mount -t nfs 10.10.5.223:/staples/fileServer /staples/fileServer`
+    命令：` mount -t nfs 10.10.5.223:/staples/fileServer /staples/fileServer`
+
+    查看结果
+    命令：`df -h`
+
+
+## 八、开机自动挂载
+    设置开机挂载，编辑/etc/fstab
+    命令：`10.32.2.201:/home/quizgo/programs/www /home/quizgo/programs/www    nfs defaults 0 0`
+
+
+
+http://blog.csdn.net/stonexmx/article/details/51221230
