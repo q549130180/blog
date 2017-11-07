@@ -132,6 +132,9 @@ $ git rm [file1] [file2] ...
 # 停止追踪指定文件，但该文件会保留在工作区
 $ git rm --cached [file]
 
+# 它会把我们未通过 git rm 删除的文件全部stage
+$ git add -A
+
 # 改名文件，并且将这个改名放入暂存区
 $ git mv [file-original] [file-renamed]
 {% endhighlight %}

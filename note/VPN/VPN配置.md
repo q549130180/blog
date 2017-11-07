@@ -44,7 +44,7 @@ conn L2TP-PSK-noNAT
 设置预共享密钥配置文件（/etc/ipsec.secrets）
 
 ```shell
-45.62.96.30     %any:PSK       "test1234"    #ip地址替换成你的本机ip,"test1234"配置成自己的秘钥
+45.62.96.30     %any:PSK       "lingfeng"    #ip地址替换成你的本机ip,"lingfeng"配置成自己的秘钥
 ```
 
 
@@ -78,7 +78,7 @@ ipsec saref = yes
 [lns default]
 ip range = 192.168.1.128-192.168.1.254    #分配的客户端IP
 local ip = 192.168.1.1                 #本地IP  不用改
-refuse chap = yes                     #改成refuse
+refuse chap = yes                     
 refuse pap = yes
 require authentication = yes
 name = l2tp
