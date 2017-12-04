@@ -3,7 +3,7 @@ layout: post
 title: Apache与Tomcat服务器集成和集群配置
 description: "Apache与Tomcat服务器集成和集群配置,通过mod_jk的方式进行Tomcat和Apache的集成"
 modified: 2016-07-20 15:20:20
-tags: [Apache,Apache Server,Tomcat]
+tags: [Apache,Apache Server,Tomcat,httpd]
 post_type: developer
 categories: [Apache]
 image:

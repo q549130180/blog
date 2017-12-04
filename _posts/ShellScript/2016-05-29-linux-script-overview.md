@@ -3,7 +3,7 @@ layout: post
 title:  Linux Shell Script概述
 description: "shell脚本（shell script），是一种为shell编写的脚本程序。业界所说的shell通常都是指shell脚本，但读者朋友要知道，shell和shell script是两个不同的概念。由于习惯的原因，简洁起见，本文出现的“shell编程”都是指shell脚本编程，不是指开发shell自身（如Windows Explorer扩展开发）."
 modified: 2016-05-29 13:20:20
-tags: [Linux,Shell Script]
+tags: [Linux,Shell Script,shell]
 post_type: developer
 categories: [Shell Script ]
 image:

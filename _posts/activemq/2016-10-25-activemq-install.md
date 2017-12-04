@@ -3,7 +3,7 @@ layout: post
 title:  ActiveMQ 高可用集群安装、配置
 description: "ActiveMQ 是Apache出品，最流行的，能力强劲的开源消息总线。ActiveMQ 是一个完全支持JMS1.1和J2EE 1.4规范的 JMS Provider实现，尽管JMS规范出台已经是很久的事情了，但是JMS在当今的J2EE应用中间仍然扮演着特殊的地位。"
 modified: 2016-10-25 15:20:20
-tags: [ActiveMQ,JMS]
+tags: [ActiveMQ,JMS,Java]
 post_type: developer
 series: ActiveMQ系列文章
 categories: [ActiveMQ]
