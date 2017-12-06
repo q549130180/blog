@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  Cent OS 安装epel源
-description: "更新Cent OS系统的epel源."
+description: "更新Cent OS系统的epel源,跟新yum源."
 modified: 2017-08-24 15:20:20
-tags: [Linux,Cent OS,epel]
+tags: [Linux,Cent OS,epel,yum]
 post_type: developer
 blogid: 201708240001
 categories: [Cent OS]

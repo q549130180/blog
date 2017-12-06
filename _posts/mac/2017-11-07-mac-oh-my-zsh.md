@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  Mac下终端改造方案
-description: "使用iTerm2和oh-my-zsh折腾自己的Terminal。"
+description: "Mac下终端的改造方案,使用iTerm2和oh-my-zsh折腾自己的Terminal。"
 modified: 2017-11-07 13:20:20
-tags: [Mac,Iterm2,zsh,Terminal]
+tags: [Mac,Iterm2,zsh,Terminal,oh-my-zsh]
 post_type: developer
 blogid: 201711070001
 categories: [Mac ]
@@ -13,7 +13,7 @@ image:
   creditlink:
 ---
 
-## 1.概述
+## 1. 概述
 
 好久之前就想折腾一下自己的Terminal了，正好有点时间就把Terminal弄了下，折腾了一下午，终于把Terminal折腾成自己想要的效果了，先上个效果图
 ![Alt text]({{site.url}}/images/posts_image/mac_oh_my_zsh_2017-11-07_123456.jpg)

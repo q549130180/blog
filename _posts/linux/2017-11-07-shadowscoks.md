@@ -3,7 +3,7 @@ layout: post
 title:  使用VPS搭建Shadowscoks代理
 description: "使用海外VPS搭建Shadowscoks代理服务器，实现访问Google等网站。"
 modified: 2017-11-07 15:20:20
-tags: [Shadowscoks]
+tags: [Shadowscoks,VPS,代理]
 post_type: developer
 blogid: 201711070002
 categories: [linux ]
