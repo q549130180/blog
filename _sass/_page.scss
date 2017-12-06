@@ -17,7 +17,12 @@ body {
 .entry-content {
 	@include font-size(16);
 	// Dotted line underlines for links
-	p > a,
+	p > a {
+		color: #3194d0;
+		&:hover {
+			border-bottom-style: solid;
+		}
+	}
 	li > a {
 		border-bottom: 1px dotted lighten($link-color, 50);
 		&:hover {

@@ -3,7 +3,7 @@ layout: post
 title:  Raspbian Pi
 description: "树莓派(Raspberry Pi)是由树莓派基金会研发的一种只有信用卡大小的单板机电脑，最初的设计目标是用较为廉价的硬件和开源软件为儿童提供一个计算机教育平台。但其优秀的扩展性和易于开发的特性，使其不仅仅用于儿童教育，更是成为了极客们的玩具。树莓派被开发出了千千万万种玩法，并且普通人也可以轻松实现。"
 modified: 2017-12-03 17:20:20
-tags: [Raspbian Pi,Raspberry Pi,Raspbian,Mac]
+tags: [Raspbian Pi,Raspberry Pi,Raspbian,Mac,树莓派]
 post_type: developer
 categories: [Raspbian Pi]
 image:
@@ -163,6 +163,7 @@ deb-src http://mirrors.aliyun.com/raspbian/raspbian/ wheezy main non-free contri
 ```
 sudo apt-get update
 sudo apt-get upgrade
+sudo apt-get dist-upgrade
 ```
 update是更新列表，upgrade是更新所有已安装的app。
 
