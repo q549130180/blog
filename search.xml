@@ -1,0 +1,8 @@
+---
+layout: null
+---
+
+
+<a>
+  "content"  : "{{ post.content | escape_once | strip_newlines }}",
+</a>

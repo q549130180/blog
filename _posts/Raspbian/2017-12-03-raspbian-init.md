@@ -1,16 +1,18 @@
 ---
 layout: post
-title:  Raspbian Pi
-description: "树莓派(Raspberry Pi)是由树莓派基金会研发的一种只有信用卡大小的单板机电脑，最初的设计目标是用较为廉价的硬件和开源软件为儿童提供一个计算机教育平台。但其优秀的扩展性和易于开发的特性，使其不仅仅用于儿童教育，更是成为了极客们的玩具。树莓派被开发出了千千万万种玩法，并且普通人也可以轻松实现。"
+title:  Raspbian Pi无屏幕无键盘开箱配置
+description: "树莓派(Raspberry Pi)是由树莓派基金会研发的一种只有信用卡大小的单板机电脑，最初的设计目标是用较为廉价的硬件和开源软件为儿童提供一个计算机教育平台。但其优秀的扩展性和易于开发的特性，使其不仅仅用于儿童教育，更是成为了极客们的玩具。树莓派被开发出了千千万万种玩法，并且普通人也可以轻松实现。本文将讲述在没有屏幕的键盘的情况下，通过SSH连接树莓派进行配置。"
 modified: 2017-12-03 17:20:20
 tags: [Raspbian Pi,Raspberry Pi,Raspbian,Mac,树莓派]
 post_type: developer
+series: 树莓派系列文章
 categories: [Raspbian Pi]
 image:
   feature: posts_header/abstract-4.jpg
   credit:
   creditlink:
 ---
+
 ## 1. 什么是树莓派（Raspberry Pi）
 
 树莓派(Raspberry Pi)是由树莓派基金会研发的一种只有信用卡大小的单板机电脑，最初的设计目标是用较为廉价的硬件和开源软件为儿童提供一个计算机教育平台。但其优秀的扩展性和易于开发的特性，使其不仅仅用于儿童教育，更是成为了极客们的玩具。树莓派被开发出了千千万万种玩法，并且普通人也可以轻松实现。
@@ -69,6 +71,11 @@ sudo dd if=/2017-11-29-raspbian-stretch.img of=/dev/rdisk2 bs=1m
 
 4、操作完毕后将U盘弹出`diskutil eject /dev/disk2`
 
+
+### 2.3 Etcher
+
+如果觉得命令行太麻烦的话,也可以使用[Etcher][2]来进行镜像的烧录
+
 ## 3. 更改SSH配置已经连接WiFi
 
 
@@ -80,8 +87,7 @@ sudo dd if=/2017-11-29-raspbian-stretch.img of=/dev/rdisk2 bs=1m
 
 ### 3.2 配置WiFi
 
-如果有网线的话直接插上网线就可以了，
-插入网线之后可以修改如下配置，来配置WiFi
+如果有网线的话直接插上网线就可以了，插入网线之后可以修改如下配置文件，来配置WiFi
 `/etc/wpa_supplicant/wpa_supplicant.conf`
 
 但如果没有网线只有WiFi的话请看如下配置
@@ -117,10 +123,17 @@ network={
 
 - 切换root账户：`su root`
 
+查看网卡信息的几个命令
+
+- `lsusb` – 查看USB设备，检查无线网卡。
+- `lsmod` – 查看系统已加载的模块。rt2x00 是 Ralink 芯片组的统一驱动。
+- `iwconfig` – 查看网卡信息。
+- `ifconfig` – 查看连接信息。
+
 
 ## 4. 更换镜像源
-更换国内镜像源
-这是一个非常重要的知识点。众所周知，树莓派的服务器在国外，所以对于在国内的我们来说，下载或更新非常的缓慢。
+
+更换国内镜像源,这是一个非常重要的知识点。众所周知，树莓派的服务器在国外，所以对于在国内的我们来说，下载或更新非常的缓慢。
 
 好在国内有很多大学或者机构把国外的服务器做了镜像拷贝，并且免费供我们使用。我们只需要把地址更换成国内的地址，就可以大大提升速度和稳定性。
 
@@ -171,3 +184,4 @@ update是更新列表，upgrade是更新所有已安装的app。
 
 
 [1]: https://www.raspberrypi.org/downloads/raspbian/
+[2]: https://etcher.io/

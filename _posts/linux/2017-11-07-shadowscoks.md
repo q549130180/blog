@@ -66,7 +66,7 @@ pip install shadowsocks
 
 ## 3. 使用客户端
 
-下载地址：https://shadowsocks.org/en/index.html，Mac和Windows都有。
+下载地址：https://shadowsocks.org/en/index.html，Mac和Windows都有(IOS可以在App Store下载Wingy或Potatso List)。
 
 以Mac为例
 ![Alt text]({{site.url}}/images/posts_image/shadowsocks_2017-11-07_123456.jpg)
