@@ -20,14 +20,21 @@ body {
 	p > a {
 		color: #3194d0;
 		&:hover {
-			border-bottom-style: solid;
+			//border-bottom-style: solid;
 		}
 	}
 	li > a {
-		border-bottom: 1px dotted lighten($link-color, 50);
+		color: #3194d0;
+		//border-bottom: 1px dotted lighten($link-color, 50);
 		&:hover {
-			border-bottom-style: solid;
+			//border-bottom-style: solid;
 		}
+	}
+}
+
+.social-share {
+	li > a {
+		color: rgba(187,187,187,0.8);
 	}
 }
 

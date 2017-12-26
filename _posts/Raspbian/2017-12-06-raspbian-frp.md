@@ -3,8 +3,9 @@ layout: post
 title:  使用frp搭建内网穿透服务
 description: "frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp, http, https 协议。本文主要讲述通过frp实现在外网通过ssh访问内网的树莓派"
 modified: 2017-12-06 13:20:20
-tags: [frp,linux Server,linux,Raspbian Pi]
+tags: [frp,linux Server,linux,Raspbian Pi,树莓派]
 post_type: developer
+series: 树莓派系列文章
 blogid: 201712060001
 categories: [linux ]
 image:
@@ -22,8 +23,6 @@ image:
 
 1. 一台有公网IP的VPS主机
 2. 内网服务器(我使用的是树莓派)
-
-
 
 ## 3. 开始使用
 
@@ -60,7 +59,6 @@ bind_port = 7000
 保存配置文件
 
 4.后台启动服务`nohup ./frps -c ./frps.ini &`
-
 
 
 ### 3.2 内网主机(树莓派)
@@ -103,10 +101,44 @@ remote_port = 6000
 4.后台启动服务`nohup ./frpc -c ./frpc.ini &`
 
 
-## 4. 连接
+## 4. 设置开机启动
+
+`vim /etc/systemd/system/frps.service`新建此文件，并写入以下内容
+
+```
+[Unit]
+Description=frps daemon
+After=syslog.target  network.target
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/pi/Developer/frp_0.14.0_linux_arm/frpc -c /home/pi/Developer/frp_0.14.0_linux_arm/frpc.ini
+Restart= always
+RestartSec=1min
+ExecStop=/usr/bin/killall frpc
+
+[Install]
+WantedBy=multi-user.target
+```
+
+启动并设为开机自启。
+
+```shell
+$ sudo systemctl start frps
+$ sudo systemctl enable frps
+```
+
+
+## 5. 连接
 
 通过 ssh 访问内网机器，假设用户名为 test：
 `ssh -oPort=6000 test@x.x.x.x`
+
+
+## 6. 参考资料
+
+- <a href="https://github.com/fatedier/frp/issues/176" target="_blank" >https://github.com/fatedier/frp/issues/176</a>
 
 
 

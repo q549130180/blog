@@ -79,6 +79,11 @@ $ sudo systemctl start graylog-server.service
 cat /var/log/graylog-web/application.log
 
 
+访问：http://172.16.165.100:9000/
+
+username:admin
+password为使用pwgen生成的密码
+
 
 
 手动安装：https://www.howtoing.com/how-to-Install-graylog2-and-elasticsearch-on-ubuntu-15-10
