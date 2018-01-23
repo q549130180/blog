@@ -3,7 +3,7 @@ layout: post
 title:  Linux Shell Script基础教程（一）
 description: 编写一个简单的shell脚本，以及简单的介绍shell script的基本语法."
 modified: 2016-05-29 15:20:20
-tags: [Linux,Shell Script,shell]
+tags: [linux,Shell Script,shell]
 post_type: developer
 categories: [Shell Script ]
 image:

@@ -3,7 +3,7 @@ layout: post
 title:  Redis3.0.1 配置文件说明
 description: "Redis3配置文件的中文说明."
 modified: 2016-05-26 16:20:20
-tags: [Redis,Redis Cluster,Redis集群]
+tags: [Redis,Redis Cluster,Redis集群,linux]
 post_type: developer
 series: Redis系列文章
 categories: [redis ]
