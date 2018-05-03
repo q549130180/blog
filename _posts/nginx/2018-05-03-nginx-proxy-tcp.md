@@ -53,6 +53,3 @@ stream {
 ./nginx -s stop
 ./nginx
 ```
-
-> yyyyMMddHHmmssSSS
-> proxy_add_x_forwarded_for
