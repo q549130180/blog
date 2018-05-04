@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Nginx + Tomcat 导致 Session 丢失问题
-description: 在使用Nginx代理tomcat时，使用rewrite进行重定向之后，导致session丢失问题."
+description: "在使用Nginx代理tomcat时，使用rewrite进行重定向之后，导致session丢失问题."
 modified: 2017-03-29 15:20:20
 tags: [Nginx,Session,JSESSIONID]
 post_type: developer
