@@ -5,6 +5,7 @@
                 noBackToTopLinks: false,
                 title: '',
                 minimumHeaders: 3,
+                minToc:4, //最小显示目录层级
                 headers: 'h1, h2, h3, h4, h5, h6',
                 listType: 'ul', // values: [ol|ul]
                 classes: 'anchor',
@@ -70,6 +71,9 @@
             .addClass('clickable-header sub-level-header')
             .each(function(_, header) {
                 this_level = get_level(header);
+                if(this_level > settings.minToc){
+                  return;
+                }
                 if (!settings.noBackToTopLinks && this_level === highest_level) {
                     $(header).addClass('top-level-header').after(return_to_top);
                 }
