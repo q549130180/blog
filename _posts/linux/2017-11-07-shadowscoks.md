@@ -59,8 +59,28 @@ pip install shadowsocks
 - `workers` 表示启动的进程数量。
 - `server_port` 强烈建议使用443端口, 其它端口容易被查封。
 
+也可以配置多端口
+
+```conf
+{
+    "server":"ip-addr",
+    "local_address":"127.0.0.1",
+    "local_port":1080,
+    "port_password":{           --每个端口对应一个密码
+        "1111":"password1",
+        "1112":"password2",
+        "1113":"password3"
+    },
+    "timeout":300,
+    "method":"aes-256-cfb",
+    "fast_open":false,
+    "workers":5
+}
+```
+
 
 3.启动服务
+
 然后使用以下命令启动: `ssserver -c /etc/shadowsocks.json -d start`
 
 
