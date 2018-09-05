@@ -93,3 +93,27 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 ### 3.1 使用agnoster主题
 
 打开`.zshrc`文件，然后将`ZSH_THEME`后面的字段改为`agnoster`。`ZSH_THEME="agnoster"`（`agnoster`即为要设置的主题）
+
+
+## 4. Oh My Zsh 插件
+
+
+### 4.1 zsh-autosuggestions
+
+[zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)可以根据历史输入指令的记录即时的提示，能够很大的提高效率。
+
+##### 1. 安装
+
+```
+brew install zsh-autosuggestions
+```
+
+##### 2. 配置
+
+编辑配置文件 `vim .zshrc`,写入如下内容
+
+```
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+```
+
+刷新配置 `source ~/.zshrc`
