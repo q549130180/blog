@@ -185,7 +185,7 @@ $ git branch -a
 # 新建一个分支，但依然停留在当前分支
 $ git branch [branch-name]
 
-# 新建一个分支，并切换到该分支
+# 新建一个分支，并切换到该分支, -b (branchname)
 $ git checkout -b [branch]
 
 # 新建一个分支，指向指定commit
