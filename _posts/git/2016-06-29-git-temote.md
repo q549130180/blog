@@ -14,7 +14,7 @@ image:
 ---
 
 
-
+## 一、 简介
 
 Git有很多优势，其中之一就是远程操作非常简便。本文详细介绍5个Git命令，它们的概念和用法，理解了这些内容，你就会完全掌握Git远程操作。
 
@@ -28,7 +28,7 @@ Git有很多优势，其中之一就是远程操作非常简便。本文详细�
 
 本文针对初级用户，从最简单的讲起，但是需要读者对Git的基本用法有所了解。同时，本文覆盖了上面5个命令的几乎所有的常用用法，所以对于熟练用户也有参考价值。
 
-![Alt text]({{site.url}}/images/posts_image/git_git_2016_06-07.png)
+![git](http://image.huangxubo.me/images/git/git_git_2018_09_11_001.png)
 
 
 Git 命令清单:
@@ -39,7 +39,7 @@ Git 命令清单:
 - Remote：远程仓库
 
 
-## 一、git clone
+## 二、 `git clone`
 
 远程操作的第一步，通常是从远程主机克隆一个版本库，这时就要用到`git clone`命令。
 
@@ -80,7 +80,7 @@ $ git clone [user@]example.com:path/to/repo.git/
 通常来说，Git协议下载速度最快，SSH协议用于需要用户认证的场合。各种协议优劣的详细讨论请参考[官方文档](https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols)。
 
 
-## 二、git remote
+## 三、 `git remote`
 
 
 为了便于管理，Git要求每个远程主机都必须指定一个主机名。`git remote`命令就用于管理主机名。
@@ -136,7 +136,7 @@ $ git remote rm <主机名>
 $ git remote rename <原主机名> <新主机名>
 {% endhighlight %}
 
-## 三、git fetch
+## 四、 `git fetch`
 
 一旦远程主机的版本库有了更新（Git术语叫做commit），需要将这些更新取回本地，这时就要用到`git fetch`命令。
 
@@ -192,7 +192,7 @@ $ git rebase origin/master
 
 上面命令表示在当前分支上，合并`origin/master`。
 
-## 四、git pull
+## 五、 `git pull`
 
 `git pull`命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并。它的完整格式稍稍有点复杂。
 
@@ -261,7 +261,7 @@ $ git fetch --prune origin
 $ git fetch -p
 {% endhighlight %}
 
-## 五、git push
+## 六、 `git push`
 
 
 `git push`命令用于将本地分支的更新，推送到远程主机。它的格式与`git pull`命令相仿。

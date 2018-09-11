@@ -62,8 +62,7 @@ $ git config --global user.email "email@example.com"
 
 一般来说，日常使用只要记住下图6个命令，就可以了。但是熟练使用，恐怕要记住60～100个命令。
 
-![Alt text]({{site.url}}/images/posts_image/git_git_2016_06-07.png)
-
+![git](http://image.huangxubo.me/images/git/git_git_2018_09_11_001.png)
 
 Git 命令清单:
 
@@ -402,6 +401,6 @@ $ git stash pop
 $ git archive
 {% endhighlight %}
 
-**参考资料：**
+##### 参考资料
 
-[10个迅速提升你Git水平的提示 ](http://www.oschina.net/translate/10-tips-git-next-level?cmp)
+- [10个迅速提升你Git水平的提示 ](http://www.oschina.net/translate/10-tips-git-next-level?cmp)
