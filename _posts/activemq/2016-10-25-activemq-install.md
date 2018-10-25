@@ -462,8 +462,9 @@ ZooKeeper是搭建的集群
 
 
 
-**参考资料：**
-<a href="http://blog.csdn.net/lifetragedy/article/details/51869032#t7" target="_blank" >http://blog.csdn.net/lifetragedy/article/details/51869032#t7</a>
+##### 参考资料：
+
+- <a href="http://blog.csdn.net/lifetragedy/article/details/51869032#t7" target="_blank" >Apache ActiveMQ实战(2)-集群</a>
 
 
 [1]:http://activemq.apache.org/

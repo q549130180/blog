@@ -98,7 +98,7 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 ## 4. Oh My Zsh 插件
 
 
-### 4.1 zsh-autosuggestions
+### 4.1 `zsh-autosuggestions`
 
 [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)可以根据历史输入指令的记录即时的提示，能够很大的提高效率。
 
@@ -112,7 +112,7 @@ brew install zsh-autosuggestions
 
 编辑配置文件 `vim .zshrc`,写入如下内容
 
-```
+```bash
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 ```
 

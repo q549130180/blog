@@ -142,12 +142,12 @@ yum install ruby
 ruby官网：https://www.ruby-lang.org/zh_cn/
 
 ```shell
-#tar -zxvf ruby-2.0.0-p247.tar.gz
-#cd ruby-2.0.0-p247
-#./configure --enable-shared --enable-pthread --prefix=/usr/local/ruby
-# make && make install
+tar -zxvf ruby-2.0.0-p247.tar.gz
+cd ruby-2.0.0-p247
+./configure --enable-shared --enable-pthread --prefix=/usr/local/ruby
+ make && make install
 # 设置环境变量(在最后一行添加ruby的bin目录)：
-# vim /etc/profile
+# 编辑配置文件vim /etc/profile
 export PATH=.:$PATH:/usr/local/ruby/bin
 source /etc/profile
 ruby -v
