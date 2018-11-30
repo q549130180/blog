@@ -396,10 +396,14 @@ $ git stash pop
 
 ### 10.其它
 
-{% highlight bash %}
+```bash
 # 生成一个可供发布的压缩包
 $ git archive
-{% endhighlight %}
+```
+
+
+
+这里推荐一个交互式的 git 学习方式，对于新手学习 git 很有帮助[learnGitBranching](https://learngitbranching.js.org/)
 
 ##### 参考资料
 
