@@ -36,12 +36,20 @@
 {% endif %}
 
 <!-- Open Graph -->
-<meta property="og:locale" content="en_US">
+<!-- <meta property="og:locale" content="en_US"> -->
+<meta property="og:locale" content="zh_CN">
 <meta property="og:type" content="article">
 <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
 <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
 <meta property="og:url" content="{{ site.url }}{{ page.url }}">
 <meta property="og:site_name" content="{{ site.title }}">
+
+
+{% for tag in page.tags %}
+  <meta property="article:tag" content="{{ tag }}" /> 
+{% endfor %}
+
+
 
 {% if site.google_verify %}
 <meta name="google-site-verification" content="{{ site.google_verify }}">
