@@ -8,7 +8,7 @@ post_type: developer
 series: Java 8 系列文章
 categories: [Java]
 image:
-  feature: posts_header/abstract-2.jpg
+  feature: posts_header/abstract-11.jpg
   credit:
   creditlink:
 ---
