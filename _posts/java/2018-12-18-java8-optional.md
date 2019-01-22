@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Java 8 Optional类
+title:  Java 8 新特性之Optional类
 description: "Optional<T> 类（java.util.Optional）是一个容器类，代表一个值存在或不存在，原来用 null 表示一个值不存在，现在 Optional 可以更好的表达这个概念，并且可以避免空指针异常。"
 modified: 2018-12-18 16:20:20
 tags: [Java,Lambda,Java 8,Optional]

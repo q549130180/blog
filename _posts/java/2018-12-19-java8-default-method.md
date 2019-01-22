@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Java 8 默认方法(Default Methods)
+title:  Java 8 新特性之默认方法(Default Methods)
 description: "Java 8 引入了新的语言特性——默认方法（Default Methods）。默认方法允许您添加新的功能到现有库的接口中，并能确保与采用旧版本接口编写的代码的二进制兼容性。"
 modified: 2018-12-19 16:20:20
 tags: [Java,Lambda,Java 8,Default Method]

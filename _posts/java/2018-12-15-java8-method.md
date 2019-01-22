@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Java 8 方法引用
+title:  Java 8 新特性之方法引用
 description: "若 Lambda 体中的功能，已经有方法提供了实现，可以使用方法引用（可以将方法引用理解为 Lambda 表达式的另外一种表现形式）"
 modified: 2018-12-15 18:20:20
 tags: [Java,Lambda,Java 8]

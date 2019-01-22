@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Java 8 新的时间日期 API
+title:  Java 8 新特性之新的时间日期 API
 description: "Java 8 引入了一套全新的时间日期API，操作起来更简便。简单介绍下， LocalDate 和 LocalTime 和 LocalDateTime 的使用。"
 modified: 2018-12-20 19:20:20
 tags: [Java,Lambda,Java 8,LocalDate,LocalTime,LocalDateTime]

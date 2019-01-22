@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Java 8 重复注解与类型注解
+title:  Java 8 新特性之重复注解与类型注解
 description: "Java 8 对注解处理提供了两点改进，可重复的注解及可用于类型的注解。"
 modified: 2018-12-21 18:20:20
 tags: [Java,Lambda,Java 8]

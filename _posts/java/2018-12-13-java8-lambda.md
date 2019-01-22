@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Java 8 Lambda表达式
+title:  Java 8 新特性之Lambda表达式
 description: "Lambda 是一个匿名函数，我们可以把 Lambda 表达式理解为是一段可以传递的代码（将代码像数据一样进行传递）。可以写出更简洁、更灵活的代码。作为一种更紧凑的代码风格，使 Java 的语言表达能力得到了提升。"
 modified: 2018-12-13 16:20:20
 tags: [Java,Lambda,Java 8]
