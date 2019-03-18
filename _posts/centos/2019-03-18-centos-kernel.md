@@ -3,7 +3,7 @@ layout: post
 title:  Cnet OS 7 升级系统内核
 description: "这里我们将介绍一下在 Cent OS 7 环境下来升级 Linux 内核。"
 modified: 2019-03-18 14:20:20
-tags: [Linux,Cent OS]
+tags: [Linux,Cent OS,kernel]
 post_type: developer
 blogid: 201903180001
 categories: [Cent OS]
