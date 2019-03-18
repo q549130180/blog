@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Java 8 并行流与串行流
+title:  Java 8 新特性之并行流与串行流
 description: "并行流就是把一个内容分成多个数据块，并用不同的线程分别处理每个数据块的流 Java 8 中将并行进行了优化，我们可以很容易的对数据进行并行操作，Stream API 可以声明性地通过 parallel() 与 sequential() 在并行流与顺序流之间进行切换。"
 modified: 2018-12-17 19:20:20
 tags: [Java,Lambda,Java 8,Stream API]

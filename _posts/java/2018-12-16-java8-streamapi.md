@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Java 8 Stream API
+title:  Java 8 新特性之Stream API
 description: "Java 8 中有两大最为重要的改革，第一个是 Lambda 表达式，另外一个则是 Stream API（java.util.stream.*）。Stream 是 Java 8 中处理集合的关键抽象概念，它可以指定你希望对集合进行的操作，可以执行非常复杂的查找、过滤和映射数据等操作。使用 Stream API 对集合数据进行，就类似于使用 SQL 执行的数据库查询。也可以使用 Stream API 来并行执行操作。简而言之，Stream API 提供了一种高效且易于使用的处理数据的方式。"
 modified: 2018-12-16 19:20:20
 tags: [Java,Lambda,Java 8,Stream API]
@@ -455,7 +455,7 @@ public void t8() {
 }
 ```
 
-### 4.2 规约
+### 4.2 规约(reduce)
 
 - `T reduce(T identity, BinaryOperator<T> accumulator)` 可以将流中的元素反复结合起来，得到一个值，返回 T
 - `Optional<T> reduce(BinaryOperator<T> accumulator)` 可以将流中的元素反复结合起来，得到一个值，返回 `Optional<T>`
@@ -492,7 +492,7 @@ public void t10() {
 }
 ```
 
-### 4.3 收集
+### 4.3 收集(collect)
 
 - collect 将流转换为其它形式，接收一个 Collector（收集器） 接口的实现，用于给 Stream 中元素做汇总的方法
 

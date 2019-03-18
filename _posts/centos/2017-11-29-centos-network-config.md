@@ -28,6 +28,14 @@ image:
 执行`ifconfig`查看当前网卡信息
 ![Alt text]({{site.url}}/images/posts_image/centos_network_2017-11-29_00001.jpg)
 
+> 注 : 在 CentOS 7 中 ifconfig 命令已经不灵了，换成了 ip 命令工具，输入 ifconfig 会报如下错误:
+> 
+> ```
+> ifconfig
+> -bash: ifconfig: command not found
+> ```
+> 
+> 如果没有可以安装一个工具 `yum install net-tools` 将 ifconfig 命令找回来。
 
 ## 2. ip命令工具
 
