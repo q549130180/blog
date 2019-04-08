@@ -316,45 +316,48 @@ TCP Fast Open 要求服务器和客户端都是 `Linux 3.7+` 的内核，需要�
 
 > 要求：系统内核版本 ≥ 3.7，shadowsocks-libev ≥ 3.0.4，Shadowsocks 服务端开启 TCP Fast Open
 
-1. 修改 `sudo vim /etc/sysctl.conf`，加入如下一行：
+1.修改 `sudo vim /etc/sysctl.conf`，加入如下一行：
+
 
 ```
 net.ipv4.tcp_fastopen = 3
 ```
 
-2. 执行如下命令使之生效 `sysctl -p`
+2.执行如下命令使之生效 `sysctl -p`
 
 
-3. 编辑配置文件 `sudo vim /etc/shadowsocks-libev/config.json`
+3.编辑配置文件 `sudo vim /etc/shadowsocks-libev/config.json`
+
 
 ```    
 "fast_open":true,
 ```
 
-4. `sudo systemctl restart shadowsocks` 重启 shadowsocks
+
+4.`sudo systemctl restart shadowsocks` 重启 shadowsocks
 
 ### 6.4 开启 Google BBR
 
 
 在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的linux 4.9及以上的内核版本中已被采用。对于该算法的分析，ss不经过其它的任何的优化就能轻松的跑满带宽。（speedtest测试或fast测试）。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4.9及以上才能使用。
 
-1. 修改 `sudo vim /etc/sysctl.conf`，加入如下内容
+1.修改 `sudo vim /etc/sysctl.conf`，加入如下内容
 
 ```
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 ```
 
-2. 执行如下命令使之生效 `sysctl -p`
+2.执行如下命令使之生效 `sysctl -p`
 
 
-3. 执行 `sysctl net.ipv4.tcp_available_congestion_control`输出如下说明开启成功
+3.执行 `sysctl net.ipv4.tcp_available_congestion_control`输出如下说明开启成功
 
 ```
 net.ipv4.tcp_available_congestion_control = reno cubic bbr
 ```
 
-4. 重启系统 `reboot`
+4.重启系统 `reboot`
 
 
 
@@ -392,6 +395,7 @@ make install
 systemctl start shadowsocks
 ```
 
+##### 参考资料
 
 - [simple-obfs 官方安装文档](https://github.com/shadowsocks/simple-obfs/blob/master/README.md)
 - [如今我这样科学上网](https://medium.com/@unbiniliumm/%E5%A6%82%E4%BB%8A%E6%88%91%E8%BF%99%E6%A0%B7%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-95187ef07ced)
