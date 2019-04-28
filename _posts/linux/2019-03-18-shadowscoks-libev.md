@@ -104,7 +104,7 @@ sudo make install
 
 - `plugin` : `obfs-server` 的执行文件路径，一般可以直接用 obfs-server。
 - `plugin_opts` : 混淆参数，`obfs` 有 `tls` 和 `http` 两种类型,相比 `http`，`tls` 更具隐蔽性。
-- `failover` : 然后可以在 `4431` 端口跑个 `https` 的站点。这样访问 `443` 端口的时候，如果发现不是 shadowsocks 的流量就自动 `failover` 到 `8443` 的网站。
+- `failover` : 然后可以在 `4431` 端口跑个 `https` 的站点。这样访问 `443` 端口的时候，如果发现不是 shadowsocks 的流量就自动 `failover` 到 `4431` 的网站。
 
 ### 4.2 客户端obfs配置
 
