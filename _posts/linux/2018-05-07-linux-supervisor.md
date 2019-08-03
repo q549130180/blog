@@ -75,6 +75,16 @@ files = /home/ling/developer/supervisor/conf.d/*.conf
 
 > `conf.d`为应用的配置文件存放目录
 
+修改 sock 文件位置，避免被系统删除
+
+```
+[unix_http_server]
+file=/var/run/supervisor.sock   ; 修改为 /var/run 目录，避免被系统删除
+
+[supervisorctl]
+serverurl=unix:///var/run/supervisor.sock ; 修改为 /var/run 目录，避免被系统删除
+```
+
 ## 3. 启动服务
 
 ```bash
