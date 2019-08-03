@@ -141,6 +141,8 @@ public void t2() {
 
 #### 2. limit 截断流
 
+对一个 `Stream` 进行截断操作，获取其前N个元素，如果原 `Stream` 中包含的元素个数小于N，那就获取其所有的元素；
+
 ```java
 @Test
 public void t3() {
@@ -156,6 +158,8 @@ public void t3() {
 ```
 
 #### 3. skip 跳过元素
+
+返回一个丢弃原 `Stream` 的前 N 个元素后剩下元素组成的新 `Stream`，如果原 `Stream` 中包含的元素个数小于N，那么返回空 `Stream`；
 
 ```java
 @Test
@@ -494,11 +498,11 @@ public void t10() {
 
 ### 4.3 收集(collect)
 
-- collect 将流转换为其它形式，接收一个 Collector（收集器） 接口的实现，用于给 Stream 中元素做汇总的方法
+- `collect` 将流转换为其它形式，接收一个 `Collector`（收集器） 接口的实现，用于给 Stream 中元素做汇总的方法
 
-Collector 接口中方法的实现决定了如何对流执行收集操作（如收集到List、Set、Map）。但是 Collector 实现类提供了很多静态方法，可以方便地创建常见收集器实例，具体方法与实例如下表：
+`Collector` 接口中方法的实现决定了如何对流执行收集操作（如收集到 `List`、`Set`、`Map`）。但是 `Collector` 实现类提供了很多静态方法，可以方便地创建常见收集器实例，具体方法与实例如下表：
 
-#### 1. 实例 - 将结果收集到 List、Set 等容器
+#### 1. 实例 - 将结果收集到 `List`、`Set` 等容器
 
 ```java
 @Test
