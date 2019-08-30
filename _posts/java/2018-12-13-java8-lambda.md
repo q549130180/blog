@@ -19,14 +19,13 @@ image:
 
 Lambda 是一个匿名函数，我们可以把 Lambda 表达式理解为是一段可以传递的代码（将代码像数据一样进行传递）。可以写出更简洁、更灵活的代码。作为一种更紧凑的代码风格，使 Java 的语言表达能力得到了提升。
 
-
 ### 1.2 为什么要使用 Lambda 表达式
 
 #### 1. 实例
 
 比如说我们要为 TreeSet 添加一个比价器，如果用原来的匿名内部类实现如下
 
-```
+```java
 @Test
 public void test1() {
     Comparator<Integer> com = new Comparator<Integer>() {
@@ -75,7 +74,6 @@ public class Employee implements Serializable {
     private String name;
     private int age;
     private double salary;
-    
     // 省略 getter 和 setter 方法
 }
 ```
@@ -141,16 +139,13 @@ public List<Employee> filterEmployeeSalary(List<Employee> emps) {
 
 这样的话我要神队每个需求都写个方法，如果再增加需求，还需要再写
 
-
 ##### 优化方式一：策略设计模式
 
 定义一个接口
 
 ```java
 public interface MyPredicate<T> {
-
-	public boolean test(T t);
-	
+    public boolean test(T t);
 }
 ```
 
@@ -262,7 +257,6 @@ public void test7() {
    - 函数式接口可以有默认方法和静态方法。
    - 任何满足单一抽象方法法则的接口，都会被自动视为函数接口。这包括 Runnable 和 Callable 等传统接口，以及您自己构建的自定义接口。
 
-
 ### 2.1 无参数，无返回值
 
 ```java
@@ -281,7 +275,7 @@ public void t1(){
 
 ### 2.2 有一个参数，并且无返回值
 
-```
+```java
 (x) -> System.out.println(x)
 ```
 
@@ -328,12 +322,11 @@ public void t4() {
 ```java
 @Test
 public void t5(){
-	Comparator<Integer> com = (x, y) -> Integer.compare(x, y);
+    Comparator<Integer> com = (x, y) -> Integer.compare(x, y);
 }
 ```
 
 Lambda 表达式的参数列表的数据类型可以省略不写，因为JVM编译器通过上下文推断出，数据类型，即“类型推断”，如果写类型的话如下
-
 
 ```java
 @Test

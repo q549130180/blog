@@ -26,23 +26,20 @@ image:
 
 4. 将排线插入CSI接口。记住，有蓝色胶带的一面应该面向以太网接口方向。同样，这时也确认一下排线安装好了之后，将挡板拉下。
 
-
 ![Alt text]({{site.url}}/images/posts_image/raspbian-camera-2018-01-18.jpg)
-
-
 
 ## 2. 启用摄像头
 
 在安装完摄像头模块之后，首先要确认你已经升级了树莓派系统并应用了最新的固件，使用如下命令来跟新系统:
 
-```
+```bash
 sudo apt-get update
 sudo apt-get upgrade
 ```
 
 运行树莓派配置工具来激活摄像头模块：
 
-```
+```bash
 sudo raspi-config
 ```
 
@@ -50,24 +47,23 @@ sudo raspi-config
 
 下载deb包
 
-```
+```bash
 wget http://mirrors.ustc.edu.cn/archive.raspberrypi.org/pool/main/r/raspi-config/raspi-config_20171201_all.deb
 ```
 
 解决以来
 
-```
+```bash
 sudo apt-get install whiptail parted lua5.1  alsa-utils psmisc
 ```
 
 安装软件
 
-```
+```bash
 dpkg -i raspi-config_20170811_all.deb
 ```
 
 再次运行`sudo raspi-config`
-
 
 然后移动光标到`Interfacing Options`,按回车(现在最新的`raspi-config`,`Camera`模块在`Interfacing Options`)
 ![Alt text]({{site.url}}/images/posts_image/raspbian-camera-2018-01-18_001.jpg)
@@ -81,15 +77,12 @@ dpkg -i raspi-config_20170811_all.deb
 结束后会树莓派会重启.
 
 重启完成后就可以用树莓派拍照了
-运行`raspistill -o ling.jpg -t 2000 `这句命令将在 2s 后拍摄一张照片，然后保存为 ling.jpg
+运行`raspistill -o ling.jpg -t 2000`这句命令将在 2s 后拍摄一张照片，然后保存为 ling.jpg
 
 通过`raspi-config`工具更新了操作并使能摄像头之后，它会告诉树莓派摄像头已经连接成功，并增加了两个命令行工具以供用户使用摄像头。
 
 1. `raspistill` 用于捕捉图像
 2. `raspivid` 用于捕捉视频
-
-
-
 
 ## 3. raspistill详解
 
@@ -119,6 +112,7 @@ dpkg -i raspi-config_20170811_all.deb
 - `–exif, -x` 在捕捉的内容中加入 EXIF 标签（格式为 ‘key=value’）,允许在 JPEG 图像中插入特定的 EXIF 标签。您可以插入 32 条记录。这是非常实用的功能，比如插入 GPS 元数据。例如设置经度
 
 - `–exif GPS.GPSLongitude=5/1,10/1,15/100` 该命令将会设置经度为 5 度 10 分 15 秒。查看 EXIF 文档获得所有可用标签的详细信息。支持的标签如下：
+
 > IFD0. 或 IFD1.
 >
 > <ImageWidth, ImageLength, BitsPerSample, Compression, PhotometricInterpretation, ImageDescription, Make, Model, StripOffsets, Orientation, SamplesPerPixel, RowsPerString, StripByteCounts, Xresolution, Yresolution, PlanarConfiguration, ResolutionUnit, TransferFunction, Software, DateTime, Artist, WhitePoint, PrimaryChromaticities, JPEGInterchangeFormat, JPEGInterchangeFormatLength, YcbCrCoefficients, YcbCrSubSampling, YcbCrPositioning, ReferenceBlackWhite, Copyright>
@@ -135,7 +129,6 @@ dpkg -i raspi-config_20170811_all.deb
 >
 > <InteroperabilityIndex, InteroperabilityVersion, RelatedImageFileFormat, RelatedImageWidth, RelatedImageLength>
 
-
 注意，有部分标签将会由摄像头系统自动设置，但是会被命令行执行的 EXIF 操作所覆盖。
 
 如果设置为 –exif none，那么将不会向文件中插入 EXIF信息。文件的尺寸也会稍微变小。
@@ -147,18 +140,8 @@ dpkg -i raspi-config_20170811_all.deb
 - `–signal, -s` 信号模式,摄像头会运行（-t）参数指定的时间，并且每次向摄像进程发送 USR1 信号时进行一次捕捉。该操作可以通过发送 kill 命令进行终止。您可以使用“pgrep raspistill”命令找到摄像进程的 ID。
 `kill -USR1`
 
-
-
-
-
-
-
-
-
-
-
-
 ## 4. raspivid详解
+
 - `–width, -w` 设置图像宽度,视频的宽度。范围为 64 到 1920。
 
 - `–height, -h` 设置图像高度,视频的高度。范围为 64 到 1080。
@@ -198,6 +181,7 @@ dpkg -i raspi-config_20170811_all.deb
 - `–keypress, -k` 使用回车键在录制和暂停两种状态间进行切换,每次点击回车键将会暂停或重新开始录制进程。点击 X 键后点击回车键将停止录制并关闭程序。注意，超时设置值将影响录制结束时间，但仅在每次回车键点击后进行检查，所以如果系统正在等待按键操作，尽管超时设置已过期，录制进程退出前也会等待按键操作。
 
 - `–signal, -s` 使用 SIGUSR1 信号在录制和暂停两种状态间进行切换,向 Raspivid 进程发送 USR1 信号来切换录制和暂停。该操作可以通过使用 kill 命令来实现。您可以使用“pgrep raspivid” 命令找到 raspivid 的进程 ID。
+
 > kill -USR1
 >
 > 注意，超时设置值将影响录制结束时间，但仅在每次发送 SIGUSR1 信号后进行检查，所以如果系统正在等待信号，尽管超时设置已过期，录制进程退出前也会等待信号的发送操作。
@@ -212,17 +196,13 @@ dpkg -i raspi-config_20170811_all.deb
 
 - `–start, -sn` 设置初始段落数,当输出分段视频时，该参数为初始的段落数，它允许从指定的段落恢复之前的录制操作。默认值为 1。
 
-
-
-
-
 ## 5. 示例
 
 **图像捕捉**
 
 默认情况下，传感器将以其支持的最高分辨率进行捕捉。可以在命令行中通过使用 -w 和 -h 参数进行更改。
 
-```
+```bash
 # 两秒钟（时间单位为毫秒）延迟后拍摄一张照片，并保存为 image.jpg
 raspistill -t 2000 -o image.jpg
 
@@ -266,14 +246,11 @@ raspistill -t 2000 -o - &gt; my_file.jpg
 raspistill -t 0 -k -o my_pics%02d.jpg
 ```
 
-
-
-
 **视频捕捉**
 
 图像尺寸和预览设置与图像捕捉相同。录制的视频默认尺寸为 1080p（1920×1080）
 
-```
+```bash
 # 使用默认设置录制一段 5 秒钟的视频片段（1080p30）
 raspivid -t 5000 -o video.h264
 
@@ -296,20 +273,18 @@ raspivid -t 5000 -o - &gt; my_file.h264
 
 在 Raspbian 上安装 `gpac`，输入命令：
 
-```
+```bash
 sudo apt-get install -y gpac
 ```
 
 然后将这段 raw 的 H.264 格式的视频流转换为每秒30帧的 .mp4 格式视频：
 
-```
+```bash
 MP4Box -fps 30 -add keychain.h264 keychain.mp4
 ```
-
 
 ## 7. 参考资料
 
 - [树莓派摄像头模块应用程序文档翻译][1]
-
 
 [1]: http://shumeipai.nxez.com/2014/09/21/raspicam-documentation.html

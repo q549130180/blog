@@ -19,7 +19,7 @@ image:
 
 有时，yum包管理器可能会遇到错误地安装在系统上的重复包的问题，这些会体现在`yum update`上，错误信息如下：
 
-```
+```bash
 --> Finished Dependency Resolution
 Error: Package: ntp-4.2.6p5-25.el7.centos.2.x86_64 (@updates)
            Requires: ntpdate = 4.2.6p5-25.el7.centos.2
@@ -37,14 +37,13 @@ Error: Package: glibc-devel-2.17-196.el7_4.2.x86_64 (@updates)
 ** Found 56 pre-existing rpmdb problem(s), 'yum check' output follows:
 ```
 
-
 ## 2. 解决
 
 ### 2.1 安装`yum-utils`
 
 帮助我们解决这些问题的实用程序叫做`package-cleanup`，它是`yum-utils`包的一部分。让我们先安装，然后再继续:
 
-```
+```bash
 yum install yum-utils
 ```
 
@@ -52,7 +51,7 @@ yum install yum-utils
 
 接下来，让我们看看我们的系统有什么问题。`package-cleanup –dupes`将显示系统上的重复包:
 
-```
+```bash
 Loaded plugins: fastestmirror
 parted-3.1-28.el7.x86_64
 parted-3.1-29.el7.x86_64
@@ -80,7 +79,7 @@ glibc-devel-2.17-222.el7.x86_64
 
 在这里，我们看到几个软件包似乎已经安装了不止一次。`–cleandupes`参数将对此进行处理，消除这些多余的包:
 
-```
+```bash
 package-cleanup --cleandupes
 ```
 
@@ -100,7 +99,7 @@ package-cleanup --problems
 
 结果
 
-```
+```bash
 Loaded plugins: fastestmirror
 No Problems Found
 ```

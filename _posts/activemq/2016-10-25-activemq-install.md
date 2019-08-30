@@ -37,7 +37,6 @@ ActiveMQ的设计目标是提供标准的，面向消息的，能够跨越多语
 
 ActiveMQ主要涉及到5个方面：
 
-
 **1.传输协议**
 
 消息之间的传递，无疑需要协议进行沟通，启动一个ActiveMQ打开了一个监听端口， 	ActiveMQ提供了广泛的连接模式，其中主要包括SSL、STOMP、XMPP；ActiveMQ默认的使用	的协议是openWire，端口号：61616;
@@ -151,7 +150,6 @@ ZooKeeper 集群环境：`192.168.1.100:2181,192.168.1.100:2182,192.168.1.100:21
 192.168.1.100 | 62623 | 61618 | 8163 | /snow/activemq/group1/node-03
 {:.mytablestyle}
 
-
 **2、防火墙打开对应的端口或关闭防火墙**
 
 Cent OS 7 关闭防火墙命令：
@@ -170,7 +168,6 @@ $ systemctl disable firewalld.service #禁止firewall开机启动
 
 在[ActiveMQ官网][1]下载：apache-activemq-5.14.0-bin.tar
 
-
 创建/home/wusc/activemq 目录
 
 ```bash
@@ -183,7 +180,6 @@ $ cd apache-activemq-5.14.0
 $ cp -rf * /snow/activemq/group1/node-1
 $ cp -rf * /snow/activemq/group1/node-2
 $ cp -rf * /snow/activemq/group1/node-3
-
 ```
 
 **4、修改管理控制台端口**
@@ -219,8 +215,6 @@ Node-03 管控台端口：
   <property name="port" value="8163"/>
 </bean>
 ```
-
-
 
 **5、集群配置：**
 
@@ -307,6 +301,7 @@ Node-02 中的消息端口配置:
   <transportConnector name="ws" uri="ws://0.0.0.0:61614?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
 </transportConnectors>
 ```
+
 Node-03 中的消息端口配置:
 
 ```xml
@@ -319,8 +314,6 @@ Node-03 中的消息端口配置:
   <transportConnector name="ws" uri="ws://0.0.0.0:61614?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
 </transportConnectors>
 ```
-
-
 
 **6、按顺序启动 3 个 ActiveMQ 节点：**
 
@@ -369,7 +362,7 @@ $ mv node-3/ node-6/
 
 文件目录结构：
 
-```
+```bash
 activemq
 ├── apache-activemq-5.14.0-bin.tar.gz
 ├── group1
@@ -396,15 +389,11 @@ mq5 | 8165 | 61620 | 5676 | 65613 | 1887 | 61654 | 2181,2182,2183 | group2
 mq6 | 8166 | 61621 | 5677 | 66613 | 1888 | 61664 | 2181,2182,2183 | group2
 {:.mytablestyle}
 
-
-
 **(4) 修改配置文件**
 
 **group1的配置**
 
 修改node-1、node-2、node-3的配置文件，注意修改端口号避免端口冲突;group1中的`networkConnector`设置成group2中的三个节点的IP和端口;`duplex=true` 设置开启MQ节点间双向传输功能
-
-
 
 ```xml
 
@@ -429,7 +418,6 @@ ZooKeeper是搭建的集群
       />    
 </persistenceAdapter>  
 ```
-
 
 **group2配置**
 
@@ -458,14 +446,9 @@ ZooKeeper是搭建的集群
 </persistenceAdapter>  
 ```
 
-
-
-
-
 ##### 参考资料：
 
 - <a href="http://blog.csdn.net/lifetragedy/article/details/51869032#t7" target="_blank" >Apache ActiveMQ实战(2)-集群</a>
-
 
 [1]:http://activemq.apache.org/
 [2]:http://activemq.apache.org/replicated-leveldb-store.html

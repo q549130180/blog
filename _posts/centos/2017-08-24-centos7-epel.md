@@ -58,7 +58,6 @@ gpgcheck=1
 
 或直接使用`yum install epel-release -y`安装epel源。
 
-
 如果使用`yum install epel-release -y`还是无法更新 yum 源的话有可能是源的禁用掉了
 
 编辑文件`vim /etc/yum.repos.d/epel.repo`，将第一个和第三个中的`enabled`改为`1`
@@ -91,7 +90,6 @@ enabled=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
 gpgcheck=1
 ```
-
 
 ## 2. Cent OS 6.x epel源安装
 

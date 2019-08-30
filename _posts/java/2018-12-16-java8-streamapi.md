@@ -13,7 +13,6 @@ image:
   creditlink:
 ---
 
-
 ## 1. 概述
 
 ### 1.1 简介
@@ -21,7 +20,6 @@ image:
 Java 8 中有两大最为重要的改革，第一个是 Lambda 表达式，另外一个则是 Stream API（java.util.stream.*）。
 
 Stream 是 Java 8 中处理集合的关键抽象概念，它可以指定你希望对集合进行的操作，可以执行非常复杂的查找、过滤和映射数据等操作。使用 Stream API 对集合数据进行，就类似于使用 SQL 执行的数据库查询。也可以使用 Stream API 来并行执行操作。简而言之，Stream API 提供了一种高效且易于使用的处理数据的方式。
-
 
 ### 1.2 流（Stream）到底是什么呢？
 
@@ -38,7 +36,8 @@ Stream（流）是一个来自数据源的元素队列并支持聚合操作
 - **Pipelining**: 中间操作都会返回流对象本身。 这样多个操作可以串联成一个管道， 如同流式风格（fluent style）。 这样做可以对操作进行优化， 比如延迟执行(laziness)和短路( short-circuiting)。
 - **内部迭代**： 以前对集合遍历都是通过 Iterator 或者 For-Each 的方式, 显式的在集合外部进行迭代， 这叫做外部迭代。 Stream提供了内部迭代的方式， 通过访问者模式(Visitor)实现。
 
-> 注意 : 
+> 注意 :
+>
 > 1. Stream 自己不会存储元素
 > 2. Stream 不会改变源对象，相反，它们会返回一个持有结果的新 Stream
 > 3. Stream 操作时延迟执行的。这意味着它们会等到需要结果的时候才执行
@@ -53,7 +52,6 @@ Stream（流）是一个来自数据源的元素队列并支持聚合操作
    - 一个终止操作，执行中间操作链，并产生结果
 
 ![Java Stream](http://image.huangxubo.me/images/java/java_stream_2018_12_13_001.jpg)
-
 
 ## 2. 创建 Stream（流）
 
@@ -115,12 +113,7 @@ List<Employee> emps = Arrays.asList(
 - `skip(n)` 跳过元素，返回一个扔掉了前 n 个元素的流，若流中元素不足 n 个，则返回一个空流，与 limit 互补
 - `distinct` 筛选去重，通过流所生成元素的 `hashCode()` 和 `equals()` 去除重复元素
 
-
-
-
-
 #### 1. filter 接收Lambda，从流中排除某些元素
-
 
 ```java
 @Test
@@ -137,7 +130,6 @@ public void t2() {
 
 }
 ```
-
 
 #### 2. limit 截断流
 
@@ -227,7 +219,6 @@ public boolean equals(Object obj) {
 - `map` 接收 Lambda，将元素转换成其它形式或提取信息。接收一个函数作为参数，该函数会被应用到每个元素上，并将其映射成一个新的元素
 - `flatMap` 接收一个函数作为参数，将流中的每个值都换成另一个流，然后把所有流连接成一个流
 
-
 #### 1. map
 
 将原有的元素进过函数处理，让后映射（覆盖）成一个新的元素
@@ -247,7 +238,6 @@ public void t6() {
             .forEach(System.out::println);
 }
 ```
-
 
 #### 2. flatMap
 
@@ -300,7 +290,6 @@ public void t8() {
 
 - `sorted` 自然排序（Comparable）
 - `sorted(Comparator com)` 定制排序（Comparator）
-
 
 #### 1. sorted 自然排序
 

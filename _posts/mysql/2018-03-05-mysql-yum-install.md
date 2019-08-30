@@ -28,7 +28,7 @@ image:
 
 ### 2.1 检查是否已安装
 
-```
+```bash
 # 检查 MySQL 是否已安装
 yum list installed | grep mysql
 yum list installed mysql*
@@ -45,8 +45,7 @@ rpm -qa | grep mysql
 
 前往[MySQL Yum Repository](https://dev.mysql.com/downloads/repo/yum/)下载对应的yum源，CentOS 6 下载el6的源，CentOS 7 下载el7的源
 
-
-```
+```bash
 wget http://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm
 yum localinstall mysql80-community-release-el7-1.noarch.rpm
 
@@ -56,7 +55,7 @@ rpm -e mysql80-community-release-el7-1.noarch.rpm
 
 检查是否安装成功
 
-```
+```bash
 $ yum repolist enabled | grep "mysql.*-community.*"
 mysql-connectors-community           MySQL Connectors Community              59
 mysql-tools-community                MySQL Tools Community                   65
@@ -67,7 +66,7 @@ mysql80-community                    MySQL 8.0 Community Server              29
 
 选择要启用 MySQL 版本查看 MySQL 版本，执行
 
-```
+```bash
 $ yum repolist all | grep mysql
 mysql-cluster-7.5-community        MySQL Cluster 7.5 Community    disabled
 mysql-cluster-7.5-community-source MySQL Cluster 7.5 Community -  disabled
@@ -95,21 +94,20 @@ mysql80-community-source           MySQL 8.0 Community Server - S disabled
 
 可以通过类似下面的语句来启动和禁用某些版本
 
-```
+```bash
 yum-config-manager --disable mysql80-community
 yum-config-manager --enable mysql57-community
 ```
 
 ### 2.5 开始安装
 
-
-```
+```bash
 yum install mysql-community-server
 ```
 
 ### 2.6 查看安装目录
 
-```
+```bash
 $ whereis mysql
 mysql: /usr/bin/mysql /usr/lib64/mysql /usr/share/mysql /usr/share/man/man1/mysql.1.gz
 ```
@@ -119,7 +117,7 @@ mysql: /usr/bin/mysql /usr/lib64/mysql /usr/share/mysql /usr/share/man/man1/mysq
 
 ### 2.7 启动mysql
 
-```
+```bash
 $ service mysqld start
 
 # 输出如下
@@ -130,7 +128,7 @@ Starting mysqld:                                           [  OK  ]
 
 查看状态
 
-```
+```bash
 $ service mysqld status
 mysqld (pid  12235) is running...
 ```
@@ -144,13 +142,11 @@ $ grep 'temporary password' /var/log/mysqld.log
 2018-11-30T08:01:46.182289Z 1 [Note] A temporary password is generated for root@localhost: Y4sLv7iWeh>!
 ```
 
-
 ### 2.9 配置
 
 启动后我们需要简单配置一下 MySQL ，执行`mysql_secure_installation`允许您执行重要操作，如设置根密码、删除匿名用户等。
 
-
-```
+```bash
 Enter password for user root: 
 # 输入刚才获取到的密码（如果没有密码直接敲回车）
 
@@ -182,16 +178,15 @@ Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
 
 如果忘记密码或丢失密码可以使用如下方法进行修改
 
-
 1. 以安全模式启动
 
-```
+```bash
 mysqld_safe --skip-grant-tables &
 ```
 
 2. 登录并修改
 
-```
+```bash
 mysql -u root
 
 use mysql;
@@ -203,16 +198,15 @@ update mysql.user set host='%' where user='root';
 
 # 退出安全模式，然后在进行启动
 ps -ef | grep mysql
-kill -9 
+kill -9
 
 # 再登录之后如果提示使用alter修改密码，使用如下方式进行修改
 ALTER USER 'root'@'%' IDENTIFIED BY 'dongxuqazwsx';
 ```
 
-
 3. 修改密码时，如果只是修改为一个简单的密码，会报以下错误：
 
-```
+```bash
 ERROR 1819 (HY000): Your password does not satisfy the current policy requirements
 ```
 
@@ -234,12 +228,10 @@ Policy | Tests Performed
 
 首先，修改 `validate_password_policy` 参数的值
 
-```
+```bash
 mysql> set global validate_password_policy=0;
 Query OK, 0 rows affected (0.00 sec)
 ```
-
-
 
 ##### 参考资料
 

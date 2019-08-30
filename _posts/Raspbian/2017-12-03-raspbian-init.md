@@ -49,35 +49,31 @@ image:
 
 从结果中我们可以看到我的USB驱动器的位置是「/dev/disk2」，并把这个位置牢牢记住
 
-
-
 2、接着取消挂载（并不是弹出！）该驱动器：
 
-```
+```bash
 diskutil umountDisk /dev/disk2
 ```
-
 
 3、用dd命令写入U盘
 
 说明：sudo dd if=源路径 of=/dev/r卷标 bs=1m ［‘r’ 会让命令执行加快一点］ ［‘bs’为一次填充的容量］
 
-```
+```bash
 sudo dd if=/2017-11-29-raspbian-stretch.img of=/dev/rdisk2 bs=1m
 ```
+
 等待
 
 查看磁盘进度，可以用iostat命令查看磁盘写入状态`iostat -w 2`
 
 4、操作完毕后将U盘弹出`diskutil eject /dev/disk2`
 
-
 ### 2.3 Etcher
 
 如果觉得命令行太麻烦的话,也可以使用[Etcher][2]来进行镜像的烧录
 
 ## 3. 更改SSH配置已经连接WiFi
-
 
 ### 3.1 开启派的SSH登录
 现在的Raspbian的SSH设置成了默认关闭状态。官方说出于安全考虑
@@ -94,7 +90,7 @@ sudo dd if=/2017-11-29-raspbian-stretch.img of=/dev/rdisk2 bs=1m
 
 同意在boot根目录下新建一个wpa_supplicant.conf文件件,添加如下内容
 
-```
+```bash
 country=GB
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
@@ -130,16 +126,16 @@ network={
 - `iwconfig` – 查看网卡信息。
 - `ifconfig` – 查看连接信息。
 
-
 ## 4. 更换镜像源
 
 更换国内镜像源,这是一个非常重要的知识点。众所周知，树莓派的服务器在国外，所以对于在国内的我们来说，下载或更新非常的缓慢。
 
 好在国内有很多大学或者机构把国外的服务器做了镜像拷贝，并且免费供我们使用。我们只需要把地址更换成国内的地址，就可以大大提升速度和稳定性。
 
-```
+```bash
 sudo vi /etc/apt/sources.list
 ```
+
 添加镜像源如下
 
 ![Alt text]({{site.url}}/images/posts_image/raspberry-init-2017-12-03_00002.jpg)
@@ -147,41 +143,49 @@ sudo vi /etc/apt/sources.list
 地址不一定要和上面演示的一致，你可以自由选择镜像站。我这里列出几个国内常见Raspbian OS镜像站及地址。
 
 清华大学开源软件镜像站：
-```
+
+```bash
 deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ jessie main non-free contrib
 deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ jessie main non-free contrib
 ```
+
 中国科学技术大学Linux用户协会：
-```
+
+```bash
 deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ jessie main non-free contrib
 deb-src http://mirrors.ustc.edu.cn/raspbian/raspbian/ jessie main non-free contrib
 ```
+
 浙江大学开源镜像站：
-```
+
+```bash
 deb http://mirrors.zju.edu.cn/raspbian/raspbian/ jessie main contrib non-free rpi
 deb-src http://mirrors.zju.edu.cn/raspbian/raspbian/ jessie main contrib non-free rpi
 ```
+
 华中科技大学开源镜像站：
-```
+
+```bash
 deb http://mirrors.hust.edu.cn/raspbian/raspbian/ wheezy main non-free contrib
 deb-src http://mirrors.hust.edu.cn/raspbian/raspbian/ wheezy main non-free contrib
 ```
+
 阿里巴巴开源镜像站：
-```
+
+```bash
 deb http://mirrors.aliyun.com/raspbian/raspbian/ wheezy main non-free contrib
 deb-src http://mirrors.aliyun.com/raspbian/raspbian/ wheezy main non-free contrib
 ```
 
 替换完之后执行
-```
+
+```bash
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get dist-upgrade
 ```
+
 update是更新列表，upgrade是更新所有已安装的app。
-
-
-
 
 [1]: https://www.raspberrypi.org/downloads/raspbian/
 [2]: https://etcher.io/
