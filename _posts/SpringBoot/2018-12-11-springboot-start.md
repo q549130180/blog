@@ -35,7 +35,6 @@ Spring将很多魔法带入了Spring应用程序的开发之中，其中最重�
 - SpringBoot 2.0.2.RELEASE
 - IntelliJ IDEA 2017.2
 
-
 ## 2. 创建 Spring Boot 项目
 
 ### 2.1 通过IntelliJ IDEA 创建Spring boot项目
@@ -50,7 +49,6 @@ Spring将很多魔法带入了Spring应用程序的开发之中，其中最重�
 
 ![springboot](http://image.huangxubo.me/images/springboot/springboot_2018_05_31_005.jpg)
 
-
 ### 2.2 项目结构
 
 根据上面的操作已经初始化了一个Spring Boot的框架了，项目结构如下：
@@ -63,7 +61,6 @@ Spring将很多魔法带入了Spring应用程序的开发之中，其中最重�
 - `LingApplication.java`：一个带有main()方法的类，用于启动应用程序（关键）。
 - `LingApplicationTests.java`：一个空的Junit测试类，它加载了一个使用Spring Boot字典配置功能的Spring应用程序上下文。
 - `application.properties`：一个空的properties文件，你可以根据需要添加配置属性。
-
 
 ## 3. POM 文件说明
 
@@ -154,7 +151,6 @@ Spring将很多魔法带入了Spring应用程序的开发之中，其中最重�
     </properties>
 ```
 
-
 ### 3.2 修改版本依赖
 
 如果你不想使用某个依赖默认的版本，您还可以通过覆盖自己的项目中的属性来覆盖各个依赖项，例如，要升级到另一个Spring Data版本系列，您可以将`<spring-data-releasetrain.version>Fowler-SR2</spring-data-releasetrain.version>`添加到`pom.xml`文件的`<properties>`中。
@@ -170,16 +166,13 @@ Spring将很多魔法带入了Spring应用程序的开发之中，其中最重�
 
 现在就使用Fowler-SR2版本了
 
-
 ### 3.3 起步依赖 spring-boot-starter-xxx
 
 Spring Boot提供了很多”开箱即用“的依赖模块，都是以spring-boot-starter-xx作为命名的。举个例子来说明一下这个起步依赖的好处，比如组装台式机和品牌机，自己组装的话需要自己去选择不同的零件，最后还要组装起来，期间有可能会遇到零件不匹配的问题。耗时又消力，而品牌机就好一点，买来就能直接用的，后续想换零件也是可以的。相比较之下，后者带来的效果更好点（这里就不讨论价格问题哈），起步依赖就像这里的品牌机，自动给你封装好了你想要实现的功能的依赖。就比如我们之前要实现web功能，引入了spring-boot-starter-web这个起步依赖。我们来看看spring-boot-starter-web到底依赖了哪些,如下图：
 
-
 ![springboot](http://image.huangxubo.me/images/springboot/springboot_2018_05_31_001.jpg)
 
 看来依赖了好多呢，如果让我自己弄估计要调半天，所以Spring Boot通过提供众多起步依赖降低项目依赖的复杂度。起步依赖本质上是一个Maven项目对象模型（Project Object Model，POM），定义了对其他库的传递依赖，这些东西加在一起即支持某项功能。很多起步依赖的命名都暗示了它们提供的某种或者某类功能。
-
 
 ### 3.4 Spring Boot Maven 插件
 
@@ -197,7 +190,6 @@ Spring Boot提供了很多”开箱即用“的依赖模块，都是以spring-bo
 
 - 把项目打包成一个可执行的超级JAR（uber-JAR）,包括把应用程序的所有依赖打入JAR文件内，并为JAR添加一个描述文件，其中的内容能让你用java -jar来运行应用程序。
 - 搜索 `public static void main()` 方法来标记为可运行类。
-
 
 ## 4. 应用入口类
 
@@ -219,7 +211,6 @@ public class LingApplication {
 		SpringApplication.run(LingApplication.class, args);
 	}
 }
-
 ```
 
 ##### 说明
@@ -229,8 +220,6 @@ public class LingApplication {
 
 3. `@RestController`注解等价于 `@Controller` + `@ResponseBody` 的结合，使用这个注解的类里面的方法都以 json 格式输出。
 
-
-
 启动项目。由于我们使用了 `spring-boot-starter-parent POM`，所以可以使用 `mvn spring-boot:run`来启动项目（根路径），或者直接运行main方法
 
 启动之后就可以访问了，默认地址： `http://localhost:8080` 即可
@@ -238,4 +227,3 @@ public class LingApplication {
 ### 4.2 运行 fat jar（executable jar）
 
 `java -jar target/xxxx.jar`  注意，是在项目路径下执行。
-

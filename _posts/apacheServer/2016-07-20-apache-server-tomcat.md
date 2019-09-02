@@ -82,7 +82,7 @@ make && make install
 
 官网：http://apr.apache.org/
 
-```
+```bash
 tar -zxvf apr-util-1.5.4.tar.gz
 cd apr-util-1.5.4
 ./configure --prefix=/snow/apr-util --with-apr=/snow/apr/
@@ -90,7 +90,6 @@ make && make install
 ```
 
 ### 2.httpd安装
-
 
 [Apache Server官网][1]，下载源码包。
 

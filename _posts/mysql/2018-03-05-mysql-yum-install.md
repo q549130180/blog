@@ -114,7 +114,6 @@ mysql: /usr/bin/mysql /usr/lib64/mysql /usr/share/mysql /usr/share/man/man1/mysq
 
 可以看到 MySQL 的安装目录是 /usr/bin/
 
-
 ### 2.7 启动mysql
 
 ```bash
@@ -137,7 +136,7 @@ mysqld (pid  12235) is running...
 
 默认情况下MySQL是有个初始密码，知道了初始密码才能改密码。
 
-```
+```bash
 $ grep 'temporary password' /var/log/mysqld.log
 2018-11-30T08:01:46.182289Z 1 [Note] A temporary password is generated for root@localhost: Y4sLv7iWeh>!
 ```

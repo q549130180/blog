@@ -269,6 +269,7 @@ Live Restore Enabled: false
 ### 3.3 开启Docker Remote API
 
 修改配置文件
+
 ```bash
 vim /usr/lib/systemd/system/docker.service
 ```
@@ -308,7 +309,7 @@ sudo systemctl enable docker.service
 
 ## 4. 安装 Docker Compose
 
-##### 1. 运行此命令下载最新版本的Docker Compose
+##### 1. 运行此命令下载最新版本的 Docker Compose
 
 ```bash
 sudo curl -L https://github.com/docker/compose/releases/download/1.20.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose

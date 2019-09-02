@@ -32,7 +32,6 @@ image:
 这里，我还是以 Raspbian OS 为例，其他 OS 都是一样的。
 首先下载系统镜像文件：[Raspbian OS][1].
 
-
 这里有两个版本，分别是 Raspbian Stretch With Desktop 和 Raspbian Stretch Lite，它们的区别在于前者带有 Desktop 的图形界面易用性更高，后者是不带图形界面的版本，特点是占用空间非常小。
 
 作为学习，我推荐下载 aspbian Stretch With Desktop，等熟练之后，再根据需求选择其他 OS 都是可以的。
@@ -76,6 +75,7 @@ sudo dd if=/2017-11-29-raspbian-stretch.img of=/dev/rdisk2 bs=1m
 ## 3. 更改SSH配置已经连接WiFi
 
 ### 3.1 开启派的SSH登录
+
 现在的Raspbian的SSH设置成了默认关闭状态。官方说出于安全考虑
 
 但要开启Raspbian OS的SSH，其实方法简单到不能再简单了，没有显示器也是可以的

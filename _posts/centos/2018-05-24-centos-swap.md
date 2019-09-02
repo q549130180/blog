@@ -81,9 +81,8 @@ swapoff /swapfile
 
 ### 3.2 从 `/etc/fstab` 中删除项目
 
-
 ### 3.3 删除分区文件
 
-```
+```bash
 rm -rf /swapfile
 ```
