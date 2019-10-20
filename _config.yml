@@ -68,7 +68,6 @@ gems:
   - jekyll-sitemap #生成sitemap
   - jekyll-paginate
   - jekyll-gist
-  - jemoji
   - jekyll-seo-tag
 sass:
   sass_dir: _sass
