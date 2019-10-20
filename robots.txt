@@ -9,4 +9,4 @@ Disallow: /images/
 Disallow: /assets/
 
 
-Sitemap: {{ site.home_url }}blog/sitemap.xml
+Sitemap: {{ site.url }}blog/sitemap.xml
