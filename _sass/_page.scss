@@ -400,15 +400,16 @@ header .entry-meta {
 		}
 	}
 	#main-aside {
-		@media #{$medium} {
-	    display: none;
+		display: none;
+		// @media #{$medium} {
+	    // display: none;
 			//@at-root (without: all) {
 	    //  .main-aside-width {
 	    //    max-width: 800px;
 	    //  }
     	//}
 
-	    }
+	    // }
 		@media #{$large} {
 			margin-left: 10px;
 	    vertical-align: top;
