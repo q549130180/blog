@@ -19,6 +19,15 @@
     ga('require', 'linkid', 'linkid.js');
     ga('send', 'pageview');
 </script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '{{ site.google_analytics }}', { 'optimize_id': 'GTM-PKDMN2N'});
+</script>
 {% endif %}
 
 <script type="text/javascript">
