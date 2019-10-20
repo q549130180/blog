@@ -20,7 +20,7 @@ image:
 
 ## 2. 启用 ELRepo 仓库
 
-```
+```bash
 sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
 ```
@@ -29,7 +29,7 @@ sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
 
 使用命令 `yum --disablerepo=* --enablerepo=elrepo-kernel list kernel` 查看可安装列表，显示如下
 
-```
+```bash
 Loaded plugins: fastestmirror
 Loading mirror speeds from cached hostfile
  * elrepo-kernel: repos.lax-noc.com
@@ -62,7 +62,7 @@ kernel-ml-tools-libs-devel.x86_64                                               
 
 ## 4. 安装最新版本的kernel
 
-```
+```bash
 sudo yum --enablerepo=elrepo-kernel install kernel-ml-devel kernel-ml -y
 ```
 
@@ -70,10 +70,9 @@ sudo yum --enablerepo=elrepo-kernel install kernel-ml-devel kernel-ml -y
 
 ## 5. 查看系统上的所有内核
 
-
 使用命令 `sudo awk -F\' '$1=="menuentry " {print i++ " : " $2}' /etc/grub2.cfg` 来进行查看
 
-```
+```bash
 0 : CentOS Linux (5.0.2-1.el7.elrepo.x86_64) 7 (Core)
 1 : CentOS Linux (3.10.0-957.5.1.el7.x86_64) 7 (Core)
 2 : CentOS Linux (3.10.0-957.1.3.el7.x86_64) 7 (Core)
@@ -86,19 +85,19 @@ sudo yum --enablerepo=elrepo-kernel install kernel-ml-devel kernel-ml -y
 
 ## 6. 设置 grub2
 
-```
+```bash
 sudo grub2-set-default 0
 ```
 
 生成 grub 配置文件
 
-```
+```bash
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
 ## 7. 安装新版本工具包（可省略）
 
-```
+```bash
 # 移除旧版本
 sudo yum remove kernel-tools-libs.x86_64 kernel-tools.x86_64
 
@@ -108,12 +107,12 @@ sudo yum --disablerepo=* --enablerepo=elrepo-kernel install -y kernel-ml-tools.x
 
 ## 8. 重启
 
-```
+```bash
 sudo reboot
 ```
 
 查看内核版本 `uname -sr`,输出如下
 
-```
+```bash
 Linux 5.0.2-1.el7.elrepo.x86_64
 ```

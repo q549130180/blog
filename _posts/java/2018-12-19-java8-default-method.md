@@ -44,7 +44,6 @@ interface InterfaceA {
 }
 ```
 
-
 ## 2. 默认方法（default）
 
 ### 2.1 实例
@@ -70,9 +69,6 @@ public class Java8Test {
 ```
 
 `ClassA` 类并没有实现 `InterfaceA` 接口中的 `print` 方法，`InterfaceA` 接口中提供了 `print` 方法的默认实现，因此可以直接调用 `ClassA` 类的 `print` 方法。
-
-
-
 
 ### 2.2 默认方法的继承
 
@@ -124,7 +120,6 @@ public class Java8Test {
 - 覆写默认方法，这跟类与类之间的覆写规则相类似。
 - 覆写默认方法并将它重新声明为抽象方法，这样新接口的子类必须再次覆写并实现这个抽象方法。
 
-
 ### 2.3 类优先原则
 
 接口默认方法的**类优先**原则
@@ -133,7 +128,6 @@ public class Java8Test {
 
 - 选择父类中的方法。如果一个父类提供了具体的实现，那么接口中具有相同名称和参数的默认方法会被忽略。
 - 接口冲突。如果一个父接口提供一个默认方法，而另一个接口也提供了一个具有相同名称和参数列表的方法（不管方法是否是默认方法），那么必须覆盖该方法来解决冲突
-
 
 ```java
 public interface FunA {
@@ -160,7 +154,8 @@ public void t1(){
 }
 ```
 
-> 注意 : 
+> 注意 :
+>
 > - `default` 关键字只能在接口中使用（以及用在 `switch` 语句的 `default` 分支），不能用在抽象类中。
 > - 接口默认方法不能覆写 `Object` 类的 `equals`、`hashCode` 和 `toString` 方法。
 > - 接口中的静态方法必须是 `public` 的，`public` 修饰符可以省略，`static` 修饰符不能省略。

@@ -42,12 +42,9 @@ image:
 - 取消拒绝状态 : `firewall-cmd --panic-off`
 - 查看是否拒绝 : `firewall-cmd --query-panic`
 
-
 ## 4. 开启端口
 
 1. 添加`firewall-cmd --zone=public --add-port=80/tcp --permanent`（--permanent永久生效，没有此参数重启后失效）
 2. 重新载入`firewall-cmd --reload`
 3. 查看`firewall-cmd --zone=public --query-port=80/tcp`
 4. 删除`firewall-cmd --zone=public --remove-port=80/tcp --permanent`
-
-

@@ -18,7 +18,7 @@ image:
 
 ## 1.首先把需要添加的节点启动
 
-```
+```bash
 cd /usr/local/cluster/
 mkdir 7007
 cd 7007
@@ -33,17 +33,16 @@ redis-server /usr/local/cluster/7007/conf/redis.conf
 redis-server /usr/local/cluster/7008/conf/redis.conf
 ```
 
-
 ## 2.执行以下命令，将这个新节点添加到集群中
 
-```
+```bash
 cd /usr/local/cluster/redis-3.0.5/src
 ./redis-trib.rb add-node 127.0.0.1:7007 127.0.0.1:7001
 ```
+
 第一个参数是我们刚才启动的新实例，第二个参数是集群中已有的节点。
 
 ![Alt text]({{site.url}}/images/posts_image/redis_redis_img_2016-04-14_163603.jpg)
-
 
 ## 3.查看刚才新增的节点
 
@@ -57,10 +56,12 @@ cd /usr/local/cluster/redis-3.0.5/src
 执行`redis-cli -c -p 7001 cluster nodes`之后复制好新增节点的ID
 
 执行下面的命令对集群中的哈希槽进行移动
-```
+
+```bash
 cd /usr/local/cluster/redis-3.0.5/src
 ./redis-trib.rb reshard 127.0.0.1:7001
 ```
+
 系统会提示我们要移动多少哈希槽，这里移动1000个
 ![Alt text]({{site.url}}/images/posts_image/redis_redis_img_2016-04-14_164404.jpg)
 
@@ -93,16 +94,16 @@ cd /usr/local/cluster/redis-3.0.5/src
 看到下面图片中的情况就表示添加成功,表示7007只有一个从节点7008
 ![Alt text]({{site.url}}/images/posts_image/redis_redis_img_2016-04-14_170507.jpg)
 
-
-
 ## 6.删除主节点
 
 如果删除的节点是主节点，这里我们删除127.0.0.1:7007节点，这个节点有1000个哈希槽
 首先要把节点中的哈希槽转移到其他节点中，执行下面的命令
-```
+
+```bash
 cd /usr/local/cluster/redis-3.0.5/src
 ./redis-trib.rb reshard 127.0.0.1:7001
 ```
+
 - 系统会提示我们要移动多少哈希槽，这里移动1000个，因为127.0.0.1:7007节点有824个哈希槽
 - 然后系统提示我们输入要接收这些哈希槽的节点的ID，这里使用127.0.0.1:7001的节点ID
 - 然后要我们选择从那些节点中转出哈希槽，这里一定要输入127.0.0.1:7007这个节点的ID，最后输入`done`表示输入完毕
@@ -110,16 +111,19 @@ cd /usr/local/cluster/redis-3.0.5/src
 
 ![Alt text]({{site.url}}/images/posts_image/redis_redis_img_2016-04-14_181803.jpg)
 最后一步，使用下面的命令把这个节点删除
-```
+
+```bash
 cd /usr/local/cluster/redis-3.0.5/src
 ./redis-trib.rb del-node 127.0.0.1:7001 127.0.0.1:7007
 ```
+
 第一个参数是集群中的任何一个主节点地址，而第二个参数是要删除节点的 ID
 
 ## 7.删除从节点
 
 如果节点是从节点的，直接使用下面的命令删除即可。
-```
+
+```bash
 cd /usr/local/cluster/redis-3.0.5/src
 ./redis-trib.rb del-node 127.0.0.1:7001 127.0.0.1:7008
 ```

@@ -20,6 +20,7 @@ image:
 若 Lambda **体中**的功能，已经有方法提供了实现，可以使用方法引用（可以将方法引用理解为 Lambda 表达式的另外一种表现形式）
 
 方法引用的三种形式
+
 1. 对象的引用::实例方法名
 2. 类名::静态方法名
 3. 类名::实例方法名
@@ -31,7 +32,6 @@ image:
 ## 2. 方法引用
 
 ### 2.2 对象的引用::实例方法名
-
 
 ```java
 public class Employee implements Serializable {
@@ -63,6 +63,7 @@ public class Employee implements Serializable {
     // 省略 getter 和 setter 方法
 }
 ```
+
 ```java
 @Test
 public void t1() {
@@ -109,7 +110,6 @@ public void t3(){
 
 ### 2.4 类名::实例方法名
 
-
 在 `Employee` 中添加方法
 
 ```java
@@ -153,6 +153,7 @@ public void test5(){
 > 注：被调用的构造器的参数列表，需要与函数式接口中参数列表保持一致！
 
 构造器引用的语法格式
+
 - 类名::new
 
 ### 3.2 实例
@@ -185,6 +186,7 @@ public void t5(){
 用于创建数组
 
 语法格式
+
 - 类型[]::new;
 
 ### 4.2 实例

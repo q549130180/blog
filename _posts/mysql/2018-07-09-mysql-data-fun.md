@@ -13,8 +13,6 @@ image:
   creditlink:
 ---
 
-
-
 ### 1. `now()` 返回当前日期和时间，格式如下：2018-06-12 13:02:21
 
 ```shell
@@ -26,10 +24,7 @@ mysql> select now(),sleep(5),now();
 +---------------------+----------+---------------------+
 ```
 
-
 两个值相同，表示语句开始执行的时间。
-
-
 
 ### 2. `curdate()` 返回当前日期，格式如下：2018-06-12 
 
@@ -55,8 +50,6 @@ mysql> select curtime(),sleep(5),curtime();
 
 两个值相同，都表示语句开始执行的时间。
 
-
-
 ### 4. `sysdate()` 返回当前日期和时间，格式：2018-06-12 13:07:06
 
 ```shell
@@ -73,8 +66,6 @@ mysql> select sysdate(),sleep(5),sysdate();
 `sysdate()` 和 `now()` 的区别，一般在执行SQL语句时，都是用 `now()`;
 
 因为使用`sysdate()`时，有可能导致主库和从库执行时返回值不一样，导致主从数据库不一致。
-
-
 
 ```shell
 mysql> select now(),curdate(),sysdate(),curtime();

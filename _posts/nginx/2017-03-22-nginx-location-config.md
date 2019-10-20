@@ -70,7 +70,6 @@ location / {
 - 访问 http://localhost/a.xhtml 不会匹配规则F和规则G，http://localhost/a.XHTML不会匹配规则G，因为不区分大小写。规则F，规则G属于排除法，符合匹配规则但是不会匹配到，所以想想看实际应用中哪里会用到。
 - 访问 http://localhost/category/id/1111 则最终匹配到规则H，因为以上规则都不匹配，这个时候应该是nginx转发请求给后端应用服务器，比如FastCGI（php），tomcat（jsp），nginx作为方向代理服务器存在。
 
-
 所以实际使用中，个人觉得至少有三个匹配规则定义，如下：
 
 ```nginx
@@ -198,10 +197,9 @@ location ~* \.(gif|jpg|png|swf|flv)$ {
 - `$uri` ： 不带请求参数的当前URI，$uri不包含主机名，如”/foo/bar.html”。
 - `$document_uri` ： 与$uri相同。
 
-
 例：http://localhost:88/test1/test2/test.php
 
-```
+```bash
 $host：localhost
 $server_port：88
 $request_uri：http://localhost:88/test1/test2/test.php
@@ -219,10 +217,11 @@ $request_filename：/var/www/html/test1/test2/test.php
 
 nginx打开`rewrite log`例子
 
-```
+```bash
 rewrite_log on;
 error_log logs/xxx.error.log notice;
 ```
+
 1. 打开`rewrite on`
 2. 把`error log`的级别调整到 `notice`
 
@@ -261,8 +260,8 @@ location ~ .*.(sh|bash)?$
 }
 ```
 
-
 ### 2.7 常用正则
+
 - `.` ： 匹配除换行符以外的任意字符
 - `?` ： 重复0次或1次
 - `+` ： 重复1次或更多次
@@ -276,7 +275,6 @@ location ~ .*.(sh|bash)?$
 - `[a-z]` ： 匹配a-z小写字母的任意一个
 
 小括号`()`之间匹配的内容，可以在后面通过`$1`来引用，`$2`表示的是前面第二个`()`里的内容。正则里面容易让人困惑的是`\`转义特殊字符。
-
 
 ### 2.8 rewrite实例
 
@@ -338,13 +336,13 @@ if( !-e $request_filename )
 
 2.目录对换 /123456/xxxx  ====>   /xxxx?id=123456
 
-```
+```bash
 rewrite ^/(d+)/(.+)/  /$2?id=$1 last;
 ```
 
 3.如果客户端使用的是IE浏览器，则重定向到/ie目录下
 
-```
+```bash
 if( $http_user_agent  ~ MSIE)
 {
   rewrite ^(.*)$ /ie/$1 break;
@@ -353,7 +351,7 @@ if( $http_user_agent  ~ MSIE)
 
 4.禁止访问多个目录
 
-```
+```nginx
 location ~ ^/(cron|templates)/
 {
   deny all;
@@ -363,7 +361,7 @@ location ~ ^/(cron|templates)/
 
 5.禁止访问以/data开头的文件
 
-```
+```nginx
 location ~ ^/data
 {
   deny all;
@@ -372,7 +370,7 @@ location ~ ^/data
 
 6.禁止访问以.sh,.flv,.mp3为文件后缀名的文件
 
-```
+```nginx
 location ~ .*.(sh|flv|mp3)$
 {
   return 403;
@@ -381,7 +379,7 @@ location ~ .*.(sh|flv|mp3)$
 
 7.设置某些类型文件的浏览器缓存时间
 
-```
+```nginx
 location ~ .*.(gif|jpg|jpeg|png|bmp|swf)$
 {
   expires 30d;
@@ -396,7 +394,7 @@ location ~ .*.(js|css)$
 
 这里为favicon.ico为99天,robots.txt为7天并不记录404错误日志
 
-```
+```nginx
 location ~(favicon.ico) {
   log_not_found off;
   expires 99d;
@@ -412,7 +410,7 @@ location ~(robots.txt) {
 
 9.设定某个文件的过期时间;这里为600秒，并不记录访问日志
 
-```
+```nginx
 location ^~ /html/scripts/loadhead_1.js {
   access_log   off;
   root /opt/lampp/htdocs/web;
@@ -424,6 +422,5 @@ location ^~ /html/scripts/loadhead_1.js {
 **参考资料：**
 
 - [nginx rewrite 参数和例子][1]
-
 
 [1]: http://blog.c1gstudio.com/archives/434

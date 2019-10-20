@@ -15,7 +15,7 @@ image:
 
 ## 1. 网络相关目录说明
 
-```
+```bash
 /etc/sysconfig/network # 包括主机基本网络信息，用于系统启动
 /etc/sysconfig/network-script/ # 此目录下是系统启动最初始化网络的信息
 /etc/sysconfig/network-script/ifcfg-em1 # 网络配置信息，每个人的配置名字不一样通过命令查看
@@ -24,24 +24,23 @@ image:
 /etc/services  # 设定了主机的不同端口的网络服务
 ```
 
-
 执行`ifconfig`查看当前网卡信息
 ![Alt text]({{site.url}}/images/posts_image/centos_network_2017-11-29_00001.jpg)
 
 > 注 : 在 CentOS 7 中 ifconfig 命令已经不灵了，换成了 ip 命令工具，输入 ifconfig 会报如下错误:
-> 
-> ```
+>
+> ```bash
 > ifconfig
 > -bash: ifconfig: command not found
 > ```
-> 
+>
 > 如果没有可以安装一个工具 `yum install net-tools` 将 ifconfig 命令找回来。
 
 ## 2. ip命令工具
 
 ip [选项] 操作对象 `{link|addr|route...}`
 
-```
+```bash
 ip link show                      # 显示网络接口信息
 ip link set eth0 upi              # 开启网卡
 ip link set eth0 down             # 关闭网卡
@@ -61,8 +60,6 @@ ip route del 192.168.4.0/24       # 删除192.168.4.0网段的网关
 ip route del default              # 删除默认路由
 ```
 
-
-
 ## 3. ip配置
 
 通过 `ip addr` 命令 查看ip。看到两个配置，lo 和 eno16777736 ，lo代表127.0.0.1，即localhost。eno16777736这个是你的网卡，如果上面没有 inet 字段后面跟着 IP 的话，你需要去配置文件中修改配置。
@@ -73,7 +70,7 @@ ip route del default              # 删除默认路由
 
 主要更改这两项：BOOTPROTO=dhcp、ONBOOT=yes，如果修改静态ip，则添加静态ip的设置信息，下面是我的配置文件
 
-```
+```bash
 HWADDR=***********
 # TYPE：配置文件接口类型。在/etc/sysconfig/network-scripts/目录有多种网络配置文件，有Ethernet 、IPsec等类型，网络接口类型为Ethernet。
 TYPE=Ethernet
@@ -103,7 +100,7 @@ DNS2=8.8.4.4            # 设置备DNS
 
 ### 4.1 启动和关闭网卡命令
 
-```
+```bash
 ifup <设备名>    # 激活网卡 {网卡名字}
 ifdown <设备名>  # 关闭网卡
 ifup em1  # 激活网卡 em1
@@ -111,7 +108,7 @@ ifup em1  # 激活网卡 em1
 
 ### 4.2 重启/停止/查看网络
 
-```
+```bash
 service network start    # 启动网络服务
 service network stop     # 停止网络服务
 service network restart  # 重启网络服务
@@ -119,7 +116,6 @@ service network status   # 查看网络服务状态
 nmcli dev status         # 检查受网络管理器管理的网络接口
 systemctl status NetworkManager.service # 验证网络管理器服务的状态
 ```
-
 
 ## 5. 其它相关名词解释
 

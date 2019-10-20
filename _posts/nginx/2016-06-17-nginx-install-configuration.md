@@ -65,13 +65,7 @@ tar -zxvf pcre-8.38.tar.gz
 make && make install
 ```
 
-
-
 <div class="elementHide" >
-
-
-
-
 
 为了后续准备我们另外下载2个插件模块：[nginx_upstream_check_module-0.3.0.tar.gz](https://github.com/yaoweibin/nginx_upstream_check_module/releases) —— 检查后端服务器的状态，[nginx-goodies-nginx-sticky-module-ng-bd312d586752.tar.gz](https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng/downloads)（建议解压后将目录重命名为nginx-goodies-nginx-sticky-module-ng） —— 后端做负载均衡解决session sticky问题。
 
@@ -114,7 +108,6 @@ nginx大部分常用模块，编译时./configure --help以--without开头的都
 
 
 ### 4.启动关闭nginx
-
 
 {% highlight nginx %}
 # 检查配置文件是否正确

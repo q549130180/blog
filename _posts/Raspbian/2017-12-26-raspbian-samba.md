@@ -21,7 +21,7 @@ image:
 
 编辑Samba配置文件`sudo vim /etc/samba/smb.conf`,填入一下内容
 
-```
+```bash
 [pi]
     path = /home/pi/
     valid users = pi#有效用户
@@ -34,10 +34,9 @@ image:
 
 其中 `Path` 是 Samba 的默认目录，也是根目录。设置为 `/home/pi` 后，用户可以访问 `/home/pi`.
 
-添加 `pi `用户为 Samba 用户，设置密码时密码不会显示在窗口中。
+添加 `pi`用户为 Samba 用户，设置密码时密码不会显示在窗口中。
 
 `sudo smbpasswd -a pi` 添加 `pi` 用户为 Samba 用户，设置密码时密码不会显示在窗口中。
-
 
 ## 3. 启动
 
@@ -45,15 +44,13 @@ image:
 - 设置开机启动:`sudo systemctl enable samba.service`
 - 关闭:`sudo systemctl stop samba.service`
 
-
 ## 4. Mac配置
 
 ![Alt text]({{site.url}}/images/posts_image/raspbian-samba-2017-12-26.jpg)
 
 点击连接,输入用户名密码,就可以连接了.
 
-
-## 5. Samba服务所使用的端口和协议：
+## 5. Samba服务所使用的端口和协议 :
 
 1. `Port 137 (UDP)` - NetBIOS 名字服务 ； nmbd
 2. `Port 138 (UDP)` - NetBIOS 数据报服务

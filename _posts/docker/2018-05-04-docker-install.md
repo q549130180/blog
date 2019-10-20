@@ -22,7 +22,6 @@ Docker 使用 Google 公司推出的 Go 语言 进行开发实现，基于 Linux
 
 Docker 在容器的基础上，进行了进一步的封装，从文件系统、网络互联到进程隔离等等，极 大的简化了容器的创建和维护。使得 Docker 技术比虚拟机技术更为轻便、快捷。
 
-
 ### 1.2 为什么要使用 Docker
 
 作为一种新兴的虚拟化方式，Docker 跟传统的虚拟化方式相比具有众多的优势。
@@ -49,7 +48,6 @@ Docker 在容器的基础上，进行了进一步的封装，从文件系统、�
 
 #### 5. 更轻松的迁移
 
-
 由于 Docker 确保了执行环境的一致性，使得应用的迁移更加容易。Docker 可以在很多平台 上运行，无论是物理机、虚拟机、公有云、私有云，甚至是笔记本，其运行结果是一致的。 因此用户可以很轻易的将在一个平台上运行的应用，迁移到另一个平台上，而不用担心运行 环境的变化导致应用无法正常运行的情况。
 
 #### 6. 更轻松的维护和扩展
@@ -70,12 +68,9 @@ Docker 使用的分层存储以及镜像的技术，使得应用重复部分的�
 - Cent OS 7
 - Docker 18.03.0-ce
 
-
-
 ## 2. 卸载旧版本
 
 老版本的Docker被称为docker或docker-engine。如果安装了这些版本，先卸载它们，以及相关的依赖项。
-
 
 ```bash
 sudo yum remove docker \
@@ -100,7 +95,7 @@ sudo yum remove docker \
 
 ##### 1. 安装所需要的包。`yum-utils`提供了`yum-config-manager`功能，而`devicemapper`存储驱动程序需要`device-mapper-persistent-data`和`lvm2`
 
-```
+```bash
 sudo yum install -y yum-utils \
   device-mapper-persistent-data \
   lvm2
@@ -108,7 +103,7 @@ sudo yum install -y yum-utils \
 
 ##### 2. 使用下面的命令来设置稳定的yum源
 
-```
+```bash
 sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
@@ -118,16 +113,15 @@ sudo yum-config-manager \
 
 ##### 1. 安装最新版本的Docker CE
 
-```
+```bash
 sudo yum install docker-ce
 ```
-
 
 已安装Docker，但未启动。
 
 ##### 2. 启动Docker
 
-```
+```bash
 sudo systemctl start docker
 ```
 
@@ -139,13 +133,13 @@ sudo systemctl start docker
 
 ##### 4. 验证
 
-```
+```bash
 sudo docker run hello-world
 ```
 
 输入如下
 
-```
+```bash
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
 ca4f61b1923c: Pull complete
@@ -275,10 +269,10 @@ Live Restore Enabled: false
 ### 3.3 开启Docker Remote API
 
 修改配置文件
+
 ```bash
 vim /usr/lib/systemd/system/docker.service
 ```
-
 
 找到`ExecStart=/usr/bin/dockerd`行，修改如下。
 
@@ -288,13 +282,13 @@ ExecStart=/usr/bin/dockerd  -H tcp://0.0.0.0:2375  -H unix:///var/run/docker.soc
 
 编辑配置文件`vim /etc/profile`,写入一下内容,执行`source /etc/profile`刷新
 
-```
+```bash
 export DOCKER_HOST=127.0.0.1:2375
 ```
 
 执行命令
 
-```
+```bash
 systemctl daemon-reload
 systemctl restart docker
 ```
@@ -303,20 +297,19 @@ systemctl restart docker
 
 输出如下
 
-```
+```json
 {"ID":"HPZP:XIWJ:BZP7:YI47:UOLX:YLMM:LBF7:KV4E:Y2A7:ED6B:BHWB:FE4R","Containers":2,"ContainersRunning":0,"ContainersPaused":0,"ContainersStopped":2,"Images":2,"Driver":"overlay2","DriverStatus":[["Backing Filesystem","xfs"],["Supports d_type","true"],["Native Overlay Diff","true"]],"SystemStatus":null,"Plugins":{"Volume":["local"],"Network":["bridge","host","macvlan","null","overlay"],"Authorization":null,"Log":["awslogs","fluentd","gcplogs","gelf","journald","json-file","logentries","splunk","syslog"]},"MemoryLimit":true,"SwapLimit":true,"KernelMemory":true,"CpuCfsPeriod":true,"CpuCfsQuota":true,"CPUShares":true,"CPUSet":true,"IPv4Forwarding":true,"BridgeNfIptables":true,"BridgeNfIp6tables":true,"Debug":false,"NFd":20,"OomKillDisable":true,"NGoroutines":33,"SystemTime":"2018-04-08T15:41:52.725705339+08:00","LoggingDriver":"json-file","CgroupDriver":"cgroupfs","NEventsListener":0,"KernelVersion":"3.10.0-693.21.1.el7.x86_64","OperatingSystem":"CentOS Linux 7 (Core)","OSType":"linux","Architecture":"x86_64","IndexServerAddress":"https://index.docker.io/v1/","RegistryConfig":{"AllowNondistributableArtifactsCIDRs":[],"AllowNondistributableArtifactsHostnames":[],"InsecureRegistryCIDRs":["127.0.0.0/8"],"IndexConfigs":{"docker.io":{"Name":"docker.io","Mirrors":["https://0zs97su8.mirror.aliyuncs.com/"],"Secure":true,"Official":true}},"Mirrors":["https://0zs97su8.mirror.aliyuncs.com/"]},"NCPU":1,"MemTotal":1022570496,"GenericResources":null,"DockerRootDir":"/var/lib/docker","HttpProxy":"","HttpsProxy":"","NoProxy":"","Name":"localhost","Labels":[],"ExperimentalBuild":false,"ServerVersion":"18.03.0-ce","ClusterStore":"","ClusterAdvertise":"","Runtimes":{"runc":{"path":"docker-runc"}},"DefaultRuntime":"runc","Swarm":{"NodeID":"","NodeAddr":"","LocalNodeState":"inactive","ControlAvailable":false,"Error":"","RemoteManagers":null},"LiveRestoreEnabled":false,"Isolation":"","InitBinary":"docker-init","ContainerdCommit":{"ID":"cfd04396dc68220d1cecbe686a6cc3aa5ce3667c","Expected":"cfd04396dc68220d1cecbe686a6cc3aa5ce3667c"},"RuncCommit":{"ID":"4fc53a81fb7c994640722ac585fa9ca548971871","Expected":"4fc53a81fb7c994640722ac585fa9ca548971871"},"InitCommit":{"ID":"949e6fa","Expected":"949e6fa"},"SecurityOptions":["name=seccomp,profile=default"]}
 ```
 
 ### 3.4 设置开启启动
 
-```
+```bash
 sudo systemctl enable docker.service
 ```
 
-
 ## 4. 安装 Docker Compose
 
-##### 1. 运行此命令下载最新版本的Docker Compose
+##### 1. 运行此命令下载最新版本的 Docker Compose
 
 ```bash
 sudo curl -L https://github.com/docker/compose/releases/download/1.20.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
@@ -326,27 +319,23 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.20.1/docker-c
 >
 > 上面的命令是一个例子，有可能会过时，为了确保使用最新的版本，请前往[Github Compose repository release][1]查看最新版本
 
-
 ##### 2. 给可执行文件添加权限
 
-```
+```bash
 sudo chmod +x /usr/local/bin/docker-compose
 ```
-
 
 ##### 3. 验证安装`docker-compose --version`
 
 输出如下:
 
-```
+```bash
 docker-compose version 1.20.1, build 5d8c71b
 ```
-
 
 ##### 参考资料:
 
 1. [Docker 官方安装文档](https://docs.docker.com/install/linux/docker-ce/centos/)
 2. [Docker Compose官网安装文档](https://docs.docker.com/compose/install/)
-
 
 [1]:https://github.com/docker/compose/releases
