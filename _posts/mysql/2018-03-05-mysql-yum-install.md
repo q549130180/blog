@@ -232,6 +232,36 @@ mysql> set global validate_password_policy=0;
 Query OK, 0 rows affected (0.00 sec)
 ```
 
+
+## 3. 采坑经验
+
+### 3.1 包错误 `Error: Package`
+
+```
+Error: Package: mysql-community-server-5.7.27-1.el7.x86_64 (mysql57-community)
+
+省略。。。。
+```
+
+1. 解决方法
+
+查看以安装的包 `yum list installed | grep 'mysql'` 显示如下
+
+```
+mysql-community-common.x86_64          8.0.17-1.el7                    @mysql80-community
+mysql-community-devel.x86_64           8.0.17-1.el7                    @mysql80-community
+mysql-community-libs.x86_64            8.0.17-1.el7                    @mysql80-community
+mysql-community-libs-compat.x86_64     8.0.17-1.el7                    @mysql80-community
+mysql80-community-release.noarch       el7-3                           @/mysql80-community-release-el7-3.noarch
+```
+
+删除以安装的包
+
+```
+sudo yum remove mysql-community-common.x86_64
+```
+
+
 ##### 参考资料
 
 - [MySQL for yum 安装](https://github.com/jaywcjlove/mysql-tutorial/blob/master/chapter2/2.2.md)

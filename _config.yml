@@ -65,9 +65,11 @@ markdown:    kramdown
 #   extensions: [with_toc_data]
 
 gems:
-  - jekyll-sitemap
+  - jekyll-sitemap #生成sitemap
   - jekyll-paginate
   - jekyll-gist
+  - jemoji
+  - jekyll-seo-tag
 sass:
   sass_dir: _sass
   style: compressed
