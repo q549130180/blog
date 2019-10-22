@@ -303,13 +303,47 @@ public void t9() {
 }
 ```
 
-#### 2. sorted(Comparator com) 定制排序
+#### 2. 自然排序逆序元素
+
+```java
+@Test
+public void t11() {
+    List<String> list = Arrays.asList("cc","aa","dd","bb");
+    list.stream()
+            .sorted(Comparator.reverseOrder())
+            .forEach(System.out::println);
+}
+```
+
+#### 3. sorted(Comparator com) 定制排序
 
 ```java
 @Test
 public void t10() {
     emps.stream()
             .sorted((e1,e2) -> Integer.compare(e1.getAge(),e2.getAge()))
+            .forEach(System.out::println);
+}
+```
+
+#### 4. 根据 List 对象里的某个值自然排序
+
+```java
+@Test
+public void t12(){
+    emps.stream()
+            .sorted(Comparator.comparing(Employee::getAge))
+            .forEach(System.out::println);
+}
+```
+
+#### 5. 根据 List 对象里的某个值自然排序，逆序
+
+```java
+@Test
+public void t13(){
+    emps.stream()
+            .sorted(Comparator.comparing(Employee::getAge).reversed())
             .forEach(System.out::println);
 }
 ```
