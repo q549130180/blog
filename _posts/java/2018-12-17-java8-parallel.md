@@ -118,3 +118,51 @@ public void test3(){
     System.out.println("耗费的时间为: " + (end - start));
 }
 ```
+
+## 4. 并行流线程安全问题
+
+Java8 并行流 `ParallelStream` 和 `Stream` 的区别就是支持并行执行，提高程序运行效率。但是如果使用不当可能会发生线程安全的问题。Demo如下：
+
+```java
+@Test
+public void t21() {
+    List<Integer> list = new ArrayList<>();
+    list.add(1);
+    list.add(7);
+    list.add(8);
+    list.add(2);
+    list.add(9);
+    list.add(5);
+    list.add(10);
+    list.add(13);
+    list.add(3);
+    list.add(12);
+    list.add(6);
+    list.add(4);
+    list.add(11);
+
+    System.out.print("串行流执行结果 : ");
+    list.stream().sorted().forEach(x -> System.out.print(x + " "));
+    System.out.println("");
+    
+    System.out.print("并行流执行结果 : ");
+    list.parallelStream().sorted().forEach(x -> System.out.print(x + " "));
+}
+```
+
+结果如下 : 
+
+```
+串行流执行结果 : 1 2 3 4 5 6 7 8 9 10 11 12 13 
+并行流执行结果 : 4 2 3 1 6 5 11 10 12 13 7 9 8 
+```
+
+并行流输出的结果并不是我们期待输出的结果，这是由于在并行情况下，会出现线程安全问题
+
+可以使用最后调用 `collect(Collectors.toList())` 的方式，这种收集起来所有元素到新集合是线程安全的。
+
+```java
+List<Integer> collect = list.parallelStream().sorted().collect(Collectors.toList());
+System.out.print("并行流toList执行结果 : ");
+collect.forEach(x -> System.out.print(x + " "));
+```
