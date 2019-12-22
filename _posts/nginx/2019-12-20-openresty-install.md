@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  OpenResty 编译安装
-description: "OpenResty 也被称为 `ngx_openresty`，是一个基于 Nginx 与 Lua 的高性能 Web 平台，其内部集成了大量精良的 Lua 库、第三方的Nginx模块和大部分系统依赖包，用于方便地搭建能够处理超高并发、扩展性极高的动态 Web 应用、Web 服务和动态网关。OpenResty 不是 Nginx 的分支，它只是一个软件包。"
+description: "OpenResty 也被称为 ngx_openresty，是一个基于 Nginx 与 Lua 的高性能 Web 平台，其内部集成了大量精良的 Lua 库、第三方的Nginx模块和大部分系统依赖包，用于方便地搭建能够处理超高并发、扩展性极高的动态 Web 应用、Web 服务和动态网关。OpenResty 不是 Nginx 的分支，它只是一个软件包。"
 modified: 2019-12-20 15:20:20
 tags: [Nginx,OpenResty,TCP]
 post_type: developer
