@@ -121,7 +121,7 @@ sudo make install
 编辑配置文件 `vim /usr/local/etc/privoxy/config`
 
 ```
-listen-address 127.0.0.1:8118   # 8118 是默认端口，不用改，下面会用到
+listen-address 0.0.0.0:8118   # 8118 是默认端口，不用改，下面会用到
 forward-socks5t / 127.0.0.1:1080 . # 这里的端口写 shadowsocks 的本地端口（注意最后那个 . 不要漏了）
 ```
 
