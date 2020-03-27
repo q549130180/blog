@@ -160,7 +160,7 @@ frontend main
 
 backend nginx # nginx 作用域
 	mode tcp
-	option ssl-hello-chk
+	option tcp-check
 	server web1 :4431 check send-proxy
 
 backend ss-out
