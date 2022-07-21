@@ -28,7 +28,7 @@ image:
 
 ### 2.1 安装
 
-Shadowscoks-libev 的安装可以参考 [《使用VPS搭建Shadowscoks-libev代理》](https://huangxubo.me/blog/linux/shadowscoks-libev/), 安装的方式都是一样的。
+Shadowscoks-libev 的安装可以参考 [《使用VPS搭建Shadowscoks-libev代理》](https://lingfeng.me/blog/linux/shadowscoks-libev/), 安装的方式都是一样的。
 
 配置和启动方式请参考以下内容。
 
@@ -147,6 +147,30 @@ export https_proxy=http://127.0.0.1:8118
 
 运行 `curl ipinfo.io/ip` 如果返回的是你服务器的 IP 说明可以生效了。
 
+### 3.8 添加开机启动
+
+添加配置 `vim /etc/systemd/system/privoxy.service` 内容如下
+
+```conf
+[Unit]
+Description=Privoxy
+After=network.target
+
+[Service]
+User=root
+ExecStart=/usr/local/sbin/privoxy --no-daemon --user privoxy /usr/local/etc/privoxy/config
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+```
+
+- `sudo systemctl daemon-reload` 刷新
+- `sudo systemctl start privoxy` 启动
+- `sudo systemctl enable privoxy` 开机启动
+- `sudo systemctl status privoxy` 查看状态
+
+> 注 : 注意 `--no-daemon` 参数，就是不把  `privoxy` 作为后台 `daemon` 运行, 不加的话会启动失败
 
 ##### 参考资料
 

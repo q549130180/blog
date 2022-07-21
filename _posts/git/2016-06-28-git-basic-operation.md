@@ -62,7 +62,7 @@ $ git config --global user.email "email@example.com"
 
 一般来说，日常使用只要记住下图6个命令，就可以了。但是熟练使用，恐怕要记住60～100个命令。
 
-![git](http://image.huangxubo.me/images/git/git_git_2018_09_11_001.png)
+![git](http://image.lingfeng.me/images/git/git_git_2018_09_11_001.png)
 
 Git 命令清单:
 

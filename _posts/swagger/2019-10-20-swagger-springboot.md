@@ -79,7 +79,7 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         // 定义联系人信息
-        Contact contact = new Contact("lingfeng","http://huangxubo.me/blog/", "yellow.716@163.com");
+        Contact contact = new Contact("lingfeng","http://lingfeng.me/blog/", "yellow.716@163.com");
         return new ApiInfoBuilder()
                 .title("Swagger2 Demo API") // 标题
                 .description("Swagger2 Demo API") // 描述信息
@@ -311,7 +311,7 @@ public class UserController {
 
 启动相互访问地址：http://127.0.0.1:8080/swagger-ui.html#/ ,就可以看到 Swagger API 的界面了
 
-![swagger](http://image.huangxubo.me/images/swagger/swagger_2019_10_20_002.jpg)
+![swagger](http://image.lingfeng.me/images/swagger/swagger_2019_10_20_002.jpg)
 
 
 ### 2.5 使用 Bootstrap UI
@@ -337,7 +337,7 @@ public class UserController {
 
 启动项目访问地址：http://127.0.0.1:8080/doc.html ,可以使用 Bootstrap UI 了。
 
-![swagger](http://image.huangxubo.me/images/swagger/swagger_bootstrapui_2019_10_20_001.jpg)
+![swagger](http://image.lingfeng.me/images/swagger/swagger_bootstrapui_2019_10_20_001.jpg)
 
 ### 2.6 添加 API 组
 
@@ -356,7 +356,7 @@ public Docket createGroupRestApi() {
 }
 ```
 
-![swagger](http://image.huangxubo.me/images/swagger/swagger_group_2019_10_20_003.jpg)
+![swagger](http://image.lingfeng.me/images/swagger/swagger_group_2019_10_20_003.jpg)
 
 
 ##### 参考资料

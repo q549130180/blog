@@ -41,19 +41,19 @@ Spring将很多魔法带入了Spring应用程序的开发之中，其中最重�
 
 【Create New Project】 -> 【Spring lnitializr】
 
-![springboot](http://image.huangxubo.me/images/springboot/springboot_2018_05_31_002.jpg)
+![springboot](http://image.lingfeng.me/images/springboot/springboot_2018_05_31_002.jpg)
 
-![springboot](http://image.huangxubo.me/images/springboot/springboot_2018_05_31_003.jpg)
+![springboot](http://image.lingfeng.me/images/springboot/springboot_2018_05_31_003.jpg)
 
-![springboot](http://image.huangxubo.me/images/springboot/springboot_2018_05_31_004.jpg)
+![springboot](http://image.lingfeng.me/images/springboot/springboot_2018_05_31_004.jpg)
 
-![springboot](http://image.huangxubo.me/images/springboot/springboot_2018_05_31_005.jpg)
+![springboot](http://image.lingfeng.me/images/springboot/springboot_2018_05_31_005.jpg)
 
 ### 2.2 项目结构
 
 根据上面的操作已经初始化了一个Spring Boot的框架了，项目结构如下：
 
-![springboot](http://image.huangxubo.me/images/springboot/springboot_2018_05_31_006.jpg)
+![springboot](http://image.lingfeng.me/images/springboot/springboot_2018_05_31_006.jpg)
 
 如你所见，项目里面基本没有代码，除了几个空目录外，还包含如下几样东西。
 
@@ -170,7 +170,7 @@ Spring将很多魔法带入了Spring应用程序的开发之中，其中最重�
 
 Spring Boot提供了很多”开箱即用“的依赖模块，都是以spring-boot-starter-xx作为命名的。举个例子来说明一下这个起步依赖的好处，比如组装台式机和品牌机，自己组装的话需要自己去选择不同的零件，最后还要组装起来，期间有可能会遇到零件不匹配的问题。耗时又消力，而品牌机就好一点，买来就能直接用的，后续想换零件也是可以的。相比较之下，后者带来的效果更好点（这里就不讨论价格问题哈），起步依赖就像这里的品牌机，自动给你封装好了你想要实现的功能的依赖。就比如我们之前要实现web功能，引入了spring-boot-starter-web这个起步依赖。我们来看看spring-boot-starter-web到底依赖了哪些,如下图：
 
-![springboot](http://image.huangxubo.me/images/springboot/springboot_2018_05_31_001.jpg)
+![springboot](http://image.lingfeng.me/images/springboot/springboot_2018_05_31_001.jpg)
 
 看来依赖了好多呢，如果让我自己弄估计要调半天，所以Spring Boot通过提供众多起步依赖降低项目依赖的复杂度。起步依赖本质上是一个Maven项目对象模型（Project Object Model，POM），定义了对其他库的传递依赖，这些东西加在一起即支持某项功能。很多起步依赖的命名都暗示了它们提供的某种或者某类功能。
 
