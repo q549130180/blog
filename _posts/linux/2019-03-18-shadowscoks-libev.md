@@ -114,7 +114,7 @@ sudo make install
 
 混淆域名，使用混淆时伪装的域名，一般选择大型企业，流量出入较大、CDN等未被墙的域名作为混淆域名(如伪装的特定端口下的IP或域名来免流)，常用的混淆域名有这些
 
-关于 Mac 和 Windows 等系统客户端的配置请参考[《使用VPS搭建Shadowscoks代理》](http://huangxubo.me/blog/linux/shadowscoks/)
+关于 Mac 和 Windows 等系统客户端的配置请参考[《使用VPS搭建Shadowscoks代理》](http://lingfeng.me/blog/linux/shadowscoks/)
 
 ### 4.3 开机启动
 
@@ -312,7 +312,7 @@ net.ipv6.conf.all.forwarding = 1
 
 TFO提高性能的关键是省去了热请求的三次握手，这在充斥着小对象的移动应用场景中能够极大提升性能。
 
-TCP Fast Open 要求服务器和客户端都是 `Linux 3.7+` 的内核，需要的话可以参考我的另一篇文章[《Cnet OS 7 升级系统内核》](http://huangxubo.me/blog/cent%20os/centos-kernel/)
+TCP Fast Open 要求服务器和客户端都是 `Linux 3.7+` 的内核，需要的话可以参考我的另一篇文章[《Cnet OS 7 升级系统内核》](http://lingfeng.me/blog/cent%20os/centos-kernel/)
 
 > 要求：系统内核版本 ≥ 3.7，shadowsocks-libev ≥ 3.0.4，Shadowsocks 服务端开启 TCP Fast Open
 

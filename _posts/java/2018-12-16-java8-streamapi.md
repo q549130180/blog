@@ -51,7 +51,7 @@ Stream（流）是一个来自数据源的元素队列并支持聚合操作
 3. 终止操作（终端操作）
    - 一个终止操作，执行中间操作链，并产生结果
 
-![Java Stream](http://image.huangxubo.me/images/java/java_stream_2018_12_13_001.jpg)
+![Java Stream](http://image.lingfeng.me/images/java/java_stream_2018_12_13_001.jpg)
 
 ## 2. 创建 Stream（流）
 

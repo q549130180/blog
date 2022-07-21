@@ -129,7 +129,7 @@ sudo systemctl start docker
 
 由于国内的网络原因需要使用阿里的镜像加速器,登录自己的阿里云官网，找到镜像加速器，根据提示进行配置
 
-![docker aliyun](http://image.huangxubo.me/images/docker/docker_2018_04_06_4852.jpg)
+![docker aliyun](http://image.lingfeng.me/images/docker/docker_2018_04_06_4852.jpg)
 
 ##### 4. 验证
 

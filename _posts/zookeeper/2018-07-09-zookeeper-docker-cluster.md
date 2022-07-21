@@ -21,7 +21,7 @@ image:
 
 尤其是在测试时，大大的方便了我们搭建集群的时间。
 
-Docker 的安装详见《[Docker CE for Linux安装](http://huangxubo.me/blog/docker/docker-install/)》
+Docker 的安装详见《[Docker CE for Linux安装](http://lingfeng.me/blog/docker/docker-install/)》
 
 ### 1.2 . 环境
 
@@ -148,7 +148,7 @@ docker-compose -f docker-compose.yml -p zk_cluster up -d
 - `-p` - 指定项目名称，默认将使用所在目录名称作为项目名
 - `-d` - 在后台运行服务容器,一般推荐生产环境下使用,如果不加此参数通过`Ctrl+C`停止命令时,所有容器将会停止
 
-> 注：如果出现以下错误，参考《[Docker CE for Linux安装](http://huangxubo.me/blog/docker/docker-install/)》的3.3开启Docker Remote API。
+> 注：如果出现以下错误，参考《[Docker CE for Linux安装](http://lingfeng.me/blog/docker/docker-install/)》的3.3开启Docker Remote API。
 >
 >
 > ```bash
