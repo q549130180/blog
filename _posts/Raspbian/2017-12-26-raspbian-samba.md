@@ -46,7 +46,7 @@ image:
 
 ## 4. Mac配置
 
-![Alt text]({{site.url}}/images/posts_image/raspbian-samba-2017-12-26.jpg)
+![Alt text](http://image.lingfeng.me/images/content/raspbian-samba-2017-12-26.jpg)
 
 点击连接,输入用户名密码,就可以连接了.
 

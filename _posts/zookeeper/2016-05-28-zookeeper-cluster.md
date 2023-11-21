@@ -340,10 +340,10 @@ Quitting...
 下载后直接解压，运行`build/zookeeper-dev-ZooInspector.jar`文件即可。
 
 1.连接
-![Alt text]({{site.url}}/images/posts_image/zookeeper_zooInspector_2016-10-20_150701.jpg)
+![Alt text](http://image.lingfeng.me/images/content/zookeeper_zooInspector_2016-10-20_150701.jpg)
 
 2.配置
-![Alt text]({{site.url}}/images/posts_image/zookeeper_zooInspector_2016-10-20_150732.jpg)
+![Alt text](http://image.lingfeng.me/images/content/zookeeper_zooInspector_2016-10-20_150732.jpg)
 
 3.查看数据
-![Alt text]({{site.url}}/images/posts_image/zookeeper_zooInspector_2016-10-20_152832.jpg)
+![Alt text](http://image.lingfeng.me/images/content/zookeeper_zooInspector_2016-10-20_152832.jpg)

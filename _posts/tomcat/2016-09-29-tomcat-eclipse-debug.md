@@ -46,15 +46,15 @@ CATALINA_OPTS="-Xdebug  -Xrunjdwp:transport=dt_socket,address=8000,server=y,susp
 在Eclipse中，点击菜单项`run`->`debug confiurations`，双击`Remote Java Application`
 
 配置如下：
-![Alt text]({{site.url}}/images/posts_image/tomcat-debug-2016-09-29_104320.jpg)
+![Alt text](http://image.lingfeng.me/images/content/tomcat-debug-2016-09-29_104320.jpg)
 配置完成后点击Debug
-![Alt text]({{site.url}}/images/posts_image/tomcat-debug-2016-09-29_105119.jpg)
+![Alt text](http://image.lingfeng.me/images/content/tomcat-debug-2016-09-29_105119.jpg)
 
 然后将项目的war包拷贝到Tomcat的webapps目录下并启动Tomcat,然后在eclipse中打一个断点，打开浏览器点击相应页面进入断点。
-![Alt text]({{site.url}}/images/posts_image/tomcat-debug-2016-09-29_104902.jpg)
+![Alt text](http://image.lingfeng.me/images/content/tomcat-debug-2016-09-29_104902.jpg)
 
 断开debug连接
-![Alt text]({{site.url}}/images/posts_image/tomcat-debug-2016-09-29_105155.jpg)
+![Alt text](http://image.lingfeng.me/images/content/tomcat-debug-2016-09-29_105155.jpg)
 
 重新连接
-![Alt text]({{site.url}}/images/posts_image/tomcat-debug-2016-09-29_105421.jpg)
+![Alt text](http://image.lingfeng.me/images/content/tomcat-debug-2016-09-29_105421.jpg)

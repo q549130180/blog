@@ -42,14 +42,14 @@ git clone https://github.com/mbadolato/iTerm2-Color-Schemes
 
 配置配置方案
 
-![Alt text]({{site.url}}/images/posts_image/iterm2_import_2019_11_22_002.jpg)
+![Alt text](http://image.lingfeng.me/images/content/iterm2_import_2019_11_22_002.jpg)
 
 配色方案可以根据自己的喜好进行更改
 
 
 ### 1.4 设置 iTerm2
 
-![Alt text]({{site.url}}/images/posts_image/iterm2_powerlevel9k_2019_11_22_001.jpg)
+![Alt text](http://image.lingfeng.me/images/content/iterm2_powerlevel9k_2019_11_22_001.jpg)
 
 ### 1.5 编辑配置文件
 

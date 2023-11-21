@@ -44,7 +44,7 @@ image:
 
 1、打开终端，输入`diskutil list`
 
-![Alt text]({{site.url}}/images/posts_image/raspberry-init-2017-12-03_00001.png)
+![Alt text](http://image.lingfeng.me/images/content/raspberry-init-2017-12-03_00001.png)
 
 从结果中我们可以看到我的USB驱动器的位置是「/dev/disk2」，并把这个位置牢牢记住
 
@@ -138,7 +138,7 @@ sudo vi /etc/apt/sources.list
 
 添加镜像源如下
 
-![Alt text]({{site.url}}/images/posts_image/raspberry-init-2017-12-03_00002.jpg)
+![Alt text](http://image.lingfeng.me/images/content/raspberry-init-2017-12-03_00002.jpg)
 
 地址不一定要和上面演示的一致，你可以自由选择镜像站。我这里列出几个国内常见Raspbian OS镜像站及地址。
 

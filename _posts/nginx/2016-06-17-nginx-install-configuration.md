@@ -109,7 +109,7 @@ nginx大部分常用模块，编译时./configure --help以--without开头的都
 
 ### 4.启动关闭nginx
 
-{% highlight nginx %}
+```bash
 # 检查配置文件是否正确
 /snow/programs/nginx-1.9/sbin/nginx -t
 ./sbin/nginx -V     # 可以看到编译选项
@@ -122,9 +122,35 @@ nginx大部分常用模块，编译时./configure --help以--without开头的都
 # 重启，不会改变启动时指定的配置文件
 ./sbin/nginx -s reload
 # 或 kill -HUP `cat /snow/programs/nginx-1.9/logs/nginx.pid`
+```
 
-{% endhighlight %}
+### 5. 配置开机启动
 
+
+创建并编辑配置文件 `sudo vim /etc/systemd/system/nginx.service`，写入以下内容
+
+```
+[Unit]
+Description=nginx
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/snow/programs/nginx-1.9/logs/nginx.pid
+ExecStartPre=/snow/programs/nginx-1.9/sbin/nginx -t
+ExecStart=/snow/programs/nginx-1.9/sbin/nginx
+ExecReload=/snow/programs/nginx-1.9/sbin/nginx -s reload
+ExecStop=/snow/programs/nginx-1.9/sbin/nginx -s stop
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+```
+
+- `sudo systemctl daemon-reload` 刷新配置
+- `sudo systemctl start nginx` 启动
+- `sudo systemctl enable nginx` 开机启动
+- `sudo systemctl status nginx` 查看状态
 
 ## 三、nginx.conf配置文件
 

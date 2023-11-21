@@ -16,7 +16,7 @@ image:
 ## 1. 概述
 
 好久之前就想折腾一下自己的Terminal了，正好有点时间就把Terminal弄了下，折腾了一下午，终于把Terminal折腾成自己想要的效果了，先上个效果图
-![Alt text]({{site.url}}/images/posts_image/mac_oh_my_zsh_2017-11-07_123456.jpg)
+![Alt text](http://image.lingfeng.me/images/content/mac_oh_my_zsh_2017-11-07_123456.jpg)
 
 
 ## 2. iTerm2 安装
@@ -62,9 +62,9 @@ image:
 2. 进入刚刚下载的工程的`solarized/iterm2-colors-solarized` 下双击 `Solarized Dark.itermcolors` 和 `Solarized Light.itermcolors` 两个文件就可以把配置文件导入到 iTerm2 里
 
 3. 配置配色方案
-![Alt text]({{site.url}}/images/posts_image/mac_oh_my_zsh_2017-11-07_123457.jpg)
+![Alt text](http://image.lingfeng.me/images/content/mac_oh_my_zsh_2017-11-07_123457.jpg)
 
-
+π
 ### 2.3 安装字体
 
 
@@ -73,7 +73,7 @@ image:
 2. 进入到项目目录，执行`./install.sh`指令安装所有Powerline字体
 
 3. 配置字体
-![Alt text]({{site.url}}/images/posts_image/mac_oh_my_zsh_2017-11-07_123457 3.jpg)
+![Alt text](http://image.lingfeng.me/images/content/mac_oh_my_zsh_2017-11-07_123457 3.jpg)
 
 ## 3. oh-my-zsh 安装
 

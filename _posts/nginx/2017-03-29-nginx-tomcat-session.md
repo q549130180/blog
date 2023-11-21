@@ -36,13 +36,13 @@ session机制。session机制是一种服务器端的机制，服务器使用一
 
 1) 第一次访问服务器的时候，会在响应头里面看到Set-Cookie信息（只有在首次访问服务器的时候才会在响应头中出现该信息）
 
-![Alt text]({{site.url}}/images/posts_image/tomcat-session-jsessionid_2017_03_29_143333.jpg)
+![Alt text](http://image.lingfeng.me/images/content/tomcat-session-jsessionid_2017_03_29_143333.jpg)
 
 浏览器会根据响应头的set-cookie信息设置浏览器的cookie并保存之
 
 注意此cookie由于没有设置cookie有效日期，所以在关闭浏览器的情况下会丢失掉这个cookie。
 
-![Alt text]({{site.url}}/images/posts_image/tomcat-session-jsessionid_2017_03_29_143334.jpg)
+![Alt text](http://image.lingfeng.me/images/content/tomcat-session-jsessionid_2017_03_29_143334.jpg)
 
 2) 当再次请求的时候（非首次请求），浏览器会在请求头里将cookie发送给服务器(每次请求都是这样)
 

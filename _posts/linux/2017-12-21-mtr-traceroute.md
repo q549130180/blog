@@ -127,4 +127,4 @@ traceroute to www.baidu.com (115.239.210.27), 30 hops max, 60 byte packets
 
 在Spotlight中搜索`网络实用工具`,选择`Traceroute`即可使用;
 
-![Alt text]({{site.url}}/images/posts_image/traceroute-2017-12-21-0001.jpg)
+![Alt text](http://image.lingfeng.me/images/content/traceroute-2017-12-21-0001.jpg)

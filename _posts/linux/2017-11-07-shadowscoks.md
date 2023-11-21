@@ -89,7 +89,7 @@ pip install shadowsocks
 下载地址：[Shadowscoks客户端][4] ，Mac和Windows都有(IOS可以在App Store下载Wingy或Potatso List)。
 
 以Mac为例
-![Alt text]({{site.url}}/images/posts_image/shadowsocks_2017-11-07_123456.jpg)
+![Alt text](http://image.lingfeng.me/images/content/shadowsocks_2017-11-07_123456.jpg)
 设置好直接开启服务就可以了。
 
 Mac下给终端使用代理的方法：

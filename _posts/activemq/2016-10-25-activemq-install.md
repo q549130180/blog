@@ -57,7 +57,7 @@ ActiveMQ主要包含Point-to-Point (点对点),Publish/Subscribe Model (发布/�
 
 ActiveMQ一般由jmx来进行监控；
 
-![Alt text]({{site.url}}/images/posts_image/activemq-activemq-2016-10-26_141310.jpg)
+![Alt text](http://image.lingfeng.me/images/content/activemq-activemq-2016-10-26_141310.jpg)
 
 ## 二、ActiveMQ 安装与配置
 
@@ -119,7 +119,7 @@ LevelDB 是 Google 开发的一套用于持久化数据的高性能类库。Leve
 
 集群原理图：
 
-![Alt text]({{site.url}}/images/posts_image/activemq-activemq-2016-090270123456.png)
+![Alt text](http://image.lingfeng.me/images/content/activemq-activemq-2016-090270123456.png)
 
 [ActiveMQ特性][3]([官方文档地址][2])
 
@@ -343,13 +343,13 @@ su - wusc -c '/snow/activemq/group1/node-03/bin/activemq start'
 **8、通过监控查看消息堆栈的记录：**
 
 登陆http://localhost:8161/admin/index.jsp，默认的用户名和密码：admin/admin
-![Alt text]({{site.url}}/images/posts_image/activemq_activemq_2016-10-20_134617.jpg)
+![Alt text](http://image.lingfeng.me/images/content/activemq_activemq_2016-10-20_134617.jpg)
 
 ### 5、Master Slave + Broker Cluster 模式搭建负载均衡
 
 **(1) Master Slave + Broker Cluster 模式结构图**
 
-![Alt text]({{site.url}}/images/posts_image/activemq-activemq-2016-10-25_170132.jpg)
+![Alt text](http://image.lingfeng.me/images/content/activemq-activemq-2016-10-25_170132.jpg)
 
 **(2) 复制group1文件夹中的节点到group2文件夹中**
 

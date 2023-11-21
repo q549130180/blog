@@ -25,7 +25,7 @@ image:
 ```
 
 执行`ifconfig`查看当前网卡信息
-![Alt text]({{site.url}}/images/posts_image/centos_network_2017-11-29_00001.jpg)
+![Alt text](http://image.lingfeng.me/images/content/centos_network_2017-11-29_00001.jpg)
 
 > 注 : 在 CentOS 7 中 ifconfig 命令已经不灵了，换成了 ip 命令工具，输入 ifconfig 会报如下错误:
 >

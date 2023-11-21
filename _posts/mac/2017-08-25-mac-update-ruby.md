@@ -72,7 +72,7 @@ ruby 2.3
 
 ### 4.1 问题一：安装Ruby版本时报以下错误
 
-![Alt text]({{site.url}}/images/posts_image/mac_ruby_2017-08-25_150455.png)
+![Alt text](http://image.lingfeng.me/images/content/mac_ruby_2017-08-25_150455.png)
 
 解决方法：卸载home-brew
 
@@ -84,7 +84,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 ### 4.2 问题二：使用时报一下错误
 
-![Alt text]({{site.url}}/images/posts_image/mac_ruby_2017-08-25_1504565.png)
+![Alt text](http://image.lingfeng.me/images/content/mac_ruby_2017-08-25_1504565.png)
 
 解决办法:
 

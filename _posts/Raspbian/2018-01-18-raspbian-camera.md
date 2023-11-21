@@ -26,7 +26,7 @@ image:
 
 4. 将排线插入CSI接口。记住，有蓝色胶带的一面应该面向以太网接口方向。同样，这时也确认一下排线安装好了之后，将挡板拉下。
 
-![Alt text]({{site.url}}/images/posts_image/raspbian-camera-2018-01-18.jpg)
+![Alt text](http://image.lingfeng.me/images/content/raspbian-camera-2018-01-18.jpg)
 
 ## 2. 启用摄像头
 
@@ -66,13 +66,13 @@ dpkg -i raspi-config_20170811_all.deb
 再次运行`sudo raspi-config`
 
 然后移动光标到`Interfacing Options`,按回车(现在最新的`raspi-config`,`Camera`模块在`Interfacing Options`)
-![Alt text]({{site.url}}/images/posts_image/raspbian-camera-2018-01-18_001.jpg)
+![Alt text](http://image.lingfeng.me/images/content/raspbian-camera-2018-01-18_001.jpg)
 然后选择Camera,按回车
-![Alt text]({{site.url}}/images/posts_image/raspbian-camera-2018-01-18_002.jpg)
+![Alt text](http://image.lingfeng.me/images/content/raspbian-camera-2018-01-18_002.jpg)
 然后选择Yes
-![Alt text]({{site.url}}/images/posts_image/raspbian-camera-2018-01-18_003.jpg)
+![Alt text](http://image.lingfeng.me/images/content/raspbian-camera-2018-01-18_003.jpg)
 再选择Yes
-![Alt text]({{site.url}}/images/posts_image/raspbian-camera-2018-01-18_004.jpg)
+![Alt text](http://image.lingfeng.me/images/content/raspbian-camera-2018-01-18_004.jpg)
 
 结束后会树莓派会重启.
 

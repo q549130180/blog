@@ -179,7 +179,7 @@ public class QueueSenderTest {
 ```
 
 通过监控界面查看队列里的消息
-![Alt text]({{site.url}}/images/posts_image/activemq_activemq_2016-10-18_145421.jpg)
+![Alt text](http://image.lingfeng.me/images/content/activemq_activemq_2016-10-18_145421.jpg)
 
 **(2) Queue接收端代码**
 
@@ -259,7 +259,7 @@ public class QueueConsumerListenerTest extends Thread implements MessageListener
 ```
 
 通过监控界面查看接收者信息
-![Alt text]({{site.url}}/images/posts_image/activemq_activemq_2016-10-18_150058.jpg)
+![Alt text](http://image.lingfeng.me/images/content/activemq_activemq_2016-10-18_150058.jpg)
 
 ### 4.发布/订阅
 

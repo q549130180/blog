@@ -87,7 +87,7 @@ sbin/nginx -s reload
 
 在浏览器中输入对应的网址，则会出现如下所示
 
-![Alt text]({{site.url}}/images/posts_image/nginx-auth-2017_09_04_0001.png)
+![Alt text](http://image.lingfeng.me/images/content/nginx-auth-2017_09_04_0001.png)
 
 ## 6. 问题处理
 
